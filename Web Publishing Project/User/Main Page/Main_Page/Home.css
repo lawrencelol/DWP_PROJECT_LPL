@@ -1,0 +1,22 @@
+body{
+    background-color: Black;
+}
+
+ul{
+    float:left;
+    margin-top: auto;
+    padding:200px;
+    text-align: start;
+    font-size: 2em;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border: 20px 30px;
+    border-radius: 30px;
+    border-color: rgba(128, 128, 128, 0.397);
+}
+
+ul:hover{
+    text-decoration: underline;
+    font-size: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-color: white;
+}
