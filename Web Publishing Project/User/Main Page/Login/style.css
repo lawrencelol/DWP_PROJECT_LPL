@@ -120,9 +120,28 @@ body {
     background: #0b87ec;
 }
 
+.employee-ptn {
+    width: 50%;
+    padding: 15px ;
+    border:none;
+    border-radius: 99px;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    float: right;
+    background: rgba(64, 64, 64, 0.1);
+}
+
+.employee-ptn:hover{
+    font-size: 12px;
+    background: rgba(0, 0, 0, 0.438);
+    text-decoration: underline;
+}
 .register {
     margin-top: 15px;
     font-size: 15px;
+
 }
 
 .register a {
