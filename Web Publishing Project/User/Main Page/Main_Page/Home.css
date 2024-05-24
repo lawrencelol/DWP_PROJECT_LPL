@@ -187,8 +187,12 @@ input[id="radio-4"] {
 }
 
 .Book1{
-    margin: 400px 80%;
+    margin: 350px 70%;
     width: 200px;
     height: 300px;
-    position: absolute;
+    position: fixed;
+}
+
+.TxT_Exp{
+    
 }
