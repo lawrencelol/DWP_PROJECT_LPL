@@ -185,3 +185,10 @@ input[id="radio-4"] {
     text-transform: uppercase;
 
 }
+
+.Book1{
+    margin: 400px 80%;
+    width: 200px;
+    height: 300px;
+    position: absolute;
+}
