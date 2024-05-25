@@ -12,13 +12,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url(img.png);
+    background-color: #e3ccae;
     background-size: cover;
     background-position: center;
 }
 
 .Login-form{
-    background: rgba(64, 64, 64, 0.15);
+    background: rgba(184, 0, 0, 0.15);
     border: 3px solid rgba(255, 255, 255, 0);
     padding: 40px;
     border-radius: 16px;
@@ -30,10 +30,20 @@ body {
 }
 
 .login-title{
-    font-size: 40px;
-    margin-bottom: 40px;
+    transform: translateY(-50%);
 }
 
+.login-title::after{
+    content: "";
+    width: 50px;
+    height: 4px;
+    border-radius: 3px;
+    background: black;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .input-box{
     margin: 20px 0;
     position: relative;
@@ -120,7 +130,7 @@ body {
     background: #0b87ec;
 }
 
-.employee-ptn {
+.employee-ptn a{
     width: 50%;
     padding: 15px ;
     border:none;
@@ -129,11 +139,13 @@ body {
     font-size: 12px;
     font-weight: bold;
     cursor: pointer;
-    float: right;
+    justify-self: end;
+    align-self: end;
     background: rgba(64, 64, 64, 0.1);
+
 }
 
-.employee-ptn:hover{
+.employee-ptn a:hover{
     font-size: 12px;
     background: rgba(0, 0, 0, 0.438);
     text-decoration: underline;

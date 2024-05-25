@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTP-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Employee Page</title>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="Employee.css">
-    </head> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <title>Employee Form</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel='stylesheet' href='Employee.css'>
+</head>
 
-    <body>
-        <form action="#" class="Employee Page">
-            <h1 class="Login-Title">Employee Log-in</h1>
+<body>
+    <form action="#" class="Login-form">
+    <h1 class="login-title">EMPLOYEE</h1>
+    
+    <div class="input-box">
+        <i class="bx bxs-user"></i>
+        <input type="text" placeholder="User ID">
+    </div>
+    <div class="input-box">
+        <i class="bx bxs-lock-alt"></i>
+        <input type="password" placeholder="Password"> 
+    </div>
 
-            <div class="input-box">
-                <i class='bx bxs-user'></i>
-                <input type="text" placeholder="Username">
-            </div>
+    <div class="remember-box">
+        <label fr="remember">
+            <input type="checkbox" id="rememeber">
+            Remember me
+        </label>
+        <a herf="#">Forget Password?</a>
+    </div>
 
-            <div class="input-box">
-                <i class='bx bxs-key' ></i>
-                <input type="password" placeholder="Password">
-            </div>
+    <button class="login-ptn">Login</button>
 
-            <div class="remember-box">
-                <label fr="Remember">
-                    <input type="checkbox" id="remember">
-                    Remember Me
-                </label>
-                    <a href="#">Forget Password?</a>
-            </div>
+    
+    <p class="register">
+        Don't have any account?
+        <a href="/Web Publishing Project/User/Main Page/Sign_up/Sign-Up.html">Register</a>
+    </p>    
 
-            <button class="Log-in.btn">Log In</button>
-        </form>
-    </body>
+</form>
+</body>
 </html>
