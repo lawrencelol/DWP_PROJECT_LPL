@@ -1,19 +1,45 @@
+*
+{
+    margin:50px;
+    box-sizing: border-box;
+}
+
+header
+{
+    margin: 0;
+    padding: 0 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 40px;
+}
+
+
 body
 {
     background-color: #EFE9DB;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 50px;
-    text-align: center;
- 
+    line-height: 1.25;
+    text-align: justify;
 }
 
-.title
+
+.about
 {
-    font-size: 80px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    text-align: center;   
+    font-size: 18px;
+    color: #4F493F;
+    border: 1px #936E16 solid;
+
+}
+
+h2
+{
+    margin: auto;
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-weight:400;
+    color:#4F493F;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 
@@ -21,6 +47,20 @@ body
 img
 {
     width: 80%;
-    border-style: solid;
-    color:#936E16;   
+    display: block;
+    margin: 0 auto;
+
+}
+
+.bold
+{
+    font-weight: 500;
+}
+
+footer
+{
+    padding-top: 50px;
+    font-size: 15px;
+    text-align: center;
+
 }
