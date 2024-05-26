@@ -1,10 +1,26 @@
-.title
-{
-    font-size: 90px;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 body
 {
     background-color: #EFE9DB;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 50px;
+    text-align: center;
+ 
+}
 
+.title
+{
+    font-size: 80px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+
+
+img
+{
+    width: 80%;
+    border-style: solid;
+    color:#936E16;   
 }
