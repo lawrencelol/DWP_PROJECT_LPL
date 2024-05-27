@@ -4,7 +4,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Poppins',sans-serif;
+    font-family: 'Poppins';
 }
 
 body{
@@ -200,4 +200,24 @@ input[id="radio-4"] {
 
 .TxT_Exp{
     
+}
+
+.pick_selection{
+    width: 30%;
+    height: 12%;
+    justify-self: start;
+    transform: translateY(500%);
+    margin-left: 10%;
+    position: absolute;
+}
+
+#pick_btn{
+    color: black;
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    transform: translateY(1340%);
+    margin-left: 17%;
+    cursor: pointer;
 }
