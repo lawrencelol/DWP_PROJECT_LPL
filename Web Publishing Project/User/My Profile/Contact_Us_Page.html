@@ -10,10 +10,12 @@
 
     <body>
         <div class="contact">
+            <img src="LPL logo.png" alt="logo">
             <header>
                 CONTACT US
             </header>
-            <form action="submit_form" method="post" style="margin-left: 25%;">
+            <form action="submit_form" method="submit_form">
+                <fieldset>
                 <div>
                     <img src="User.png">
                     <label class="name" for="name">Name<span class="required"> *</span>: </label>
@@ -34,12 +36,47 @@
         
                 <div class="message">
                     <img src="Message.png">
-                    <label for="message">Message<span class="required">*</span>:</label>
+                    <label for="message">Message <span class="required">*</span>:</label>
                     <textarea id="message" name="message" rows="5" required></textarea>
                 </div>
-        
                     <button type="submit"><b>SUBMIT</b></button>
                     <button type="reset"><b>RESET</b></button>
+                </fieldset>
+
+                <br><br>
+                <hr>
+
+                <div class="table">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="information">
+                                    <h3>Contact Number :</h3>
+                                    <p>012-9375625</p>
+                                </div>
+                                <div class="information">
+                                    <h3>Email Address:</h3>
+                                    <p class="email">lplbookstore@gmail.com</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="information">
+                                    <h3>Office Hours :</h3>
+                                    <p>Monday - Friday 9.00 am - 5.00 pm</p>
+                                </div>
+                                <div class="information">
+                                    <h3>Address :</h3>
+                                    <p>Ixora Apartment</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+ 
             </form>
         </div>
 
@@ -49,7 +86,7 @@
                 var tel = input.value.replace(/\D/g, '');
 
                 if (tel.length>3)
-                    tel = tel.slice(0,3)+ ' -' +tel.slice(3);
+                    tel = tel.slice(0,3)+ '-' +tel.slice(3);
 
                 input.value = tel;
         
