@@ -1,12 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTP-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Movie List</title>
-    </head> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Display</title>
+    <link rel='stylesheet' href='BookDisplay.css'>
+</head>
+<body>
 
-    <body>
+<!--这里是上方标签-->
+<header>
+    <img src="logo.png" >
+    <h1>Welcome To LPL Bookstore!</h1>
+    <ul>
+        <li><a href="#">HOME</a></li>
+        <li>
+            <div class="dropdown">
+                <span>CATEGORY</span>
+                <div class="choice">
+                <a href="#picturebook" class="selections">Picture Book</a>
+                <a href="#novel" class="selections">Novel</a>
+                <a href="#skill" class="selections">Hobby/Skill Book</a>
+                </div>
+            </div>
+        </li>
+        <li><a href="#">CART</a></li>
+    </ul>
+    </ol>
+</header>
 
-    </body>
+
+<!--这里是品牌头-->
+<section class="slogan">
+    <hr>
+    <img src="bookshelf.png">
+</section>
+
+
+<!--这里是书籍展示-->
+
+<!--这里是儿童读物-->
+<section class="picturebook" id="picturebook">
+    <div class="desc">
+        <h3>PICTURE BOOK</h3>
+        <p>Teaching a toddler is a challenge, since the wisest sentence coming out from a toddler’s mouth is either “Gugugaga” or “Gagageegee”. But fear not, a picture book with colourful illustrations and basic vocabulary is all you need! Let them become Einstein from a young age! </p> 
+    </div>
+    <div class="booktype">
+    <div>
+        <img src="Flippy The Silly Little Fish.png" alt="Flippy The Silly Little Fish">
+        <h3>Flippy The Silly Little Fish</h3>
+        <p>RM 12.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="That Thing Under My Bed.png" alt="That Thing Under My Bed">
+        <h3>That Thing Under My Bed</h3>
+        <p>RM 15.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="Me and My Pet Dinosaur.png" alt="Me and My Pet Dinosaur">
+        <h3>Me and My Pet Dinosaur</h3>
+        <p>RM 10.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    </div>
+</section>
+
+<!--这里是小说-->
+<section class="picturebook" id="novel">
+    <div class="desc">
+        <h3>NOVEL</h3>
+        <p>Teaching a toddler is a challenge, since the wisest sentence coming out from a toddler’s mouth is either “Gugugaga” or “Gagageegee”. But fear not, a picture book with colourful illustrations and basic vocabulary is all you need! Let them become Einstein from a young age! </p> 
+    </div>
+    <div class="booktype">
+    <div>
+        <img src="Children of The Star.png" alt="Children of The Star">
+        <h3>Children of The Star</h3>
+        <p>RM 20.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="Twins.png" alt="Twins">
+        <h3>Twins</h3>
+        <p>RM 22.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="My Mind is A Mess.png" alt="My Mind is A Mess">
+        <h3>My Mind is A Mess</h3>
+        <p>RM 36.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div>
+    </div> 
+</section>
+
+<!--这里是教材书-->
+<section class="picturebook" id="skill">
+    <div class="desc">
+        <h3>HOBBY/SKILL BOOK</h3>
+        <p>Teaching a toddler is a challenge, since the wisest sentence coming out from a toddler’s mouth is either “Gugugaga” or “Gagageegee”. But fear not, a picture book with colourful illustrations and basic vocabulary is all you need! Let them become Einstein from a young age! </p> 
+    </div>
+    <div class="booktype">
+    <div>
+        <img src="100 Ways To Bake.png" alt="100 Ways To Bake">
+        <h3>100 Ways To Bake</h3>
+        <p>RM 40.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="Knit It.png" alt="Knit It">
+        <h3>Knit It</h3>
+        <p>RM 48.00</p>
+        <button class="button type1" value="View Details"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="Cook Like A Pro.png" alt="Cook Like A Pro">
+        <h3>Cook Like A Pro</h3>
+        <p>RM 70.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+    <div>
+        <img src="Know Your Plants.png" alt="Know Your Plants">
+        <h3>Know Your Plants</h3>
+        <p>RM 50.00</p>
+        <button class="button type1"><span class="cart-txt">View Details</span></button>
+    </div> 
+</section>
+        
+
+
+
+    
+
+    
+
+    
+</body>
 </html>
