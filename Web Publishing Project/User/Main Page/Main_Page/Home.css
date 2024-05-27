@@ -178,13 +178,13 @@ input[id="radio-4"] {
     transition: 0.3s;
 }
 
-.sign-up_btn a1{
+.sign_btn{
     text-decoration: none;
     color: white;
     text-align: center;
 }
 
-.sign-up_btn:hover, a1:hover{
+.sign_btn:hover{
     background-color: #BDAC96;
     width: 170px;
     height: 50px;
@@ -203,8 +203,8 @@ input[id="radio-4"] {
 }
 
 .pick_selection{
-    width: 30%;
-    height: 12%;
+    width: 10%;
+    height: 10%;
     justify-self: start;
     transform: translateY(500%);
     margin-left: 10%;
