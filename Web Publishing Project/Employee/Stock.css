@@ -10,8 +10,8 @@
 
 header
 {
-    font-size: 50px;
-    font-weight: 600;
+    font-size: 70px;
+    font-weight: 800;
     text-align: center;
     margin-top: 50px;
 }
@@ -28,15 +28,15 @@ body
     font-weight: 700;
     width: 800px;
     margin-bottom: 10px;
-    transform: translateX(430px);
     margin-top: 50px;
-
+    transform: translateX(380px);
 }
 
 table
 {
-    transform: translateX(400px);
+    transform: translateX(340px);
 }
+
 tr
 {
     margin: 10px;
@@ -45,6 +45,8 @@ tr
     align-items: center;
     display: flex;
 }
+
+
 
 th
 {
@@ -59,7 +61,7 @@ th
 
 .bname
 {
-    width: 300px;
+    width: 250px;
     font-weight: 700;
 }
 
@@ -71,6 +73,45 @@ th
 .bstock
 {
     width: 50px;
+}
+
+.changeStock
+{
+    width: auto;
+}
+
+button
+{
+    width: 35px;
+    background-color: #EFE9D8;
+    border: 2px #908471 solid;
+    border-radius: 7px;
+    margin-bottom: 5px;
+}
+
+button[type="addStock"]
+{
+    margin-left: 20px;
+}
+
+button[type="delBook"]
+{
+    width: 80px;
+    color: red;
+    font-weight: 500;
+    border-radius: 3px;
+}
+
+button[type="addStock"]:hover ,[type="delStock"]:hover 
+{
+    background-color: #db9729; 
+    color: #ffffff; 
+}
+
+button[type="delBook"]:hover 
+{
+    background-color: #ff0000; 
+    color: #ffffff; 
 }
 
 img
