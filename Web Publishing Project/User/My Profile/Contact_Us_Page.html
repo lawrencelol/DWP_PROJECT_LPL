@@ -8,36 +8,30 @@
         <link rel="stylesheet" href="Contact.css">
     </head> 
 
+    <header><img src="LPL logo.png" alt="logo">CONTACT US</header>
+
     <body>
         <div class="contact">
-            <img src="LPL logo.png" alt="logo">
-            <header>
-                CONTACT US
-            </header>
             <form action="submit_form" method="submit_form">
                 <fieldset>
                 <div>
                     <img src="User.png">
-                    <label class="name" for="name">Name<span class="required"> *</span>: </label>
-                    <input type="text" id="name" name="name" required>
+                    <p class="name">Name<span class="required"> *</span>: <input type="text" name="name" required></p>
                 </div>
                     
                 <div>
                     <img src="Phone.png">
-                    <label class="tel" for="tel">Tel: </label>
-                    <input type="tel" id="tel" name="tel" maxlength="12" oninput="FormatTel(this)">
+                    <p class="tel">Tel: <input type="text" name="tel" required></p>
                 </div>
         
                 <div>
                     <img src="Email.png">
-                    <label class="email" for="email">Email<span class="required"> *</span>:</label>
-                    <input type="email" id="email" name="email" required>
+                    <p class="email_user">Email<span class="required"> *</span>: <input type="email" name="email" required></p>
                 </div>
         
                 <div class="message">
                     <img src="Message.png">
-                    <label for="message">Message <span class="required">*</span>:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <p class="message">Message<span class="required"> *</span>: <textarea name="message" rows="5" required></textarea></p>
                 </div>
                     <button type="submit"><b>SUBMIT</b></button>
                     <button type="reset"><b>RESET</b></button>
@@ -70,7 +64,7 @@
                                 </div>
                                 <div class="information">
                                     <h3>Address :</h3>
-                                    <p>Ixora Apartment</p>
+                                    <p>15, Jalan Harimau, 3, Taman Harimau, 75450 Melacca.</p>
                                 </div>
                             </td>
                         </tr>

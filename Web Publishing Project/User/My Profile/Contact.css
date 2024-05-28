@@ -9,13 +9,10 @@ header
 {
     font-size: 70px;
     font-family: 'Poppins';
-    font-weight: 500;
+    font-weight: 700;
     text-align: center;
-}
-
-form
-{
-    margin-left: 500px;
+    text-decoration: underline;
+    margin-top: 50px;
 }
 
 body
@@ -27,22 +24,20 @@ body
 form
 {
     margin: 100px;
-    line-height: 60px;
+    line-height: 30px;
 }
 
 img[alt="logo"]
 {
     width: 100px;
-    transform: translateY(90px);
 }
 
 img
 {
-    transform: translateY(20%);
-    margin-right: 5px;
+    transform: translateY(38px) translateX(-35px);
 }
 
-label
+p.name,[class="email_user"],[class="tel"],[class="message"]
 {
     font-weight: 700;
     font-size: 18px;
@@ -50,7 +45,7 @@ label
     font-family: Arial, Helvetica, sans-serif;
 }
 
-input
+input[name="name"],[type="email"]
 {
     border:2px #4F493F solid;
     padding: 3px ;
@@ -61,10 +56,14 @@ input
 
 }
 
-input[type="tel"]
+input[name="tel"]
 {
-    transform: translate(75px);
-
+    border:2px #4F493F solid;
+    padding: 3px ;
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 500px;
+    transform: translateX(75px);
 }
 
 fieldset
@@ -95,7 +94,7 @@ button[type="reset"]
     margin: 0;
 }
 
-#message
+textarea
 {
     transform: translateX(20px);
     position: absolute; 
