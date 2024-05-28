@@ -175,16 +175,20 @@ input[id="radio-4"] {
     height: 50px;
     border-top-left-radius: 99px;
     border-bottom-left-radius: 99px;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
-.sign_btn{
+#sign_btn{
     text-decoration: none;
     color: white;
     text-align: center;
+    width: 150px;
+    height: 50px;
+    transition: 0.3s;
 }
 
-.sign_btn:hover{
+.sign-up_btn:hover{
+    color: #8D765B;
     background-color: #BDAC96;
     width: 170px;
     height: 50px;
@@ -202,22 +206,24 @@ input[id="radio-4"] {
     
 }
 
-.pick_selection{
-    width: 10%;
-    height: 10%;
-    justify-self: start;
-    transform: translateY(500%);
-    margin-left: 10%;
-    position: absolute;
+#pick_btn:hover{
+    color: white;
+    background-color: #908471;
 }
 
-#pick_btn{
+#pick_btn{ 
     color: black;
     position: absolute;
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
     transform: translateY(1340%);
-    margin-left: 17%;
+    margin-left: 12%;
     cursor: pointer;
+    border: 2px solid #8D765B;
+    transition:0.5s;
+    width: 15%;
+    height: 5%;
+    border-radius: 99px;
+    text-align: center;
 }
