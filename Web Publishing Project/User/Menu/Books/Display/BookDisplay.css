@@ -45,6 +45,8 @@ h1{
     left:130px;
     top:0;
     line-height: 80px;
+    -webkit-text-stroke: #4F493F;
+    -webkit-text-stroke-width: 2px;
 }
 
 header ul{
@@ -75,18 +77,28 @@ header li
 /* LPL Bookstore Slogan Decoration */
 .slogan img{
     margin: 25px;
+    align-items: center;
 }
 
 
 /* Book Display Decoration */
+
 .book{
   text-align: center;
-  display: flex;
-}
+  display: block;
+  flex-wrap: nowrap;
+  display: grid;
+  grid-template-rows: 1fr 50px;
+  margin-left: 25px;
+} 
 
 .picturebook ,.novel, .guidebook{
   display: flex;
   align-self: auto;
+  display: grid;
+  gap: 5em;
+  grid-template-columns: repeat(auto-fit, 220px);
+
 }
 
 .book img{
@@ -110,6 +122,7 @@ header li
 }
 
 .desc_p{
+  font-weight: 600;
     margin-left: 300px;
     margin-right: 300px;
     color: #7B5037;
@@ -133,7 +146,7 @@ header li
     text-align: center;
     width: 160px;
     word-spacing: 0px;
-    box-shadow: 0px 8px 16px 0px;
+    box-shadow: 0px 8px 8px 0px;
     padding: 12px 16px;
     z-index: 1;
   }
