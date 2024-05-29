@@ -8,19 +8,19 @@
 }
 
 body {
+    background-image: url(Admin_bg.png);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #5f3601bd;
     background-size: cover;
     background-position: center;
 }
 
 .Login-form{
-    background: rgba(184, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.10);
     border: 3px solid rgba(255, 255, 255, 0);
-    padding: 40px;
+    padding: 70px;
     border-radius: 16px;
     backdrop-filter: blur(25px);
     text-align: center;
@@ -85,38 +85,19 @@ body {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.remember-box {
-    display: flex;
-    justify-content: space-between;
-    margin: 20px 0;
-    font-size: 15px;
-}
-
-.remember-box label {
-    display: flex;
-    gap: 8px;
+.Forget_Pass{
     cursor: pointer;
+    transform: translateY(-10px);
 }
 
-.remember-box input {
-    accent-color: white;
-    cursor: pointer;
-}
-
-.remember-box a {
-    color: white;
-    text-decoration:  none;
-}
-
-.remember-box a:hover {
+.Forget_Pass:hover{
     text-decoration: underline;
-    
 }
 
 .login-ptn {
     width: 100%;
     padding: 10px 0;
-    background: #6b4819bd;
+    background: #A9ADB0;
     border: none;
     border-radius: 99px;
     color: white;
@@ -127,7 +108,7 @@ body {
 }
 
 .login-ptn:hover {
-    background: #4d310dbd;
+    background: #7d7f81;
 }
 
 .employee-ptn a{
@@ -148,22 +129,6 @@ body {
 .employee-ptn a:hover{
     font-size: 12px;
     background: rgba(0, 0, 0, 0.438);
-    text-decoration: underline;
-}
-.register {
-    margin-top: 15px;
-    font-size: 15px;
-
-}
-
-.register a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    cursor:pointer;
-}
-
-.register a:hover {
     text-decoration: underline;
 }
 

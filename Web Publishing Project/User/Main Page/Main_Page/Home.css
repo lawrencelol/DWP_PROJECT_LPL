@@ -8,41 +8,42 @@
 }
 
 body{
-    background-color: #E0D5BF;
+    background-color: #FFDEAB;
 }
 
 .border{
-    display: block;
+    display: flex;
+    max-width: 100%;
     width: 100%;
     height: 100px;
-    background-color: #BDAC96;
-
+    background-color: #3b3e61;
+    /* box-shadow: 0px 5px 10px;  */
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
 }
 
+.container{
+    margin-right: 20px;
+}
 img{
     width: 100px;
     height: 100px;
     cursor: pointer;
-    margin-left: 10px;
-    position: absolute;
+    margin-left:10px;
 }
 
-.container{
-    position: absolute;
-    transform: translateX(120%);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
 .tabs{
     display: flex;
     position: relative;
-    background-color: #BDAC96;
-    box-shadow: 0 0 1px 0 rgba(#E0D5BF, 0.15), o 6px 12px 0 rgba(#E0D5BF, 0.15);
+    /* background-color: rgba(0,0,0,0.3); */
+    /* box-shadow: 0 0 10px 2px; */
+    border: none;
     padding: 0.75rem;
+    /* border-radius: 99px; */
     border-top-left-radius: 99px;
-    border-top-right-radius:  99px;
-    transform: translateY(22px);
+    border-top-right-radius: 99px;
+    transform: translateY(23px);
 
     *{
         z-index: 2;
@@ -60,14 +61,14 @@ input[type="radio"]
     justify-content: center;
     height: 54px;
     width: 200px;
-    border-top-left-radius: 99px;
-    border-top-right-radius:  99px;
+    border-radius: 99px;
     cursor: pointer;
     transition: color 0.15s ease-in;
-    transform: translateY(11px);
     font-size: 20px;
     font-weight: 500;
+    position: relative;
     transition: 3s;
+    z-index: 2;
 }
 
 .tab a{
@@ -78,78 +79,37 @@ input[type="radio"]
 .tab a:hover{
     font-weight: bold;
     text-transform: uppercase;
-}
-
-input[type="radio"]{
-    &:checked {
-		& + label {
-			}
-		}
-	}
-
- input[id="radio-1"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(0);
-            bottom: 0.5px;
-		}
-	}
-}
-
-input[id="radio-2"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(100%);
-            bottom: 0.5px;
-		}
-	}
-}
-
-input[id="radio-3"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(200%);
-            bottom: 0.5px;
-		}
-	}
 } 
 
-input[id="radio-4"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(300%);
-            bottom: 0.5px;
-		}
-	}
-} 
+    .tab:nth-child(1):hover ~ .glider {
+        transform: translateX(0);
+    }
+    
+    .tab:nth-child(2):hover ~ .glider {
+        transform: translateX(100%);
+    }
+    
+    .tab:nth-child(3):hover ~ .glider {
+        transform: translateX(200%);
+    }
+    
+    .tab:nth-child(4):hover ~ .glider {
+        transform: translateX(300%);
+    } 
 
 .glider{
     position: absolute;
 	display: flex;
 	height: 54px;
 	width: 200px;
-	background-color: #E0D5BF;
+	background-color: #FFDEAB;
+    /* box-shadow: 0 0 4px 1px; */
 	z-index: 1;
 	border-top-left-radius: 99px;
     border-top-right-radius: 99px;
+    top: 12px;
+    transform: translateX(0);
 	transition: 0.25s ease-out;
-    transform: translateY(12px);
-}
-
-.content-background{
-    background-color: #8D765B;
-    width: 300px;
-    height: 220px;
-    position: absolute;
-    transform: translateY(-40px);
-}
-
-.content-background-1{
-    transform: translateX(20%);
-    background-color: #BDAC96;
-    width: 400px;
-    height: 300px;
-    position: absolute;
 }
 
 .content{
@@ -157,11 +117,12 @@ input[id="radio-4"] {
     position: absolute;
     width: 100%;
     left: 5%;
-    font-size: 25px;
+    font-size: 30px;
+    margin-top: 2%;
 }
 
 .content strong{
-    font-size: 60px;
+    font-size: 80px;
     font-weight: bold;
 }
 
@@ -200,7 +161,7 @@ input[id="radio-4"] {
     width: 200px;
     height: 300px;
     position: fixed;
-}
+} 
 
 .TxT_Exp{
     
@@ -226,4 +187,23 @@ input[id="radio-4"] {
     height: 5%;
     border-radius: 99px;
     text-align: center;
+}
+
+.ask{
+    font-size: 15px;
+    text-align: end;
+    margin-top: 20px;
+}
+ .bottom{
+    border-top: 2px solid;
+    height: 800px;
+    width: 100%;
+    background-color: #A9ADB0;
+    margin-top: 15%;
+} 
+
+@media only screen and (min-width: 769px) and (max-width: 2480px){
+    .border{
+       
+    }
 }
