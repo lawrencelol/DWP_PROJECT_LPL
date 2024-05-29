@@ -6,6 +6,66 @@
         <title>Emp_Home</title>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Home_Page_EMP.css"> 
+     
+    <!-- BAR -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Month', 'Total Sales (RM)'],
+          ["January", 47522.00],
+          ["February", 50283.00],
+          ["March", 54668.00],
+          ["April", 65785.00],
+          ['May', 73023.00],
+          ['June', 76015.10],
+          ['July', 80576.00],
+        ]);
+
+        var options = {
+          title: 'TOTAL SALES OF LPL BOOKSTORE',
+          width: 540,
+          legend: { position: 'none' },
+          chart: { title: 'TOTAL SALES OF LPL BOOKSTORE'},
+          bars: 'vertical', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Total Sales (RM)'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('bar'));
+        chart.draw(data, options);
+      };
+
+
+    //   DONUT 
+    google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['CATEGORY', 'ORDER'],
+          ['Picture Book',573],
+          ['Novel',      1838],
+          ['Guidebook',  1589],
+        ]);
+
+        var options = {
+          title: 'TOTAL ORDER OF EACH CATEGORY',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut'));
+        chart.draw(data, options);
+      }
+    </script>
+
+
     </head>
 
     <body>
@@ -29,15 +89,33 @@
         </div>
 
         <div class="dashboard">
-            <!-- Dashboard content goes here -->
-            <div class="widgets">
-                <div class="widget">Today's Money</div>
-                <div class="widget">New User</div>
-                <div class="widget">Sales</div>
+            <div class="header">
+                <h1>Dashboard</h1>
             </div>
-            <div class="charts">
-                <div class="chart">Daily Sales</div>
-                <div class="chart">Completed Tasks</div>
+            <div class="box">
+                <div>
+                    <h3>Total Sales</h3>
+                    <h4>RM 80576.00</h4>
+                    <p>+6% This month</p>
+                </div>
+                <div>
+                    <h3>Total Orders</h3>
+                    <h4>4000</h4>
+                    <p>+6% This month</p>
+                </div>
+                <div>
+                    <h3>Total Rates</h3>
+                    <h4>2000</h4>
+                    <p>+4% This month</p>
+                </div>
+                <div>
+                    <h3>Total Comments</h3>
+                    <h4>1258</h4>
+                    <p>+2% This month</p>
+                </div>
+            </div class="chart">
+            <div id="bar"></div>
+            <div id="donut"></div>
             </div>
         </div>
     </body>
