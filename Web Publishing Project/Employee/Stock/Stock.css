@@ -13,7 +13,7 @@ header
     font-weight: 800;
     text-align: center;
     margin-top: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 0px;
 }
 
 body
@@ -199,7 +199,7 @@ button[type="delBook"]:hover
     color: #ffffff; 
 }
 
-img
+fieldset img
 {
     padding: 0;
     width: 100px;
