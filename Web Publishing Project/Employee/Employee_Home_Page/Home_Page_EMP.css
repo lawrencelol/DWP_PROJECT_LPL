@@ -89,6 +89,9 @@ body{
     background-color: #575757;
 }
 
+.selection li.Log_Out{
+    margin-top: 350px;
+}
 
 .widgets {
     display: flex;

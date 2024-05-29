@@ -7,12 +7,12 @@
 body{
     margin: 0;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #F6E7CA;
 }
 
 .selection {
     width: 200px;
-    background-color: #333;
+    background-color: #3f290d;
     color: white;
     height: 100vh;
     display: flex;
@@ -75,13 +75,13 @@ body{
 
 .selection ul li.active a,
 .selection ul li a:hover {
-    background-color: #ff4081;
+    background-color: #ED9017;
     color: white;
     border-radius: 10px;
 }
 
 .selection ul li.active a:hover{
-    background-color: #ff4081;
+    background-color: #ED9017;
     color: white;
     border-radius: 10px;
 }
