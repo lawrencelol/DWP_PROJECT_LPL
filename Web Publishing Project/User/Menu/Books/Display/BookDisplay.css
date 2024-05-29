@@ -112,6 +112,7 @@ header li
   padding-bottom: 20px;
   border-radius: 20px;
   background-color: white;
+  box-shadow: #4F493F 0px 3px 3px 2px;
   margin-left: 20px;
   width:280px;
 }
@@ -202,6 +203,14 @@ header li
     transition: all 0.5s ease-in-out;
   }
 
+  .view{
+    cursor: pointer;
+    overflow: hidden;
+    color: #4c4f75;
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+  }
+
   /* text original setting */
   .cart-txt{
     z-index: 1;
@@ -228,8 +237,9 @@ header li
   }
 
   /* The mouse touches it */
-  .button:hover{
+  .view:hover, .button:hover{
     color: #ffdeab;
+    text-decoration: none;
     border: none;
   }
 
