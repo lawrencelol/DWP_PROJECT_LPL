@@ -3,20 +3,123 @@
 
 *{
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    padding: 10px;
     font-family: 'Poppins';
 }
 
-img
+
+h1
 {
+    margin-left: 10px;
 }
 
-header
+img[alt="cart"]
 {
-    font-size: 70px;
-    font-weight: 800;
-    text-align: center;
+    transform: translateY(20px);
+    width: 50px;
+}
+
+body
+{
     margin-top: 50px;
-    margin-bottom: 100px;
+    background-color: antiquewhite;
+
+}
+
+fieldset
+{
+    width: 400px;
+    margin:auto;
+    border: transparent;
+}
+
+table
+{
+    margin: 0 auto;
+}
+
+
+th
+{
+    text-align: left;
+    font-weight: 700;
+}
+
+.bImg
+{
+    width: 100px;
+}
+
+.bName
+{
+    width: 250px;
+    font-weight: 700;
+}
+
+.qtyChange
+{
+    width: 25px;
+}
+
+.qty,.no
+{
+    width: 20px;
+    text-align: center;
+}
+
+.netPrice,.total
+{
+    text-align: center;
+    width: 150px;
+}
+
+tr 
+{
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px;
+    align-items: center;
+    display: flex;
+    background-color: #dadcdd;
+}
+
+
+td.no
+{
+    font-weight: 500;
+}
+
+img[alt="book"]
+{
+    width: 100px;
+    box-shadow: 2px 0 2px 0;
+    padding: 0;
+    margin-right: 50px;
+}
+
+button[type="del"],button[type="add"]
+{
+    border-radius: 7px;
+    border: 1px black solid;
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    font-weight: 600 
+    background-color: aliceblue;
+
+}
+
+button[type="del"]:hover,button[type="add"]:hover
+{
+    border-radius: 7px;
+    border: 2px #4C4F75 solid;
+    padding: 0;
+    color: blue;
+}
+
+hr
+{
+    background-color: black;
+    height: 1px;
+    padding: 0;
 }
