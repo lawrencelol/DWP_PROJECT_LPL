@@ -124,6 +124,9 @@ body{
     display: flex;
 }
 
+.selection li.Log_Out{
+    margin-top: 350px;
+}
 
 #bar, #donut{
     margin-left: 10px;
