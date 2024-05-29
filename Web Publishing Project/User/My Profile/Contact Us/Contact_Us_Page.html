@@ -13,15 +13,15 @@
     <body>
         <div class="contact">
             <form action="submit_form" method="submit_form">
-                <fieldset>
+                <fieldset class="userdata">
                 <div>
                     <img src="User.png">
-                    <p class="name">Name<span class="required"> *</span>: <input type="text" name="name" required></p>
+                    <p class="name">Full name<span class="required"> *</span>: <input type="text" name="name" required></p>
                 </div>
                     
                 <div>
                     <img src="Phone.png">
-                    <p class="tel">Tel: <input type="text" name="tel" required></p>
+                    <p class="tel">Contact Number: <input type="tel" name="tel" required></p>
                 </div>
         
                 <div>
@@ -36,39 +36,26 @@
                     <button type="submit"><b>SUBMIT</b></button>
                     <button type="reset"><b>RESET</b></button>
                 </fieldset>
-
-                <br><br>
+            </form>
                 <hr>
 
+            <fieldset class="information">
                 <div class="table">
                     <table>
+                        <thead>
+                            <tr>
+                                <th class="contact">Contact Number :</th>
+                                <th class="email">Email Address :</th>
+                                <th class="officeH">Office Hours :</th>                                
+                            </tr>
+                        </thead>
                         <tr>
-                            <td>
-                                <div class="information">
-                                    <h3>Contact Number :</h3>
-                                    <p>012-9375625</p>
-                                </div>
-                                <div class="information">
-                                    <h3>Email Address:</h3>
-                                    <p class="email">lplbookstore@gmail.com</p>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="information">
-                                    <h3>Office Hours :</h3>
-                                    <p>Monday - Friday 9.00 am - 5.00 pm</p>
-                                </div>
-                            </td>
-                        </tr>
+                            <td>012-9375625</td>
+                            <td class="email">lplbookstore@gmail.com</td>
+                            <td>Monday - Friday 9.00 am - 5.00 pm</td>
                     </table>
                 </div>
- 
-            </form>
-        </div>
+            </fieldset>
 
         <script>
             function FormatTel(input)
