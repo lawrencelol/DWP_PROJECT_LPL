@@ -3,12 +3,13 @@
 *
 {
     margin: auto;
+    font-family: "Poppins";
+
 }
 
 header
 {
     font-size: 70px;
-    font-family: 'Poppins';
     font-weight: 700;
     text-align: center;
     text-decoration: underline;
@@ -45,15 +46,14 @@ p.name,[class="email_user"],[class="tel"],[class="message"]
     font-family: Arial, Helvetica, sans-serif;
 }
 
-input[name="name"],[type="email"]
+input[name="name"]
 {
     border:2px #4F493F solid;
     padding: 3px ;
     margin-bottom: 10px;
     font-size: 18px;
     width: 500px;
-    transform: translateX(40px);
-
+    transform: translateX(55px);
 }
 
 input[name="tel"]
@@ -63,10 +63,20 @@ input[name="tel"]
     margin-bottom: 10px;
     font-size: 18px;
     width: 500px;
-    transform: translateX(75px);
+    transform: translateX(10px);
 }
 
-fieldset
+input[type="email"]
+{
+    border:2px #4F493F solid;
+    padding: 3px ;
+    margin-bottom: 10px;
+    font-size: 18px;
+    width: 500px;
+    transform: translateX(88px);
+}
+
+fieldset.userdata
 {
 	width: 700px;
 	padding: 10px;
@@ -79,7 +89,7 @@ button
     width: 80px;
     margin-right: 10px;
     cursor: pointer;
-    transform: translateX(600px)translateY(100px);
+    transform: translateX(650px)translateY(120px);
 
 }
 
@@ -96,24 +106,12 @@ button[type="reset"]
 
 textarea
 {
-    transform: translateX(20px);
+    transform: translateX(66px);
     position: absolute; 
     border:2px #4F493F solid;
     margin-top: 10px;
     width: 500px;
 }
-
-.table
-{
-    display: flex;
-}
-
-table
-{
-    padding: 20px;
-    font-family: "Poppins";
-}
-
 
 hr
 {
@@ -122,15 +120,35 @@ hr
     background-color: #4F493F;
 }
 
-.information
+table
 {
-    font-size: 15px;
+    margin-top: 50px;
     line-height: 2;
 }
 
-p.email
+th
+{
+    font-size: 15px;
+    text-align: left;
+    width: 500px;
+}
+
+td
+{
+    font-size: 14px;
+}
+
+td.email
 {
     color: blue;
     font-style: italic;
     text-decoration: underline;
 }
+
+.information
+{
+    width: 1000px;
+    border: transparent;
+    margin-bottom: 100px;
+}
+
