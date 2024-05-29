@@ -94,7 +94,7 @@ header li
   display: flex;
   align-self: auto;
   display: grid;
-  gap: 5em;
+  gap: 4em;
   grid-template-columns: repeat(auto-fit, 220px);
 
 }
@@ -114,7 +114,7 @@ header li
   background-color: white;
   box-shadow: #4F493F 0px 3px 3px 2px;
   margin-left: 20px;
-  width:280px;
+  width:260px;
 }
 
 .book img{
