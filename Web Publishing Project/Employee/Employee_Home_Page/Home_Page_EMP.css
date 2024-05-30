@@ -7,9 +7,7 @@
 body{
     margin: 0;
     display: flex;
-    background-image: linear-gradient(25deg, #F6E7CA, #e0a456, #ED9017);
-    background-size: cover;
-    background-position: center;
+    background-color: #f6e7ca;
 }
 
 .selection {
@@ -133,7 +131,7 @@ body{
 #bar, #donut{
     margin-left: 10px;
     margin-top: 25px;
-    height: 400px;
+    height: 550px;
     width: 543px;
     display: flex;
     gap: 20px;
