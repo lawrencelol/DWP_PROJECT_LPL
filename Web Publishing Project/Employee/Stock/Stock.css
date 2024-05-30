@@ -6,15 +6,17 @@
     margin: 0;
 }
 
-h1 
+h1.title
 {
     color: #3f290d;
-    font-size: 50px;
+    font-size: 80px;
+    text-align: center;
+    margin-top: 50px;
 }
 
 body
 {
-    background-image:linear-gradient(25deg, #f6e7ca, #f1daad, #e0a456,#e29532);
+    background-image:linear-gradient(25deg, #f6e7ca, #f1daad, #e0a456,#d5a361);
 }
 
 
@@ -36,6 +38,37 @@ body
     margin-top: 14px;
 }
 
+.category
+{
+    position: relative;
+}
+
+
+.choice
+{
+    display: none;
+    position: absolute;
+    padding: 10px;
+    left: 150px;
+    width: 100px;
+    transform: translateY(-140px);
+}
+
+.choice button
+{
+    display: block;
+    text-align: center;
+    padding: 10px;
+    width: 150px;
+    background-color: #cd9a358d;
+    color: black;
+    font-weight: bold;
+}
+
+.category:hover .choice
+{
+    display: block;
+}
 
 .Logo p{
     display: flex;
@@ -106,13 +139,6 @@ body
 }
 .selection ul li a:hover {
     background-color: #575757;
-}
-
-button
-{
-    border: 2px black solid;
-    border-radius: 10px;
-    margin-left: 20px;
 }
 
 fieldset
