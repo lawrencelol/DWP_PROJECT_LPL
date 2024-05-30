@@ -3,14 +3,88 @@
     <head>
         <meta charset="UTP-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
-        <title>Payment</title>
+        <title>Receipt</title>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Total.css">
     </head> 
 
-    
-
     <body>
+        <fieldset>
+            <div>
+                <h1 class="header">Receipt<img src="cart.png" alt="cart"></h1>
+                <hr>
+                <table class="book">
+                    <thead>
+                        <tr class="head">
+                            <th class="cbox"><input type="checkbox"></th>
+                            <th class="no">No.</th>
+                            <th class="bImg">Book Image</th>
+                            <th class="bName">Book Name</th>
+                            <th class="price">Price (RM)</th>
+                        </tr>               
+                    </thead>
+                    <tr class="book">
+                        <td class="cbox"><input type="checkbox"></td>
+                        <td class="no">2.</td>
+                        <td class="bImg"><img src="Flippy.png" alt="book"></td>
+                        <td class="bName">Flippy</td>
+                        <td class="price">15.00</td>
+                        <th class="del"><button type="del">-</button></th>
+                    </tr>
+                    <tr class="book">
+                        <td class="cbox"><input type="checkbox"></td>
+                        <td class="no">3.</td>
+                        <td class="bImg"><img src="Me and My Pet Dinosaur.png" alt="book"></td>
+                        <td class="bName">Me and My Pet Dinosaur</td>
+                        <td class="price">10.00</td>
+                        <th class="del"><button type="del">-</button></th>
+                    </tr>
+                         
+                </table>
+            </div>
+            <br><hr><br>
+            <h1 class="subTotal">Sub Total: RM 60.00</h1>
 
+        <footer>
+                <p>Thank you for your purchase. For any inquiries, contact us at <a href="lplbookstore@gmail.com">lplbookstore@gmail.com</a>.</p>
+        </footer>
+        </fieldset>
+        
+        <body>
+            <div class="container">
+                <h1>Payment Receipt</h1>
+                <div class="order-details">
+                    <h2>Order Details</h2>
+                    <p><strong>Order Number:</strong> #12345</p>
+                    <p><strong>Date:</strong> May 30, 2024</p>
+                </div>
+                <div class="customer-details">
+                    <h2>Customer Details</h2>
+                    <p><strong>Name:</strong> John Doe</p>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                    <p><strong>Address:</strong> 123 Main St, City, Country</p>
+                </div>
+                <div class="payment-details">
+                    <h2>Payment Details</h2>
+                    <p><strong>Payment Method:</strong> Credit Card</p>
+                    <p><strong>Transaction ID:</strong> ABC123XYZ</p>
+                </div>
+                <div class="items-purchased">
+                    <h2>Items Purchased</h2>
+                    <div class="item">
+                        <p>Book Title 1: $10.00</p>
+                    </div>
+                    <div class="item">
+                        <p>Book Title 2: $15.00</p>
+                    </div>
+                </div>
+                <div class="total">
+                    <p><strong>Subtotal:</strong> $25.00</p>
+                    <p><strong>Shipping:</strong> $5.00</p>
+                    <p><strong>Total:</strong> $30.00</p>
+                </div>
+            </div>
+
+        </body>
     </body>
 </html>

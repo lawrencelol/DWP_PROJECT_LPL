@@ -1,5 +1,3 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 *{
@@ -48,7 +46,7 @@ th
 
 .no,.cbox
 {
-    width: 30px;
+    width: 20px;
 }
 
 .no
@@ -69,22 +67,12 @@ th
     font-weight: 700;
 }
 
-.qtyChange
-{
-    width: 25px;
-}
-
-.qty
-{
-    width: 20px;
-    text-align: center;
-}
-
-.netPrice,.total
+.price
 {
     text-align: center;
     width: 150px;
 }
+
 
 tr.book,.head
 {
@@ -95,7 +83,6 @@ tr.book,.head
     display: flex;
     background-color: #dadcdd;
 }
-
 
 td.no
 {
@@ -110,24 +97,24 @@ img[alt="book"]
     margin-right: 50px;
 }
 
-button[type="del"],button[type="add"]
+button[type="del"]
 {
     border-radius: 7px;
     border: 1px black solid;
     height: 25px;
     width: 25px;
     padding: 0;
-    font-weight: 600 
-    background-color: aliceblue;
-
+    font-weight: 600;
+    color: red;  
 }
 
-button[type="del"]:hover,button[type="add"]:hover
+button[type="del"]:hover
 {
     border-radius: 7px;
-    border: 2px #4C4F75 solid;
+    background-color: #ff0000; 
+    color: #ffffff; 
+    font-weight: 500px;
     padding: 0;
-    color: blue;
 }
 
 hr
