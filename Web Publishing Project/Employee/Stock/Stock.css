@@ -6,14 +6,19 @@
     margin: 0;
 }
 
+h1 
+{
+    color: #3f290d;
+    font-size: 50px;
+}
+
 body
 {
     background-color: #f6e7ca;
-    padding: 8px;
 }
 
+
 .selection {
-    width: 200px;
     background-color: #3f290d;
     color: white;
     height: 100vh;
@@ -22,13 +27,15 @@ body
     align-items: center;
     padding: 10px 0;
     border-radius: 30px;
-    margin: 20px;
     position: absolute;
+    margin: 20px;
 }
 
-.bar{
+.bar
+{
     margin-top: 14px;
 }
+
 
 .Logo p{
     display: flex;
@@ -36,6 +43,13 @@ body
     font-weight: 500;
     font-size: 13px;
     margin-top: 25px;
+}
+
+.Logo img{
+    padding: 10px 10px;
+    float: left;
+    display: flex;
+    height: 60px;
 }
 
 #LogoImage{
@@ -50,7 +64,7 @@ body
     width: 110px;
     height: 4px;
     border-radius: 99px;
-    background: white;
+    background: black;
     opacity: 0.8;
 }
 
@@ -104,13 +118,10 @@ button
 fieldset
 {
     width: 830px;
-    margin: auto;
     border: transparent;
+    margin: auto;
 }
 
-#picture{
-    margin: auto;
-}
 table
 {
     margin: 0 auto;
@@ -136,6 +147,8 @@ th
 {
     text-align: left;
     font-weight: 700;
+    padding: 10px;
+
 }
 
 .bimg
@@ -189,10 +202,5 @@ fieldset img
     border: 1px black solid;
     box-shadow: 2px 0 2px 0;
     margin-right: 50px;  
-}
-
-.header h1{
-    color: #3f290d;
-    font-size: 40px;
 }
 
