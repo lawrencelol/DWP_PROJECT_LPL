@@ -107,7 +107,16 @@ header li
   .dropdown:hover .choice {
     display: block;
   }
-  
+
+  .choice::after{
+    content: "";
+    width: 200px;
+    height: 4px;
+    background-color: black;
+    bottom: 20px;
+
+  }
+
 .content{
     text-align: start;
     position: absolute;
@@ -158,10 +167,6 @@ header li
     height: 300px;
     position: fixed;
 } 
-
-.TxT_Exp{
-    
-}
 
 #pick_btn:hover{
     color: white;
