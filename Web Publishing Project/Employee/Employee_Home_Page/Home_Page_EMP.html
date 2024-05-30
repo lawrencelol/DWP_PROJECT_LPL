@@ -6,6 +6,12 @@
         <title>Emp_Home</title>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Home_Page_EMP.css"> 
+
+        <script>
+            function printDashboard() {
+                window.print();
+            }
+        </script>
     </head>
 
     <body>
@@ -35,22 +41,22 @@
                 <div>
                     <h3>Total Sales</h3>
                     <h4>RM 80576.00</h4>
-                    <p>+6% This month</p>
+                    <p><strong>+6%</strong> This month</p>
                 </div>
                 <div>
                     <h3>Total Orders</h3>
                     <h4>4000</h4>
-                    <p>+6% This month</p>
+                    <p><strong>+6%</strong> This month</p>
                 </div>
                 <div>
                     <h3>Total Rates</h3>
                     <h4>2000</h4>
-                    <p>+4% This month</p>
+                    <p><strong>+4%</strong> This month</p>
                 </div>
                 <div>
                     <h3>Total Comments</h3>
                     <h4>1258</h4>
-                    <p>+2% This month</p>
+                    <p><strong>+2%</strong> This month</p>
                 </div>
             </div>
             <div class="chart">
@@ -62,12 +68,6 @@
                 </div>
             </div>
         </div>
-        <button class="print" onclick="printDashboard()">Print</button>
-
-    <script>
-        function printDashboard() {
-            window.print();
-        }
-    </script>
+    <button class="print" onclick="printDashboard()">Print</button>
     </body>
 </html>
