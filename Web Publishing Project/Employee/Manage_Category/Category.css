@@ -22,6 +22,7 @@ body{
     padding: 10px 0;
     border-radius: 30px;
     margin: 20px;
+    position: fixed;
 }
 
 
@@ -97,8 +98,52 @@ body{
     font-size: 40px;
 }
 
+/* FIELDSET */
+fieldset{
+    transform: translateX(225px);
+    border: none;
+}
 
 /* TABLE */
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff5;
+    box-shadow: 5px 10px 10px 5px #3f290d;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: 25px;
+}
+
+.table, th, td{
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+th{
+    background-color: #cec7c7;
+}
+
+.content{
+    text-align: center;
+    width: 95%;
+    max-height: calc(89%-.10px);
+    background-color: #fffb;
+    margin: 10px auto;
+    border-radius: 25px;
+    overflow: auto;
+}
+
+tbody tr:hover{
+    background-color:#e9e3e3;
+    transition: 0.2s linear;
+}
+
+tbody tr:nth-child(even){
+    background-color: #0000000b;
+}
+
 button
 {
     border: 2px black solid;
@@ -106,18 +151,6 @@ button
     margin-left: 20px;
 }
 
-table
-{
-    background-color: #ffffff;
-    flex: 1;
-    margin: 0 auto;
-
-}
-
-.category, .total, .delCat{
-    padding: 5px 5px 5px 5px;
-    text-align: center;
-}
 
 
 button[type="delCat"]
@@ -129,6 +162,7 @@ button[type="delCat"]
     width: 25px;
     padding: 0;
     font-weight: 900;
+    transform: translateY(-12px);
 }
 
 button[type="delCat"]:hover 
@@ -136,3 +170,103 @@ button[type="delCat"]:hover
     background-color: #ff0000; 
     color: #ffffff; 
 }
+
+/* Special effect for the add new category button */
+  /* original setting for button */
+  .add{
+    height: 40px;
+    width: 150px;
+    position: relative;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #252525;
+    overflow: hidden;
+    border-radius: 30px;
+    color: #3f290d;
+    transition: all 0.2s ease-in-out;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  .add:hover{
+    background-color: #3f290d;
+    color: #ED9017;
+  }
+
+
+/* pop up FORM */
+  .popup{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.25);
+    width:300px;
+    padding: 20px 30px;
+    margin-top: 50px;
+    background-color: white;
+    box-shadow: #3f290d 1px 2px 3px 0px;
+    border-radius: 20px;
+    transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+  }
+
+  .popup.active{
+    top:50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.25);
+    transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+  }
+
+  .popup.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .popup .form h3{
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+  }
+
+  .popup .form .info{
+    margin:15px 0px;
+  }
+
+  .popup .form .info label{
+    font-size: 14px;
+  }
+
+  .popup .form .info input[type="text"], .popup .form .info input[type="number"], .popup .form .info input[type="date"]{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #575757;
+    border-radius: 5px;
+  } 
+
+  .popup .form .info button{
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: #3f290d;
+    color: #ED9017;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+
