@@ -48,7 +48,7 @@ th
 
 .no,.cbox
 {
-    width: 30px;
+    width: 20px;
 }
 
 .no
@@ -69,22 +69,12 @@ th
     font-weight: 700;
 }
 
-.qtyChange
-{
-    width: 25px;
-}
-
-.qty
-{
-    width: 20px;
-    text-align: center;
-}
-
-.netPrice,.total
+.price
 {
     text-align: center;
     width: 150px;
 }
+
 
 tr.book,.head
 {
@@ -95,7 +85,6 @@ tr.book,.head
     display: flex;
     background-color: #dadcdd;
 }
-
 
 td.no
 {
@@ -110,24 +99,24 @@ img[alt="book"]
     margin-right: 50px;
 }
 
-button[type="del"],button[type="add"]
+button[type="del"]
 {
     border-radius: 7px;
     border: 1px black solid;
     height: 25px;
     width: 25px;
     padding: 0;
-    font-weight: 600 
-    background-color: aliceblue;
-
+    font-weight: 600;
+    color: red;  
 }
 
-button[type="del"]:hover,button[type="add"]:hover
+button[type="del"]:hover
 {
     border-radius: 7px;
-    border: 2px #4C4F75 solid;
+    background-color: #ff0000; 
+    color: #ffffff; 
+    font-weight: 500px;
     padding: 0;
-    color: blue;
 }
 
 hr
