@@ -12,15 +12,14 @@ h1
     font-size: 70px;
     font-weight: 700;
     text-align: center;
-    margin-top: 50px;
     margin-bottom: 50px;
 }
 
 fieldset.userdata
 {
     width: 400px;
-    margin: auto;
     border: transparent;
+    position: relative;
 }
 
 body
@@ -72,9 +71,11 @@ button
 {
     font-family: 'Poppins';
     width: 80px;
-    margin-right: 10px;
     font-weight: bold;
     border-radius: 5px;
+    margin-left: 30px;
+    padding: 10px;
+    transform: translateX(600px);
 }
 
 td.button
@@ -84,9 +85,22 @@ td.button
 
 button[type="reset"]
 {
-    border: 1px rgb(220, 87, 87) solid;
+    border: 2px rgb(220, 87, 87) solid;
 }
 
+button[type="reset"]:hover
+{
+    border: 1px red solid;
+    color: red;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover
+{
+    border: 1px white solid;
+    color: #4F493F;
+    font-weight: bold;
+}
 .required
 {
     color: red;
@@ -96,8 +110,9 @@ button[type="reset"]
 hr
 {
     margin-top: 200px;
-    height: 3px;
+    height: 250px;
     background-color: #4F493F;
+    margin-bottom: 0px;
 }
 
 table.information
@@ -106,16 +121,18 @@ table.information
     line-height: 2;
 }
 
-th
+.information th
 {
     font-size: 15px;
     text-align: left;
     width: 500px;
+    color: white;
 }
 
-td
+.information td
 {
     font-size: 14px;
+    color: white; 
 }
 
 td.email
@@ -127,8 +144,9 @@ td.email
 
 fieldset.information
 {
+    transform: translateY(-225px);
     width: 1000px;
     border: transparent;
-    margin-bottom: 100px;
+    margin-bottom: 0px;
 }
 

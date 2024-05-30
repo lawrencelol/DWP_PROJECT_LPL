@@ -19,7 +19,7 @@
                     </tr>
                     <tr class="user">
                         <td class="tel"><img src="Phone.png">Contact Number: </td>
-                        <td><input type="tel" name="tel" maxlength="14"></td>
+                        <td><input type="tel" name="tel" maxlength="12" oninput="formatTel(this)"></td>
                     </tr>
                     <tr class="user">
                         <td class="email_user"><img src="Email.png">Email<span class="required"> *</span>: </td>
@@ -30,7 +30,10 @@
                         <td><textarea name="message" rows="5" required></textarea></td>
                     </tr>
                     <tr>
-                        <td class="button"><button type="submit"><b>SUBMIT</b></button><button type="reset"><b>RESET</b></button></td>
+                        <td class="button" colspan="2">
+                            <button type="submit"><b>SUBMIT</b></button>
+                            <button type="reset"><b>RESET</b></button>
+                        </td>
                     </tr>
                 </table>
             <form>
@@ -57,7 +60,7 @@
         </fieldset>
 
         <script>         
-            function FormatTel(input)
+            function formatTel(input)
             {
                 var tel = input.value.replace(/\D/g, '');
 
