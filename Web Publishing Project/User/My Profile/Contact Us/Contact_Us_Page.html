@@ -8,56 +8,55 @@
         <link rel="stylesheet" href="Contact.css">
     </head> 
 
-    <header><img src="LPL logo.png" alt="logo">CONTACT US</header>
-
     <body>
-        <div class="contact">
-            <form action="submit_form" method="submit_form">
-                <fieldset class="userdata">
-                <div>
-                    <img src="User.png">
-                    <p class="name">Full name<span class="required"> *</span>: <input type="text" name="name" required></p>
-                </div>
+        <fieldset class="userdata">
+            <form name="userdata">
+                <h1><img src="LPL logo.png" alt="logo">CONTACT US</h1>
+                <table>
+                    <tr class="user">
+                        <td class="name"><img src="User.png">Full name<span class="required"> *</span>: </td>
+                        <td><input type="text" name="name" required></td>
+                    </tr>
+                    <tr class="user">
+                        <td class="tel"><img src="Phone.png">Contact Number: </td>
+                        <td><input type="tel" name="tel" maxlength="14"></td>
+                    </tr>
+                    <tr class="user">
+                        <td class="email_user"><img src="Email.png">Email<span class="required"> *</span>: </td>
+                        <td><input type="email" name="email" required></td>
+                    </tr>
+                    <tr class="user">
+                        <td class="message"><img src="Message.png">Message<span class="required"> *</span>: </td>
+                        <td><textarea name="message" rows="5" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="button"><button type="submit"><b>SUBMIT</b></button><button type="reset"><b>RESET</b></button></td>
+                    </tr>
+                </table>
+            <form>
+        </fieldset>
                     
-                <div>
-                    <img src="Phone.png">
-                    <p class="tel">Contact Number: <input type="tel" name="tel" required></p>
-                </div>
-        
-                <div>
-                    <img src="Email.png">
-                    <p class="email_user">Email<span class="required"> *</span>: <input type="email" name="email" required></p>
-                </div>
-        
-                <div class="message">
-                    <img src="Message.png">
-                    <p class="message">Message<span class="required"> *</span>: <textarea name="message" rows="5" required></textarea></p>
-                </div>
-                    <button type="submit"><b>SUBMIT</b></button>
-                    <button type="reset"><b>RESET</b></button>
-                </fieldset>
-            </form>
-                <hr>
+            <hr>
 
-            <fieldset class="information">
-                <div class="table">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="contact">Contact Number :</th>
-                                <th class="email">Email Address :</th>
-                                <th class="officeH">Office Hours :</th>                                
-                            </tr>
-                        </thead>
+        <fieldset class="information">
+            <div class="table">
+                <table class="information">
+                    <thead>
+                        <tr>
+                            <th class="contact">Contact Number :</th>
+                            <th class="email">Email Address :</th>
+                            <th class="officeH">Office Hours :</th>                                
+                        </tr>
+                    </thead>
                         <tr>
                             <td>012-9375625</td>
                             <td class="email">lplbookstore@gmail.com</td>
                             <td>Monday - Friday 9.00 am - 5.00 pm</td>
-                    </table>
-                </div>
-            </fieldset>
+                </table>
+            </div>
+        </fieldset>
 
-        <script>
+        <script>         
             function FormatTel(input)
             {
                 var tel = input.value.replace(/\D/g, '');
@@ -66,11 +65,10 @@
                     tel = tel.slice(0,3)+ '-' +tel.slice(3);
 
                 input.value = tel;
-        
             }
             function resetForm() 
             {
-                document.getElementById("contactForm").reset();
+                document.getElementById("userdata").reset();
             }
         </script>
     </body>
