@@ -31,7 +31,7 @@
         <div class="dashboard">
             <div class="header">
                 <h1>Dashboard</h1>
-            </div>
+        </div>
             <div class="box">
                 <div>
                     <h3>Total Sales</h3>
@@ -53,14 +53,22 @@
                     <h4>1258</h4>
                     <p>+2% This month</p>
                 </div>
-            </div class="chart">
-            <div id="bar">
-              <img src="bar.png">
             </div>
-            <div id="donut">
-              <img src="donut.png">
-            </div>
+            <div class="chart">
+                <div id="bar">
+                    <img src="bar.png">
+                </div>
+                <div id="donut">
+                    <img src="donut.png">
+                </div>
             </div>
         </div>
+        <button class="print" onclick="printDashboard()">Print</button>
+
+    <script>
+        function printDashboard() {
+            window.print();
+        }
+    </script>
     </body>
 </html>
