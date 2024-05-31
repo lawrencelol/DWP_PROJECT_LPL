@@ -9,38 +9,168 @@
     </head> 
 
     <body>
-
+        
+    <!-- tab selection -->
         <header>
             <img src="logo.png" >
-            <h1>Welcome To Our Bookshelf!</h1>
-            <ul>
-                <li><a href="../../../Main Page/Main_Page/Home_Page.html">HOME</a></li>
-                <li>
-                    <div class="dropdown">
-                        <span>CATEGORY</span>
+            <p>Home Page</p>
+                <ul>
+                    <li><a href="../../Menu/Books/Display/BookDisplay.html">BOOKSHELF</a></li>
+                    <li><a href="../../Cart/Cart.html">CART</a></li>
+                    <li><a href="../../My Profile/Contact Us/Contact_Us_Page.html">CONTACT-US</a></li>
+                    <li class="dropdown">
+                        <div class="dropbox">
+                            My-Profile
+                            <span class="arrow-down"></span>
+                        </div>
                         <div class="choice">
-                        <a href="#picturebook" class="selections">Picture Book</a>
-                        <a href="#novel" class="selections">Novel</a>
-                        <a href="#guidebook" class="selections">Guidebook</a>
+                            <!-- Dropdown content here -->
+                            <a href="../../My Profile/About Us/About_Us_Page.html">About US</a>
+                            <a href="../../My Profile/Rate/Rate.html">Rate Us</a>
+                        </div>
+                    </li>
+                </ul>
+                
+            
+        </header>
+
+        <body class="slider_body">
+        <div class="main">
+            <input type="radio" name="slider" id="slide-1" checked>
+            <input type="radio" name="slider" id="slide-2">
+            <input type="radio" name="slider" id="slide-3">
+            <input type="radio" name="slider" id="slide-4">
+            <input type="radio" name="slider" id="slide-5">
+
+            <div class="cards">
+
+                <label for="slide-1" id="slide1">
+
+                    <div class="card">
+
+                        <div class="image">
+                            <img src="Know Your PlANTS.png" alt="picture-1">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <div class="infos">
+                            <span class="name">Book 1</span>
+                            <span class="lorem">blablabla</span>
+
+                            <!-- Book view -->
+                            <a href="#" class="btn-details">View Details</a>
+
                         </div>
                     </div>
-                </li>
-                <li><a href="../../../Cart/Cart.html">CART</a></li>
-            </ul>
-        </header>
-        <div class="content-background">
+                </label>
+
+                <label for="slide-2" id="slide2">
+
+                    <div class="card">
+
+                        <div class="image">
+                            <img src="#" alt="picture-2">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <div class="infos">
+                            <span class="name">Book 2</span>
+                            <span class="lorem">blablabla</span>
+
+                            <!-- Book view -->
+                            <a href="#" class="btn-details">View Details</a>
+
+                        </div>
+                    </div>
+                </label>
+
+                <label for="slide-3" id="slide3">
+
+                    <div class="card">
+
+                        <div class="image">
+                            <img src="#" alt="picture-3">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <div class="infos">
+                            <span class="name">Book 3</span>
+                            <span class="lorem">blablabla</span>
+
+                            <!-- Book view -->
+                            <a href="#" class="btn-details">View Details</a>
+
+                        </div>
+                    </div>
+                </label>
+
+                <label for="slide-4" id="slide4">
+
+                    <div class="card">
+
+                        <div class="image">
+                            <img src="#" alt="picture-4">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <div class="infos">
+                            <span class="name">Book 4</span>
+                            <span class="lorem">blablabla</span>
+
+                            <!-- Book view -->
+                            <a href="#" class="btn-details">View Details</a>
+
+                        </div>
+                    </div>
+                </label>
+
+                <label for="slide-5" id="slide5">
+
+                    <div class="card">
+
+                        <div class="image">
+                            <img src="#" alt="picture-5">
+                            <div class="dots">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+
+                        <div class="infos">
+                            <span class="name">Book 5</span>
+                            <span class="lorem">blablabla</span>
+
+                            <!-- Book view -->
+                            <a href="#" class="btn-details">View Details</a>
+
+                        </div>
+                    </div>
+                </label>
             </div>
-            <div class="content-background-1">
-            </div>
-                <div class="content">
-                    <h1><strong>W</Strong>ELCOME TO <strong>LPL's</strong> BOOKSTORE</h1>
-                    <p>LPL stands for Look-Pick-Learn</p>
-                    <p>nothing special just a few sentence to let it look satisfied</p>
-                </div>
-        <div>
-            <a href="../../Menu/Books/Display/BookDisplay.html" id="pick_btn">PICK BOOK</a>
         </div>
-        <div class="bottom">
-        </div>
+
+    </body>
+
+        <footer>
+            <!-- <a href="../../Menu/Books/Display/BookDisplay.html"></a> -->
+        </footer>
+      
     </body>
 </html>
