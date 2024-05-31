@@ -6,27 +6,19 @@
     padding: 20px;
 }
 
-
 header
 {
     font-family: 'Poppins';
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     font-size: 90px;
-}
-
-hr
-{
-    background-color: black;
-    height: 3px;
-    width: 900px;
-    transform: translateX(350px);
+    padding: 0;
+    margin-top: 20px;
 }
 
 body
 {
-    margin: 50px;
-    background-color: #EFE9DB;
+    background-image:linear-gradient(25deg, #f6e7ca, #f1daad, #f2bb72);
     font-family: 'Poppins';
     line-height: 1.5;
     text-align: justify;
@@ -38,25 +30,25 @@ body
     font-size: 18px;
     color: #4F493F;
     border: 1px #936E16 solid;
-
+    box-shadow: 0 2px 2px;
+    margin: 18px;
 }
 
 h2
 {
-    font-family: 'Arial Narrow', Arial, sans-serif;
     font-weight:600;
     color:#4F493F;
     font-size: 30px;
-    margin-bottom: 10px;
 }
-
 
 img
 {
     width: 80%;
     display: block;
     margin: 0 auto;
-
+    border: 1px #f2bb72 solid;
+    border-radius: 15px;
+    padding: 0;
 }
 
 .bold
@@ -64,49 +56,68 @@ img
     font-weight: 500;
 }
 
-footer
+fieldset
 {
-    font-size: 15px;
-    text-align: center;
-    padding: 50px;
+    width: 1500px;
+    margin: auto;
+    border: transparent;
 }
 
-h3
+td.header
 {
-    color: #453309;
-    margin: 0;
-    padding: 50px;
-    text-align: center;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    background-color: #fdd393;
+    box-shadow: 0 2px 2px #6a6a6a;
+}
+
+td.content
+{
+    background-color: #FFDEAB;
+    box-shadow: 0 2px 2px #6a6a6a;
+    font-size: 15px;
 }
 
 .border
 {
-    margin-top: 300px;
-    background-color: #E3DED1; 
-    height: 200px; 
-    width: 100%;
-    display: block; 
+    margin-top: 200px;
+    background-color:#f2bb72; 
+    height: 100px; 
+    padding: 50px;
     text-align: center;
     font-size: 20px;
-
+    font-family: Arial, Helvetica, sans-serif;
+    left: 200px;
 }
 
-
+h3
+{
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+}
 
 label[name="toContactUs"]
 {
     text-align: center;
     font-size: 15px;
     display: absolute;
-    padding: 0;
-    height: 50px;
+    height: 100px;
     width: 125px;
- 
+    margin-top: 50px;
 }
 
 label[name="toContactUs"]:hover
 {
-    border: 2px blue solid;
+    border: 2px rgb(0, 0, 114) solid;
+    padding: 5px;
     font-style: italic;
 }
 
+footer
+{
+    font-size: 15px;
+    text-align: center;
+    margin-top: 200px;
+}
