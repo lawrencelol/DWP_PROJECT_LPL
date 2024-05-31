@@ -31,7 +31,7 @@
                     <td class="bImg"><img src="Children Of The Star.png" alt="book"></td>
                     <td class="bName">Children of The Star</td>
                     <td class="price">20.00</td>
-                    <th class="del"><button type="del">-</button></th>
+                    <th class="del"><button type="button">-</button></th>
                 </tr>
                 <tr class="book">
                     <td class="cbox"><input type="checkbox"></td>
@@ -39,7 +39,7 @@
                     <td class="bImg"><img src="Flippy.png" alt="book"></td>
                     <td class="bName">Flippy</td>
                     <td class="price">15.00</td>
-                    <th class="del"><button type="del">-</button></th>
+                    <th class="del"><button type="button">-</button></th>
                 </tr>
                 <tr class="book">
                     <td class="cbox"><input type="checkbox"></td>
@@ -47,14 +47,77 @@
                     <td class="bImg"><img src="Me and My Pet Dinosaur.png" alt="book"></td>
                     <td class="bName">Me and My Pet Dinosaur</td>
                     <td class="price">10.00</td>
-                    <th class="del"><button type="del">-</button></th>
-                </tr>
-                     
+                    <th class="del"><button type="button">-</button></th>
+                </tr>        
             </table>
         </div>
         <br><hr><br>
-        <h1 class="subTotal">Sub Total: RM 60.00</h1>
+        <h1 class="subTotal">Sub Total: RM 45.00</h1>
+        <hr><br><br> 
+        <button class="payment"><a href="#popup">Proceed to Payment</a></button>
+        <div class="popup" id="popup">
+            <div class="close">&times;</div>
+                <div class="form">       
+                    <form class="info">
+                        <label class="header">RECEIVER INFO</label>
+                        <label class="name">Full Name: </label>
+                        <div class="fullName" required>
+                            <select>
+                                <option value="gender">Mr. </option>
+                                <option value="gender">Mrs. </option>
+                            </select>
+                            <input class="name" type="text">
+                        </div>
+                        <label>Contact Number: </label>
+                        <input type="tel" maxlength="12" oninput="formatTel(this)" required>
+                        <label>Email: </label>
+                        <input type="email" placeholder="example@gmail.com" required>   
+                    </form>
+                </div>
+                <div class="payment">
+                    <form class="paymentInfo">
+                        <label class="header">PAYMENT</label>
+                        <label>Accepted Cards: </label>
+                        <div class="paymentMethod">
+                            <img src="master.png" alt="master"><img src="visa.png" alt="visa"><img src="paypal.png" alt="paypal">
+                        </div>
+                        <label>Name of Card Holder: </label>
+                        <input type="text" required>
+                        <label>Credit Card Number: </label>
+                        <input type="text" maxlength="17" required>
+                        <label>Expired Year: </label>
+                        <input type="number" min="2024" max="2050" required>
+                        <label>Expired Month: </label>
+                        <input type="number" min="1" max="12" required>
+                        <label>CVV: </label>
+                        <input type="number" required>
+                    </form>
+                    <br>
+                </div>
+            <button class="submit"><a href="../Total/Total.html">Submit</a></button>
+        </div>
+
     </fieldset>
+    
+    <script>
+        document.querySelector(".payment").addEventListener("click", function() {
+            document.querySelector(".popup").classList.add("active");
+        });
+        document.querySelector(".popup .close").addEventListener("click", function() {
+            document.querySelector(".popup").classList.remove("active");
+        });
+
+        function formatTel(input)
+            {
+                var tel = input.value.replace(/\D/g, '');
+
+                if (tel.length>3)
+                    tel = tel.slice(0,3)+ '-' +tel.slice(3);
+
+                input.value = tel;
+            }
+    </script>
+    
 </body>
 
 </html>
