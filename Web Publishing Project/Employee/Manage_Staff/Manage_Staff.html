@@ -26,5 +26,50 @@
                 </ul>
             </div>
         </div>
+
+        <div class="container">
+            <h1>Staff Management</h1>
+            <form class="form" id="addStaffForm">
+                <h2>Add New Staff</h2>
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" name="staffName" required>
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" name="staffEmail" required>
+                <button type="submit">Add Staff</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>DELETE</th>
+                        <th>UPDATE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Dot Jason</td>
+                        <td>Iwillmakeyoutribble@hahaha.com</td>
+                        <td id="remove"><button>❌</button></td>
+                        <td id="Update"><button>⚙️</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Johnson no son</td>
+                        <td>Johnonnoson@hahaha.com</td>
+                        <td id="remove"><button>❌</button></td>
+                        <td id="Update"><button>⚙️</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>Ex Sam</td>
+                        <td>samenamewithsomephp@hahaha.com</td>
+                        <td id="remove"><button>❌</button></td>
+                        <td id="Update"><button>⚙️</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="script.js"></script>
     </body>
 </html>

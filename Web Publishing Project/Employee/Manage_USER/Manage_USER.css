@@ -88,3 +88,99 @@ body{
 .selection ul li a:hover {
     background-color: #575757;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+.form h2 {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.form button:hover {
+    background-color: #218838;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.remove button{
+    border: none;
+    left: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: .5s;
+    background-color: white;
+    border-radius: 4px;
+    padding: 0 40%;
+}
+
+.remove button:hover{
+    background-color: #575757;
+}
