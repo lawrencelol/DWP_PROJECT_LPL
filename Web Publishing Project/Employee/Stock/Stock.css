@@ -124,18 +124,26 @@ body
     box-sizing: border-box;
 }
 
-.selection ul li.active a,
+#active{
+
+    background-color: #ED9017;
+    color: white;
+    border-radius: 10px;
+}
+
+.selection ul li .active a,
 .selection ul li a:hover {
     background-color: #ED9017;
     color: white;
     border-radius: 10px;
 }
 
-.selection ul li.active a:hover{
+.selection #active a:hover{
     background-color: #ED9017;
     color: white;
     border-radius: 10px;
 }
+
 .selection ul li a:hover {
     background-color: #575757;
 }
