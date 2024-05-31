@@ -218,9 +218,8 @@ input{
     border-radius: 5px;
     box-shadow: 15px 15px 40px rgba(0, 0, 0, 50%);
     margin-top: 20px;
-    width: 340px;
+    /* width: 340px; */
     height: 400px;
-    /* object-fit: cover; */
     transition: all .7s;
 }
 
