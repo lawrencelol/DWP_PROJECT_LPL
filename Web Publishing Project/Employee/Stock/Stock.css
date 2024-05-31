@@ -148,6 +148,22 @@ fieldset
     margin: auto;
 }
 
+button[type="addBook"]
+{
+    background-color: wheat;
+    margin-left: 630px;
+    border-radius: 5px;
+    border: 2px black solid;
+    width: 120px;
+}
+
+button[type="addBook"]:hover
+{
+    text-transform: uppercase;
+    border: 2px white solid;
+}
+
+
 table
 {
     margin: 0 auto;
