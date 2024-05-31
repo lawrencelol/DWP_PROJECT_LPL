@@ -8,6 +8,8 @@ body{
     margin: 0;
     display: flex;
     background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
+    background-size: cover;
+    height: 100vh;
 }
 
 
