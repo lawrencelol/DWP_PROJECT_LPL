@@ -7,7 +7,7 @@
 body{
     margin: 0;
     display: flex;
-    background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
+    background:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
 }
 
 .selection {
@@ -87,4 +87,60 @@ body{
 }
 .selection ul li a:hover {
     background-color: rgb(136, 136, 136);
+}
+
+/* HEADER */
+.header h1{
+    color: #3f290d;
+    font-size: 40px;
+}
+
+/* FIELDSET */
+fieldset{
+    border: none;
+}
+
+/* TABLE */
+.table{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff5;
+    box-shadow: 5px 10px 10px 5px #3f290d;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: 5px;
+    transform: translateX(-10px);
+}
+
+.table, th, td{
+    padding: 20px;
+    border-collapse: collapse;
+}
+
+thead{
+    text-align: center;
+}
+
+th{
+    background-color: #cec7c7;
+}
+
+.content{
+    text-align: justify;
+    width: 100%;
+    max-height: calc(89%-.10px);
+    background-color: #fffb;
+    margin: 10px auto;
+    border-radius: 25px;
+    overflow: auto;
+}
+
+tbody tr:hover{
+    background-color:#e9e3e3;
+    transition: 0.2s linear;
+}
+
+tbody tr:nth-child(even){
+    background-color: #0000000b;
 }
