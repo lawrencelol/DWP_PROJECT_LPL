@@ -43,7 +43,6 @@ body
     position: relative;
 }
 
-
 .choice
 {
     display: none;
@@ -148,13 +147,28 @@ fieldset
     margin: auto;
 }
 
+button.addBook
+{
+    background-color: wheat;
+    margin-left: 630px;
+    border-radius: 5px;
+    border: 2px black solid;
+    width: 120px;
+}
+
+button.addBook:hover
+{
+    text-transform: uppercase;
+    border: 2px white solid;
+}
+
 table
 {
     margin: 0 auto;
     padding: 10px;
 }
 
-.btype
+.bType
 {
     font-size: 30px;
     font-weight: 700;
@@ -181,33 +195,38 @@ th
     font-weight: 700;
 }
 
-.bimg
+.bImg
 {
     width: 150px;
 }
 
-.bname
+.bName
 {
     width: 250px;
     font-weight: 700;
 }
 
-.bauthor
+.bAuthor
 {
     width: 150px;
 }
 
-.bprice
+.bPublisher
+{
+    width: 150px;
+}
+
+.bPrice
 {
     width: 100px;
 }
 
-td.bprice
+td.bPrice
 {
     text-align: center;
 }
 
-button[type="delBook"]
+button.delBook
 {
     color: red;
     border-radius: 7px;
@@ -219,7 +238,7 @@ button[type="delBook"]
     font-weight: 900;
 }
 
-button[type="delBook"]:hover 
+button.delBook:hover 
 {
     background-color: #ff0000; 
     color: #ffffff; 
