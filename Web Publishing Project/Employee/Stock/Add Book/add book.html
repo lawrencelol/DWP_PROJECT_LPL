@@ -9,9 +9,9 @@
     </head>
 
     <body>
-
+        <button class="backtoStock"><a href="../stock.html">back</a></button>
         <fieldset>
-            <div>
+            <form>
                 <h1 class="header">Add New Book</h1>
                 <table>
                     <tr class="book">
@@ -30,19 +30,24 @@
                     </tr>
                     <tr class="book">
                         <td class="bName">Book Name:</td>
-                        <td><input type="text" name="bName" required></td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr class="book">
                         <td class="bAuthor">Author:</td>
-                        <td><input type="text" name="bAuthor" required></td>
+                        <td><input type="text"required></td>
+                    </tr>
+                    <tr class="book">
+                        <td class="bPublisher">Publisher:</td>
+                        <td><input type="text" required></td>
                     </tr>
                     <tr class="book">
                         <td class="bPrice">Price:</td>
-                        <td><input type="number" name="bPrice" min="10.00" step="5.00" placeholder="RM 0.00"></td>
-                        <td class="submitBtn"><button type="submit">Submit</button></td>
+                        <td><input type="number" name="bPrice" min="0.00" step="5.00" required></td>
+                        <td class="submitBtn"><button type="submit">Submit</button>
+                        </td>
                     </tr>
                 </table>
-            </div>
+            </form>
         </fieldset>
 
     </body>
