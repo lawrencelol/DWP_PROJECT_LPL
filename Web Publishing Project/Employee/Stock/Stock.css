@@ -60,7 +60,7 @@ body
     text-align: center;
     padding: 10px;
     width: 150px;
-    background-color: #cd9a35;
+    background-color: #f6c666;
     color: black;
     font-weight: bold;
 }
@@ -143,7 +143,7 @@ body
 
 fieldset
 {
-    width: 830px;
+    width: 800px;
     border: transparent;
     margin: auto;
 }
@@ -228,7 +228,7 @@ button[type="delBook"]:hover
 fieldset img
 {
     padding: 0;
-    width: 100px;
+    width: 80px;
     border: 1px black solid;
     box-shadow: 2px 0 2px 0;
     margin-right: 50px;  

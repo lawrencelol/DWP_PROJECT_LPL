@@ -94,14 +94,9 @@ tr.odd,.even
     width: 100px;
 }
 
-th.del,td.del
+th.printDel,td.printDel
 {
-    width: 15px;
-}
-
-td.print
-{
-    width: 45px;
+    width: 60px;
 }
 
 button[type="print"]
@@ -110,13 +105,13 @@ button[type="print"]
     height: 25px;
     border-radius: 5px;
     border: transparent;
-    transform: translateX(2px);
+    margin-right: 20px;
+    transform: translateX(5px);
 }
 
 button[type="print"]:hover
 {
     background-color: #eda076;
-    border: 1px solid;
 }
 
 img[alt="print"]
@@ -130,17 +125,29 @@ button[type="del"]
     padding: 0;
     font-weight: 600;
     color: red;
-    border-radius: 7px;
-    border: 1px #3F290D solid;
-    transform: translateX(10px);
+    border: transparent;
+    background-color: #F6E7CA;
+    transform: translateY(-20px);
 }
+
+tr.even button[type="del"]
+{
+    background-color: white;
+}
+
+tr.even button[type="del"]:hover
+{
+    background-color: red; 
+    color: black;
+}
+
 
 button[type="del"]:hover
 {
-    border-radius: 2px;
+    border-radius: 7px;
     background-color: #ff0000; 
     color: #ffffff; 
-    border: 1px black solid;
+    border: 1px #3F290D solid;
 }
 
 .selection {
