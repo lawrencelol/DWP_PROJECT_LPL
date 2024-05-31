@@ -4,10 +4,143 @@
     font-family: 'Poppins';
 }
 
-body{
+body
+{
     margin: 0;
     display: flex;
     background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
+}
+
+fieldset
+{
+    background-color: wheat;
+    border: transparent;
+    border-radius: 5px;
+}
+
+table
+{
+    margin-top: 50px;
+}
+
+th
+{
+    background-color: #ED9017;
+    padding: 15px;
+    line-height: 1.5;
+}
+
+tr.odd
+{
+    background-color: #F6E7CA;
+}
+
+tr.even
+{
+    background-color: white;
+}
+
+tr.odd,.even
+{
+    border-color: white solid;
+    border-radius: 5px;
+    padding: 15px;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.orderId
+{
+    width: 50px;
+    text-align: center;
+}
+
+.bName
+{
+    text-align: left;
+    width: 250px;
+    padding: 15px;
+}
+
+.total
+{
+    width: 80px;
+    text-align: center;
+}
+
+.userName
+{
+    width: 200px;
+    text-align: left;
+    padding: 15px;
+}
+
+.userInfo
+{
+    width: 280px;
+    text-align: left;
+    padding: 15px;
+}
+
+.orderDate
+{
+    text-align: center;
+    width: 100px;
+}
+
+.orderStatus
+{
+    text-align: center;
+    width: 100px;
+}
+
+th.del,td.del
+{
+    width: 15px;
+}
+
+td.print
+{
+    width: 45px;
+}
+
+button[type="print"]
+{
+    width: 40px;
+    height: 25px;
+    border-radius: 5px;
+    border: transparent;
+    transform: translateX(2px);
+}
+
+button[type="print"]:hover
+{
+    background-color: #eda076;
+    border: 1px solid;
+}
+
+img[alt="print"]
+{
+    width: 20px;
+}
+
+button[type="del"]
+{
+    width: 20px;
+    padding: 0;
+    font-weight: 600;
+    color: red;
+    border-radius: 7px;
+    border: 1px #3F290D solid;
+    transform: translateX(10px);
+}
+
+button[type="del"]:hover
+{
+    border-radius: 2px;
+    background-color: #ff0000; 
+    color: #ffffff; 
+    border: 1px black solid;
 }
 
 .selection {
