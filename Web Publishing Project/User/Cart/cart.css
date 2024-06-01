@@ -25,6 +25,20 @@ body
     background-color: #FFDEAB;
 }
 
+button.backtoHome
+{
+    background-color: rgb(242, 240, 240);
+    margin: 20px 0;
+    border-radius: 5px;
+    margin-left: 450px;
+}
+
+button.backtoHome:hover
+{
+    background-color: #dfd0d0;
+    font-weight: bold;
+}
+
 fieldset
 {
     width: 400px;
