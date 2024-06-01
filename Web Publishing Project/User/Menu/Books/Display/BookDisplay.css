@@ -36,13 +36,12 @@ header img
 }
 
 h1{
-    color:#baaea1;
-    position: absolute;
-    left:130px;
-    top:0;
-    line-height: 80px;
-    -webkit-text-stroke: #4F493F;
-    -webkit-text-stroke-width: 2px;
+  position: absolute;
+  color: #cec1b2;
+  font-size: 30px;
+  font-weight: 500;
+  transform: translateY(-105px);
+  left: 150px;
 }
 
 header ul{

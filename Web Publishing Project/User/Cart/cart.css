@@ -24,17 +24,25 @@ body
     background-color: #FFDEAB;
 }
 
-button.backtoHome
-{
-    background-color: rgb(242, 240, 240);
-    border-radius: 5px;
-    margin: 0 0 0 440px;
+.home, .bookshelf, .payment{
+    border: #28241e;
+    background-color: #cb7c21;
+    border-radius: 25px;
+    padding: 4px;
+    height: 40px;
+    margin-left: 25px;
 }
 
-button.backtoHome:hover
-{
-    background-color: #dfd0d0;
-    font-weight: bold;
+.home a, .bookshelf a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #28241e;
+}
+
+.payment a{
+    text-decoration: none;
+    font-size: 15px;
+    color: #28241e;
 }
 
 fieldset
@@ -44,6 +52,7 @@ fieldset
     background-color: rgb(255, 246, 246);
     border-radius: 5px;
     border: none;
+    transform: translateY(25px);
 }
 
 th
