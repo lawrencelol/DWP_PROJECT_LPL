@@ -2,9 +2,138 @@
 
 *
 {
-    margin: auto;
+    margin: 0;
     font-family: "Poppins";
 
+}
+
+header {
+    z-index: 2;
+    background: fixed;
+    background-color: #3b3e61;
+    box-shadow: 0px 0px 12px 0px #000000;
+    position: fixed;
+    height: 125px;
+    width: 100%;
+}
+
+header img {
+    height: 130px;
+    margin-left: 10px;
+    margin-top: 8px;
+    margin-bottom: -15px;
+}
+
+header p {
+    position: relative;
+    color:#baaea1;
+    font-size: 35px;
+    font-weight: 500;
+    transform: translateY(-95px);
+    left: 150px;
+    top: 22px;
+}
+
+h1 {
+    color: #baaea1;
+    position: relative;
+    left: 130px;
+    top: 0;
+    line-height: 80px;
+    -webkit-text-stroke: #4F493F;
+    -webkit-text-stroke-width: 2px;
+}
+
+header ul {
+    color: #cec1b2;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 85px;
+    transform: translateX(0);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    word-spacing: 20px;
+    margin-right: 20px;
+}
+
+header a {
+    color: #cec1b2;
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header li {
+    display: inline;
+}
+
+.dropdown {
+    font-weight: bold;
+    color: #cec1b2;
+    position: relative;
+    display: inline-block;
+}
+
+.choice {
+    border-radius: 10px;
+    font-weight: bold;
+    display: none;
+    position: absolute;
+    background-color: #a9adb0;
+    opacity: 1.0;
+    text-align: center;
+    width: 160px;
+    word-spacing: 0px;
+    box-shadow: 0px 8px 8px 0px #000000;
+    padding: 0px 0px;
+    z-index: 1;
+    right: 5px;
+}
+
+.choice a{
+    text-decoration: none;
+    background-color: #4c4f75;
+    margin: 10px 10px;
+    padding: 21px;
+    border-radius: 10px;
+}
+
+.selections {
+    color: #cec1b2;
+    background-color: #4c4f75;
+    padding: 0px;
+    text-decoration: none;
+    display: block;
+}
+
+.selections:hover {
+    background-color: #f9f9f9;
+    color: #4c4f75;
+    opacity: 0.6;
+}
+
+.dropdown:hover .choice {
+    display: block;
+}
+
+.arrow-down {
+    display: inline-block;
+    transform: translateX(-10px);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #cec1b2;
+    transition: transform 0.3s;
+}
+
+.dropdown:hover .arrow-down {
+    transform: rotate(-180deg);
 }
 
 h1
@@ -149,3 +278,9 @@ fieldset.information
     margin-bottom: 0px;
 }
 
+footer td{
+    bottom: 0;
+    font-size: 20px;
+    font-weight: 500;
+
+}
