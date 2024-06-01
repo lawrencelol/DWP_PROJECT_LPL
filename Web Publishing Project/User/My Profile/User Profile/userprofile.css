@@ -212,7 +212,7 @@ footer a:hover{
     font-size: 14px;
   }
 
-  .popup .form .editinfo input[type="text"], .popup .form .editinfo input[type="image"], .popup .form .editinfo input[type="password"], .popup .form .editinfo input[type="email"]{
+  .popup .form .editinfo input[type="text"], .popup .form .editinfo input[type="file"], .popup .form .editinfo input[type="password"], .popup .form .editinfo input[type="email"]{
     margin-top: 5px;
     display: block;
     width: 100%;
