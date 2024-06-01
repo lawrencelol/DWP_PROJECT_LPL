@@ -73,24 +73,166 @@ header a {
 }
 
 header a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 header li {
     display: inline;
 }
 
-.selections {
-    color: #cec1b2;
-    background-color: #4c4f75;
-    padding: 0px;
-    text-decoration: none;
-    display: block;
+.profile{
+    display: flex;
 }
 
-.selections:hover {
-    background-color: #f9f9f9;
-    color: #4c4f75;
-    opacity: 0.6;
+.profile img{
+    height: 200px;
+    border-radius: 50%;
+    margin-left: 25px;
 }
+
+.info{
+    margin-left: 30px;
+}
+
+.info h2{
+    margin-bottom: 10px;
+}
+
+.info p{
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* links for user to rate and contact */
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #000000;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+footer h2{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+footer a{
+    color: white;
+    padding-bottom: 5px;
+}
+
+footer a:hover{
+    font-style: italic;
+}
+
+/* the edit profile section */
+/* Special effect for the add new category button */
+  /* original setting for button */
+  .edit{
+    height: 40px;
+    width: 150px;
+    position: relative;
+    font-weight: bold;
+    background-color: transparent;
+    cursor: pointer;
+    border: 1px solid #252525;
+    overflow: hidden;
+    border-radius: 30px;
+    color: #3b3e61;
+    transition: all 0.2s ease-in-out;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+  .edit:hover{
+    background-color: #3b3e61;
+    color: #cec1b2;
+  }
+
+
+/* pop up FORM */
+  .popup{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    opacity: 0;
+    transform: translateY(-10px);
+    width:450px;
+    padding: 10px 20px;
+    margin-top: 45px;
+    background-color: white;
+    box-shadow: #3f290d 1px 2px 3px 0px;
+    border-radius: 20px;
+    overflow-y: auto;
+    max-height: 48vh; 
+    transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+  }
+
+  .popup.active{
+    top:50%;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.25);
+    transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
+  }
+
+  .popup.close{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .popup .form h3{
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0px 20px;
+    font-size: 25px;
+  }
+
+  .popup .form .editinfo{
+    margin:15px 0px;
+  }
+
+  .popup .form .editinfo label{
+    font-size: 14px;
+  }
+
+  .popup .form .editinfo input[type="text"], .popup .form .editinfo input[type="image"], .popup .form .editinfo input[type="password"], .popup .form .editinfo input[type="email"]{
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #575757;
+    border-radius: 5px;
+  } 
+
+  .popup .form .editinfo button{
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: bold;
+    background: #3b3e61;
+    color: #cec1b2;
+    border-radius: 10px;
+    cursor: pointer;
+  }
 

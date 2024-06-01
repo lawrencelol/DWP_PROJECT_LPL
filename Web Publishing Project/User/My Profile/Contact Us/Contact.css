@@ -68,11 +68,12 @@ header a {
 }
 
 header a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 header li {
     display: inline;
+    padding-left: 25px;
 }
 
 .selections {
