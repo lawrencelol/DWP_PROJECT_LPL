@@ -26,9 +26,11 @@ body
 
 .about
 {
+    background-color: #b86910;
+    border-radius: 15px;
     text-align: center;   
     font-size: 18px;
-    color: #4F493F;
+    color: #ffffff;
     border: 1px #936E16 solid;
     box-shadow: 0 2px 2px;
     margin: 18px;
@@ -37,7 +39,7 @@ body
 h2
 {
     font-weight:600;
-    color:#4F493F;
+    color:#28241e;
     font-size: 30px;
 }
 
@@ -82,7 +84,7 @@ td.content
 .border
 {
     margin-top: 200px;
-    background-color:#f2bb72; 
+    background-color:#000000; 
     height: 100px; 
     padding: 50px;
     text-align: center;
@@ -98,19 +100,52 @@ h3
     padding: 10px;
 }
 
+.mv{
+    display: flex;
+}
+
+.m, .v{
+    border: #000000;
+    background-color: #cb7c21;
+    border-radius: 15px;
+    width: 50%;
+}
+
+
+.m{
+    margin-right: 10px;
+}
+
+
+.eventdetail {
+    display: flex;
+}
+
+.event h3, .mv h3{
+    color: #28241e;
+    text-align: left;
+}
+
+.event img{
+    width: 350px;
+}
+
 label[name="toContactUs"]
 {
     text-align: center;
-    font-size: 15px;
     display: absolute;
     height: 100px;
     width: 125px;
     margin-top: 50px;
 }
 
+.contact a{
+    color: white;
+    font-size: 20px;
+}
+
 label[name="toContactUs"]:hover
 {
-    border: 2px rgb(0, 0, 114) solid;
     padding: 5px;
     font-style: italic;
 }
