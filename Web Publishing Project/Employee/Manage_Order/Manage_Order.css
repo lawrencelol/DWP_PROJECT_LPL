@@ -14,6 +14,7 @@ body
 fieldset
 {
     border: transparent;
+    margin: 0 auto;
 }
 
 table
@@ -89,7 +90,17 @@ tr.odd,.even
 .orderStatus
 {
     text-align: center;
-    width: 100px;
+    width: 150px;
+}
+
+label.completed
+{
+    background-color: #c8cfff;
+}
+
+label.processing
+{    
+    background-color: #00fa08;
 }
 
 th.printDel,td.printDel
