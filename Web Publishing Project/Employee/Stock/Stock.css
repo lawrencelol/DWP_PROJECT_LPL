@@ -21,6 +21,7 @@ body
 
 
 .selection {
+    width: 200px;
     background-color: #3f290d;
     color: white;
     height: 100vh;
@@ -29,116 +30,97 @@ body
     align-items: center;
     padding: 10px 0;
     border-radius: 30px;
-    position: fixed;
     margin: 20px;
-}
-
-.bar
-{
-    margin-top: 14px;
-}
-
-.category
-{
-    position: relative;
-}
-
-.choice
-{
-    display: none;
-    position: absolute;
-    padding: 10px;
-    left: 150px;
-    width: 100px;
-    transform: translateY(-140px);
-}
-
-.choice button
-{
-    display: block;
-    text-align: center;
-    padding: 10px;
-    width: 150px;
-    background-color: #f6c666;
-    color: black;
-    font-weight: bold;
-}
-
-.category:hover .choice
-{
-    display: block;
-}
-
-.Logo p{
+    position: fixed;
+  }
+  
+  
+  .Logo p{
     display: flex;
     margin: 5px 10px 5px;
     font-weight: 500;
     font-size: 13px;
     margin-top: 25px;
-}
-
-.Logo img{
+  }
+  
+  .Logo img{
     padding: 10px 10px;
     float: left;
     display: flex;
     height: 60px;
-}
-
-#LogoImage{
-    padding: 10px 10px;
-    float: left;
-    display: flex;
-    height: 60px;
-}
-
-.Logo::after{
-    content: "";
-    width: 110px;
-    height: 4px;
-    border-radius: 99px;
-    background: black;
-    opacity: 0.8;
-}
-
-.selection .bar img {
+    margin-bottom: 18px;
+  }
+  
+  .selection .bar img {
     width: 100px;
     margin-bottom: 20px;
-}
-
-.selection ul {
+  }
+  
+  .selection ul {
     list-style: none;
     padding: 0;
     width: 100%;
-}
-
-.selection ul li {
+  }
+  
+  .selection ul li {
     width: 180px;
-}
-
-.selection ul li a {
+  }
+  
+  .selection ul li a {
     display: block;
     padding: 15px 20px;
     color: white;
     text-decoration: none;
     width: 100%;
     box-sizing: border-box;
-}
-
-.selection ul li.active a,
-.selection ul li a:hover {
+  }
+  
+  .selection #active{
     background-color: #ED9017;
     color: white;
     border-radius: 10px;
-}
-
-.selection ul li.active a:hover{
+  }
+  
+  .selection ul li #active a:hover{
     background-color: #ED9017;
     color: white;
     border-radius: 10px;
-}
-.selection ul li a:hover {
+  }
+
+  .selection ul li a:hover {
     background-color: #575757;
-}
+    border-radius: 10px;
+  }
+
+    .choice
+    {
+        display: none;
+        position: absolute;
+        padding: 10px;
+        left: 190px;
+        width: 150px;
+        transform: translateY(-60px);
+    }
+
+    .choice button
+    {
+        display: block;
+        text-align: center;
+        padding: 10px;
+        width: 150px;
+        background-color: #f6c666;
+        color: black;
+        font-weight: bold;
+    }
+
+    .choice .selections{
+        color: #3f290d;
+    }
+
+    .category:hover .choice
+    {
+        display: block;
+    }
 
 fieldset
 {

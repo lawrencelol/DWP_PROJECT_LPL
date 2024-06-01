@@ -9,7 +9,7 @@
     </head>
 
     <script>
-        function printDashboard()
+        function printOrder()
         {
             window.print();
         }
@@ -19,7 +19,6 @@
         <div class="selection">
             <div class="Logo">
                 <img src="Logo.png" />
-                <p>Look-Pick-Learn</p>
             </div>
             <div class="bar">
                 <ul>
@@ -29,12 +28,16 @@
                     <li><a href="../Manage_Category/Category.html">CATEGORY</a></li>
                     <li><a href="../Stock/stock.html">STOCK</a></li>
                     <li class="active"><a href="../Manage_Order/Manage_Order.html">ORDER</a></li>
-                    <li><a href="../Employee_Login/Employee_Login_Page.html">LOG OUT</a></li>
+                    <li><a href="../Rate_Review/Rate_Review.html">RATE REVIEW</a></li>
+                    <li><a href="../Employee_Login/Employee_Login_Page.html">Log Out</a></li>
                 </ul>
             </div>
         </div>
 
         <fieldset>
+            <div class="header">
+                <h1>Order Review</h1>
+            </div>
             <table>
                 <thead>
                     <tr class="header">
@@ -45,7 +48,7 @@
                         <th class="userInfo">User Details</th>
                         <th class="oderDate">Order Date</th>
                         <th class="oderStatus">Order Status</th>
-                        <th class="printDel"></th>
+                        <!-- <th class="printDel"></th> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -57,7 +60,6 @@
                         <td class="userInfo">Email: sherly99@gmail.com<br>Tel: 011-55602783</td>
                         <td class="orderDate">31 May 2024</td>
                         <td class="orderStatus"><label class="status">Completed</label></td>
-                        <td class="printDel"><button type="print" onclick="printDashboard()"><img src="printer.png" alt="print"></button><button type="del">-</button></td>
                     </tr>
                     <tr class="even">
                         <td class="orderId">0112</td>
@@ -67,7 +69,7 @@
                         <td class="userInfo">Email: peter123@hotmail.com<br>Tel: 019-4981359</td>
                         <td class="orderDate">31 May 2024</td>
                         <td class="orderStatus"><label class="status">Completed</label></td>
-                        <td class="printDel"><button type="print" onclick="printDashboard()"><img src="printer.png" alt="print"></button><button type="del">-</button></td>
+                       
                     </tr>
                     <tr class="odd">
                         <td class="orderId">0113</td>
@@ -77,7 +79,7 @@
                         <td class="userInfo">Email: farah66@gmail.com<br>Tel: 011-71304876</td>
                         <td class="orderDate">31 May 2024</td>
                         <td class="orderStatus"><label class="status">Completed</label></td>
-                        <td class="printDel"><button type="print" onclick="printDashboard()"><img src="printer.png" alt="print"></button><button type="del">-</button></td>
+                        
                     </tr>
                     <tr class="even">
                         <td class="orderId">0114</td>
@@ -87,7 +89,7 @@
                         <td class="userInfo">Email: evelyn14@gmail.com<br>Tel: 016-2735480</td>
                         <td class="orderDate">31 May 2024</td>
                         <td class="orderStatus"><label class="status">Completed</label></td>
-                        <td class="printDel"><button type="print" onclick="printDashboard()"><img src="printer.png" alt="print"></button><button type="del">-</button></td>
+                        
                     </tr>
                     <tr class="odd">
                         <td class="orderId">0115</td>
@@ -97,7 +99,7 @@
                         <td class="userInfo">Email: johnathan@hotmail.com<br>Tel: 012-3456789</td>
                         <td class="orderDate">31 May 2024</td>
                         <td class="orderStatus"><label class="status">Processing</label></td>
-                        <td class="printDel"><button type="print" onclick="printDashboard()"><img src="printer.png" alt="print"></button><button type="del">-</button></td>
+                        
                     </tr>
                 </tbody>
             </table>

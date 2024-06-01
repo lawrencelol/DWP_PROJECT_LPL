@@ -9,28 +9,47 @@
     </head>
 
     <body>
+
         <header>
-            <h1>Rate Our Webpage</h1>
-        </header> 
+            <img src="logo.png" >
+            <p>Rate Us</p>
+                <ul>
+                    <li><a href="../../Menu/Books/Display/BookDisplay.html">BOOKSHELF</a></li>
+                    <li><a href="../../Main Page/Main_Page/Home_Page.html">HOME</a></li>
+                    <li><a href="../../My Profile/Contact Us/Contact_Us_Page.html">CONTACT-US</a></li>
+                    <li class="dropdown">
+                        <div class="dropbox">
+                            My-Profile
+                            <span class="arrow-down"></span>
+                        </div>
+                        <div class="choice">
+                            <!-- Dropdown content here -->
+                            <a href="../../My Profile/About Us/About_Us_Page.html">About US</a>
+                            <a href="../../Cart/Cart.html">CART</a>
+                        </div>
+                    </li>
+                </ul>
+                
+        </header>
 
-        <div class="rate_bar">
-            <input type="radio" name="rating" id="rate-5">
-            <label for="rate-5"></label>
-            <input type="radio" name="rating" id="rate-4">
-            <label for="rate-4"></label>
-            <input type="radio" name="rating" id="rate-3">
-            <label for="rate-3"></label>
-            <input type="radio" name="rating" id="rate-2">
-            <label for="rate-2"></label>
-            <input type="radio" name="rating" id="rate-1">
-            <label for="rate-1"></label>
-        </div>
+        <section>
+            <div class="rate_bar">
+                <input type="radio" name="rating" id="rate-5">
+                <label for="rate-5"></label>
+                <input type="radio" name="rating" id="rate-4">
+                <label for="rate-4"></label>
+                <input type="radio" name="rating" id="rate-3">
+                <label for="rate-3"></label>
+                <input type="radio" name="rating" id="rate-2">
+                <label for="rate-2"></label>
+                <input type="radio" name="rating" id="rate-1">
+                <label for="rate-1"></label>
+            </div>
 
-        <div class="comment">
-            <p>&nbsp</p>
-            <input type="text" placeholder="type you comment">
+            <label for="review">Your Comment:</label>
+            <input type="text" placeholder="Type your comment here....">
+                <button class="submit_btn">Submit
         </div>
-        <p>&nbsp</p>
-        <button class="submit_btn">Submit</div>
+        </section>
     </body>
 </html>
