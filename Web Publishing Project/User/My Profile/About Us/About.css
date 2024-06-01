@@ -24,6 +24,20 @@ body
     text-align: justify;
 }
 
+.home{
+    border: #28241e;
+    background-color: #cb7c21;
+    border-radius: 25px;
+    padding: 4px;
+    height: 40px;
+}
+
+.home a{
+    text-decoration: none;
+    font-size: 20px;
+    color: #28241e;
+}
+
 .about
 {
     background-color: #b86910;
