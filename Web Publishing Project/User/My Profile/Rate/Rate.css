@@ -143,59 +143,122 @@ header li {
 /* Review section */
 section{
 
-    margin: 20px auto;
+    background: #a9adb0;
     padding: 20px;
-    width: 60%;
-    background-color: #a9adb0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: auto;
+    transform: translateY(120px);
+    box-shadow: #000000 0px 0px 20px;
+}
+
+textarea{
     border-radius: 5px;
-    border: 2px solid #3b3e61;
-    margin-top: 130px;
+    border: none;
+    background-color: #c6c7c7;
+    font-weight: 500;
+    font-size: 15px;
+    width: 95%;
 }
 
-.rate_bar{
-  width: 400px;
-  background-color: #111;
-  padding: 20px 30px;
-  border: 1px solid #444;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  margin-left: 25%;
-}
-
-input[type="radio"]{
-    margin-left: 30px;
-}
-
-input{
-
-
-}
-
-label, input[type="text"] {
+label{
+    display: block;
+    margin: 10px 0 5px;
     font-weight: bold;
-    font-size: 20px;
-    display: flex;
-    margin: 10px auto;
-    width: 100%;
-    text-align: left;
 }
 
-input[type="text"] {
-    width: 80%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    resize: none;
+.btn{
+    display: flex;
+    grid-gap: .5rem;
+    align-items: center;
+    margin-bottom: .75rem;
+    
 }
 
 .submit_btn{
-    background-color: #3b3e61;
-    padding: 10px 20px;
-    width: 100px;
     border-radius: 5px;
-    color: white;
-    margin-left: 80%;
+    padding: .75rem 1rem;
+    border: none;
+    background-color: #3b3e61;
+    color: #FFDEAB;
+    margin-top: 20px;
+    transition: .5s;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.cancel{
+    border-radius: 5px;
+    padding: .75rem 1rem;
+    border: none;
+    background-color: #a9adb0;
+    color: #FFDEAB;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: .5s;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.submit_btn:hover, .cancel:hover{
+    background-color: #292b3f;
+    color: #FFDEAB;
+    transform: translateY(-10px);
+}
+
+form .rating{
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: yellow;
+    text-shadow: yellow 0px 0px 20px;
+    grid-gap: 1rem;
+    margin-bottom: 2rem;
+    resize: none;
+}
+
+.rating .star{
+    cursor: pointer;
+    transition: .5s;
+}
+
+.rating .star:hover{
+    transform: scale(1.2);
+}
+
+.rating .star:active{
+    opacity: 0;
+    animation: animete .5s ease-in-out forwards;
+}
+
+@keyframes animate{
+    0% {
+        opacity: 0;
+        transform: scale(1);
+    }
+
+    50%{
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+footer {
+
+    background-color: #3b3e61;
+    color: #e6dacb;
+    text-align: center;
+    padding: 20px 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
 }
