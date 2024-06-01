@@ -12,9 +12,9 @@ html{
 
 /* Header Decoration */
 /* Header Decoration */
-header{
-    z-index:2;
-    color:#ffffff;
+header {
+    z-index: 2;
+    color: #cec1b2;
     background: fixed;
     background-color: #3b3e61;
     box-shadow: 0px 0px 12px 0px #000000;
@@ -22,50 +22,61 @@ header{
     top: 0;
     left: 0;
     height: 100px;
-    width:100%;
-}
-
-header img
-{
+    width: 100%;
+  }
+  
+  header img {
     height: 100px;
     margin-left: 10px;
     margin-top: 5px;
-}
-
-h1{
-    color:#baaea1;
+  }
+  
+  header p {
     position: absolute;
-    left:130px;
-    top:0;
+    color: #cec1b2;
+    font-size: 30px;
+    font-weight: 500;
+    transform: translateY(-115px);
+    left: 150px;
+  }
+  
+  h1 {
+    color: #baaea1;
+    position: relative;
+    left: 130px;
+    top: 0;
     line-height: 80px;
-    -webkit-text-stroke: #4F493F;
-    -webkit-text-stroke-width: 2px;
-}
-
-header ul{
-    color:#cec1b2;
+  }
+  
+  header ul {
+    color: #cec1b2;
+    font-weight: bold;
     position: absolute;
-    top:0;
-    line-height:85px;
-    justify-content: space-evenly;
-    word-spacing: 20px;
-    transform: translateX(450%);
-}
-
-header a{
-    color:#cec1b2;
+    top: 0;
+    right: 0;
+    line-height: 85px;
+    transform: translateX(0);
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    word-spacing: 5px;
+    margin-right: 20px;
+    transform: translateY(10px);
+  }
+  
+  header a {
+    color: #cec1b2;
     text-decoration: none;
-}
-
-header a:hover{
-    text-decoration: underline;
-}
-
-header li
-{
+  }
+  
+  header a:hover {
+    text-decoration: none;
+  }
+  
+  header li {
     display: inline;
-    width:4vw;
-}
+  }
+  
 
 body{
     background-color: #ffdeab;
