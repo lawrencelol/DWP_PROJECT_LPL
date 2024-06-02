@@ -24,6 +24,11 @@ button.backtoStock
     margin: 50px;
 }
 
+button.backtoStock a
+{
+    text-decoration: none;
+}
+
 button.backtoStock:hover
 {
     text-transform: uppercase;
