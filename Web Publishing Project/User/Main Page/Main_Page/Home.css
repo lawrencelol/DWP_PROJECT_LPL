@@ -59,7 +59,7 @@ header ul {
     top: 0;
     right: 0;
     line-height: 85px;
-    transform: translateX(0);
+    transform: translateY(18px);
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -369,7 +369,7 @@ footer {
     color: #e6dacb;
     text-align: center;
     padding: 20px 20px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     margin-top: 20px;

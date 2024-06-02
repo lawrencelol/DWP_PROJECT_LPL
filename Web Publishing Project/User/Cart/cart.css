@@ -7,10 +7,66 @@
     font-family: 'Poppins';
 }
 
+header {
+    z-index: 2;
+    color: #cec1b2;
+    background: fixed;
+    background-color: #3b3e61;
+    box-shadow: 0px 0px 12px 0px #000000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 85px;
+    width: 100%;
+}
+
+header img {
+    height: 100px;
+    margin-left: -4px;
+    margin-top: -9px;
+}
+
+header p {
+    position: absolute;
+    color: #cec1b2;
+    font-size: 30px;
+    font-weight: 500;
+    transform: translateY(-95px);
+    left: 145px;
+}
+
 h1.header
 {
     margin-left: 10px;
     display: flex;
+}
+
+header ul {
+    color: #cec1b2;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 85px;
+    transform: translateY(18px);
+    list-style-type: none;
+    padding: 0;
+    word-spacing: 5px;
+    margin-right: 20px;
+}
+
+header a {
+    color: #cec1b2;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+header li {
+    display: inline;
 }
 
 img[alt="cart"]

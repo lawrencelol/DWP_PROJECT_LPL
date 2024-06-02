@@ -103,12 +103,18 @@ body {
     color: white;
     font-size: 16px;
     font-weight: 600;
+    text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
 }
 
 .login-ptn:hover {
     background: #7d7f81;
+}
+
+a{
+    color: white;
+    text-decoration: none;
 }
 
 .employee-ptn a{

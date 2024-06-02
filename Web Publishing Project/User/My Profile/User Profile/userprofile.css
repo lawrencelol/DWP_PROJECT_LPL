@@ -15,69 +15,65 @@ body{
 }
 
 header {
-    z-index: 2;
-    color: #cec1b2;
-    background: fixed;
-    background-color: #3b3e61;
-    box-shadow: 0px 0px 12px 0px #000000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100px;
-    width: 100%;
+  z-index: 2;
+  color: #cec1b2;
+  background: fixed;
+  background-color: #3b3e61;
+  box-shadow: 0px 0px 12px 0px #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
 }
 
 header img {
-    height: 100px;
-    margin-left: 10px;
-    margin-top: 5px;
+  height: 100px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 header p {
-    position: absolute;
-    color: #cec1b2;
-    font-size: 30px;
-    font-weight: 500;
-    transform: translateY(-85px);
-    left: 150px;
+  position: absolute;
+  color: #cec1b2;
+  font-size: 30px;
+  font-weight: 500;
+  transform: translateY(-85px);
+  left: 145px;
 }
 
-h1 {
-    color: #baaea1;
-    position: relative;
-    left: 130px;
-    top: 0;
-    line-height: 80px;
-    -webkit-text-stroke: #4F493F;
-    -webkit-text-stroke-width: 2px;
+h1.header
+{
+  margin-left: 10px;
+  display: flex;
 }
 
 header ul {
-    color: #cec1b2;
-    font-weight: bold;
-    position: absolute;
-    top: 0;
-    right: 0;
-    line-height: 85px;
-    transform: translateX(0);
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    word-spacing: 5px;
-    margin-right: 20px;
+  color: #cec1b2;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 85px;
+  transform: translateY(18px);
+  list-style-type: none;
+  padding: 0;
+  word-spacing: 5px;
+  margin-right: 20px;
 }
 
 header a {
-    color: #cec1b2;
-    text-decoration: none;
+  color: #cec1b2;
+  text-decoration: none;
+  font-size: 16px;
 }
 
 header a:hover {
-    text-decoration: none;
+  text-decoration: underline;
 }
 
 header li {
-    display: inline;
+  display: inline;
 }
 
 .profile{
@@ -288,3 +284,23 @@ footer a:hover{
     cursor: pointer;
   }
 
+  .log-out{
+    position: absolute;
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #3b3e61;
+    color: white;
+    box-shadow: 0px 0px 0px black;
+    font-size: 15px;
+    font-weight: 700;
+    transition: .5s;
+    margin-top: 50px;
+    left: 80px;
+  }
+
+  .log-out:hover{
+    transform: scale(1.2);
+    background-color: #383b58;
+  }
