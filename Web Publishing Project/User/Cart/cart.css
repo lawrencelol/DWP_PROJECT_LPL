@@ -354,7 +354,7 @@ select
 .submit
 {
     align-self: flex-end;
-    background-color: #00ff08;
+    background-color: #4c4f75;
     color: white;
     border: 1px black solid;
     border-radius: 5px;
@@ -364,7 +364,12 @@ select
     transform: translateY(20px);
 }
 
+.submit a{
+    color: white;
+    text-decoration: none;
+}
+
 .submit:hover
 {
-    background-color: #c1e5c3;
+    background-color: #272947;
 }

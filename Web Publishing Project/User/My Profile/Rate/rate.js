@@ -1,3 +1,7 @@
+$("#back_btn").click(function (){
+    window.history.back();
+})
+
 const allStar = document.querySelectorAll('.rating .star');
 
 allStar.forEach((item, idx) => {
