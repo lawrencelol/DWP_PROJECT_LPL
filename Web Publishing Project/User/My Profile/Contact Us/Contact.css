@@ -4,7 +4,6 @@
 {
     margin: 0;
     font-family: "Poppins";
-
 }
 
 header {
@@ -29,21 +28,11 @@ header img {
 header p {
     position: relative;
     color: #cec1b2;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 500;
-    transform: translateY(-85px);
-    left: 150px;
+    transform: translateY(-58px);
+    text-align: center;
     top: -30px;
-}
-
-h1 {
-    color: #baaea1;
-    position: relative;
-    left: 130px;
-    top: 0;
-    line-height: 80px;
-    -webkit-text-stroke: #4F493F;
-    -webkit-text-stroke-width: 2px;
 }
 
 header ul {
@@ -90,34 +79,30 @@ header li {
     opacity: 0.6;
 }
 
-h1
-{
-    font-size: 90px;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-fieldset{
-    margin-bottom: 15px;
-    padding-bottom: 0px;
-}
-
 fieldset.userdata
 {
     width: 400px;
     border: transparent;
-    position: relative;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+form table th
+{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    padding: 30px;
 }
 
 body
 {
-    background-color: #EFE9DB;
+    background-image:linear-gradient(25deg, #f6e7ca, #f1daad, #e0a456);
 }
 
 form
 {
-    margin: 100px;
+    margin: 100px 0 80px;
     line-height: 30px;
 }
 
@@ -145,8 +130,8 @@ input,textarea
 {
     width: 500px;
     border:2px #4F493F solid;
-    padding: 3px ;
-    font-size: 18px;
+    padding: 7px ;
+    font-size: 14px;
 }
 
 button
@@ -156,7 +141,7 @@ button
     font-weight: bold;
     border-radius: 5px;
     margin-left: 30px;
-    padding: 10px;
+    padding: 8px;
     transform: translateX(600px);
 }
 
@@ -183,18 +168,25 @@ button[type="submit"]:hover
     color: #4F493F;
     font-weight: bold;
 }
+
 .required
 {
     color: red;
     margin: 0;
 }
 
-hr
+footer
 {
-    margin-top: 200px;
-    height: 250px;
-    background-color: #4F493F;
-    margin-bottom: 0px;
+    background-color: #A9ADB0;
+    border: transparent;
+}
+
+fieldset.information
+{
+    width: 850px;
+    margin: 0 auto;
+    border: transparent;
+    height: 200px;
 }
 
 table.information
@@ -221,14 +213,6 @@ td.email
 {
     font-style: italic;
     text-decoration: underline;
-}
-
-fieldset.information
-{
-    transform: translateY(-225px);
-    width: 1000px;
-    border: transparent;
-    margin-bottom: 0px;
 }
 
 footer{
