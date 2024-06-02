@@ -80,9 +80,9 @@ body
     background-color: #FFDEAB;
 }
 
-.home, .bookshelf, .payment{
+.home, .bookshelf, button.payment{
     border: #28241e;
-    background-color: #cb7c21;
+    background-color: #e5ba89;
     border-radius: 25px;
     padding: 4px;
     height: 40px;
