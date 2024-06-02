@@ -72,7 +72,6 @@ td
     border: solid;
     border-radius: 5px;
     border-color: #e6e2e2;
-
 }
 
 .no
@@ -139,7 +138,7 @@ footer a
     font-style: italic;
 }
 
-button.backCart
+button.backtoHome
 {
     background-color: #e6e2e2;
     padding: 10px 20px;
@@ -147,14 +146,25 @@ button.backCart
     border-radius: 5px;
 }
 
-button.backCart:hover
+button.backtoHome:hover
 {
-    background-color: #979797;
+    background-color: #bdb6b6;
     font-weight: bold;
+}
+
+.backtoHome a
+{
+    text-decoration: none;
 }
 
 button.print
 {
     margin-top: 30px;
     margin-left: 650px;
+}
+
+footer
+{
+    margin-top: 50px;
+    font-size: 15px;
 }
