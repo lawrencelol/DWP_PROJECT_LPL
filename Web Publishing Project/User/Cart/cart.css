@@ -189,11 +189,20 @@ button.payment:hover
     background: #fff;
     padding: 20px;
     border-radius: 5px;
-    width: 750px;
-    position: relative;
+    width: 700px;
+    position: fixed;
     display: none;
     flex-direction: row;
     height: 500px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+}
+
+.popup.active
+{
+    display: flex;
 }
 
 .popup .close
@@ -296,7 +305,7 @@ select
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    transform: translateX(50px) translateY(20px);
+    transform: translateY(20px);
 }
 
 .submit:hover
