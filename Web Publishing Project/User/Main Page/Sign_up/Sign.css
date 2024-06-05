@@ -12,14 +12,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e3ccae;
+    background-color: #FFDEAB;
     background-size: cover;
     background-position: center;
 }
 
 .Sign-form{
-    background: rgba(184, 0, 0, 0.15);
-    border: 3px solid rgba(255, 255, 255, 0);
+    background: #A9ADB0;
+    border: 3px solid #A9ADB01b;
     padding: 40px;
     border-radius: 16px;
     backdrop-filter: blur(25px);
@@ -27,6 +27,13 @@ body {
     color: white;
     width: 400px;
     box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
+}
+
+img{
+    height: 80px;
+    z-index: 1;
+    margin-bottom: 60px;
+    transform: translateX(-3px);
 }
 
 .sign-title{
@@ -122,7 +129,7 @@ body {
 .Submit-btn {
     width: 100%;
     padding: 10px 0;
-    background: #2f9cf4;
+    background: #4c4f75;
     border: none;
     border-radius: 99px;
     color: white;
@@ -133,7 +140,7 @@ body {
 }
 
 .Submit-btn:hover {
-    background: #0b87ec;
+    background: #232541;
 }
 
 .Back-btn a{
@@ -144,7 +151,7 @@ body {
     border-radius: 99px;
     border: none;
     float: right;
-    background-color: #2f9cf4;
+    background-color: #4c4f75;
     color: white;
     font-weight: 600;
     font-size: 15px;
@@ -152,7 +159,7 @@ body {
 }
 
 .Back-btn a:hover{
-    background-color: #0b87ec;
+    background-color: #232541;
     cursor: pointer;
     transition: 0.5s;
     text-decoration: underline;

@@ -80,9 +80,9 @@ body
     background-color: #FFDEAB;
 }
 
-.home, .bookshelf, .payment{
+.home, .bookshelf, button.payment{
     border: #28241e;
-    background-color: #cb7c21;
+    background-color: #e5ba89;
     border-radius: 25px;
     padding: 4px;
     height: 40px;
@@ -354,7 +354,7 @@ select
 .submit
 {
     align-self: flex-end;
-    background-color: #00ff08;
+    background-color: #4c4f75;
     color: white;
     border: 1px black solid;
     border-radius: 5px;
@@ -364,7 +364,12 @@ select
     transform: translateY(20px);
 }
 
+.submit a{
+    color: white;
+    text-decoration: none;
+}
+
 .submit:hover
 {
-    background-color: #c1e5c3;
+    background-color: #272947;
 }

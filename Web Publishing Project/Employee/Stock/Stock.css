@@ -136,6 +136,15 @@ button.addBook
     border-radius: 5px;
     border: transparent;
     width: 120px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+button.addBook a{
+    text-decoration: none;
+    color: #3f290d;
+    font-weight: 700;
+    font-size: 15px;
 }
 
 button.addBook:hover
