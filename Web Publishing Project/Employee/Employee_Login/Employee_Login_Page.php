@@ -25,7 +25,7 @@
         <a herf="#">Forget Password?</a>
     </div>
 
-    <a href="../Employee_Home_Page/Home_Page_EMP.html"><div class="login-ptn">Login</div></a>
+    <a href="../Employee_Home_Page/Home_Page_EMP.php"><div class="login-ptn">Login</div></a>
 
 </form>
 </body>
