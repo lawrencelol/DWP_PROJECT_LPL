@@ -9,7 +9,7 @@
     </head> 
 
     <body>
-        <button class="home"><a href="../../Main Page/Main_Page/index.html">Back to home</a></button>
+        <button class="home"><a href="../../Main Page/Main_Page/index.php">Back to home</a></button>
         <header>ABOUT US</header>
         <br>       
         <div class="about">
@@ -64,11 +64,11 @@
             <div class="border">
             <h3>Have Any Question? Ask Here!</h3>
             <div class="contact">
-                <label name="toContactUs"><a href="../Contact Us/Contact_Us_Page.html">Contact Us</a></label>
+                <label name="toContactUs"><a href="../Contact Us/Contact_Us_Page.php">Contact Us</a></label>
             </div>
             <h3>Rate Our System Here!</h3>
             <div class="rate">
-                <label name="toRateUs"><a href="../Rate/Rate.html">Rate Us</a></label>
+                <label name="toRateUs"><a href="../Rate/Rate.php">Rate Us</a></label>
             </div>
         </div>
              Copyright &copy; 2024 LPL BOOKSTORE. All Rights Reserved.

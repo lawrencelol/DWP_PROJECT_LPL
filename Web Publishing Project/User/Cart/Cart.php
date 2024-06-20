@@ -13,8 +13,8 @@
         <img src="logo.png" >
             <p>Cart</p>
                 <ul>
-                    <li><a href="../../User/Main Page/Main_Page/index.html">Back To Home</a></li>
-                    <li><a href="../Menu/Books/Display/BookDisplay.html">Back To Bookshelf</a></li>
+                    <li><a href="../../User/Main Page/Main_Page/index.php">Back To Home</a></li>
+                    <li><a href="../Menu/Books/Display/BookDisplay.php">Back To Bookshelf</a></li>
                 </ul>
     </header>
 
@@ -104,7 +104,7 @@
                     </form>
                     <br>
                 </div>
-            <button class="submit"><a href="../Total/Total.html">Submit</a></button>
+            <button class="submit"><a href="../Total/Total.php">Submit</a></button>
         </div>
 
     </fieldset>

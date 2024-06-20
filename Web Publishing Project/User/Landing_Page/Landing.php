@@ -12,7 +12,7 @@
         <h1>WHO YOU ARE?</h1>
         <div class="options">
             <div class="option user">
-                <a class="link" href="../Main Page/Login/Login.html">
+                <a class="link" href="../Main Page/Login/Login.php">
                 <div>
                     <img class="icon" src="User.png">
                 </div>
@@ -20,7 +20,7 @@
             </a>
             </div>
             <div class="option admin">
-                <a class="link" href="../../Employee/Employee_Login/Employee_Login_Page.html">
+                <a class="link" href="../../Employee/Employee_Login/Employee_Login_Page.php">
                 <div>
                     <img class="icon" src="Admin.png">
                 </div>

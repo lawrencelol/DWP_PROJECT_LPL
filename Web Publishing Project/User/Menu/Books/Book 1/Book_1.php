@@ -13,7 +13,7 @@
     <img src="logo.png" >
     <p>You Have Great Taste!</p>
         <ul>
-            <li><a href="../../Books/Display/BookDisplay.html">< Back To Bookshelf</a></li>
+            <li><a href="../../Books/Display/BookDisplay.php">< Back To Bookshelf</a></li>
         </ul>
 </header>
 

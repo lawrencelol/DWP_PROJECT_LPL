@@ -13,7 +13,7 @@
     <img src="logo.png" >
     <h1>Welcome To Our Bookshelf!</h1>
     <ul>
-        <li><a href="../../../Main Page/Main_Page/index.html">HOME</a></li>
+        <li><a href="../../../Main Page/Main_Page/index.php">HOME</a></li>
         <li>
             <div class="dropdown">
                 <span>CATEGORY</span>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </li>
-        <li><a href="../../../Cart/Cart.html">CART</a></li>
+        <li><a href="../../../Cart/Cart.php">CART</a></li>
     </ul>
 </header>
 
@@ -49,19 +49,19 @@
         <img src="Flippy The Silly Little Fish.png" alt="Flippy The Silly Little Fish">
         <h3>Flippy The Silly Little Fish</h3>
         <p>RM 12.00</p>
-        <a class="view" href="../Book 1/Book_1.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 1/Book_1.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="That Thing Under My Bed.png" alt="That Thing Under My Bed">
         <h3>That Thing Under My Bed</h3>
         <p>RM 15.00</p>
-        <a class="view" href="../Book 2/Book_2.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 2/Book_2.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="Me and My Pet Dinosaur.png" alt="Me and My Pet Dinosaur">
         <h3>Me and My Pet Dinosaur</h3>
         <p>RM 10.00</p>
-        <a class="view" href="../Book 3/Book_3.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 3/Book_3.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     </div>
 </section>
@@ -77,19 +77,19 @@
         <img src="Children of The Star.png" alt="Children of The Star">
         <h3>Children of The Star</h3>
         <p>RM 20.00</p>
-        <a class="view" href="../Book 4/Book_4.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 4/Book_4.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="Twins.png" alt="Twins">
         <h3>Twins</h3>
         <p>RM 22.00</p>
-        <a class="view" href="../Book 5/Book_5.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 5/Book_5.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="My Mind is A Mess.png" alt="My Mind is A Mess">
         <h3>My Mind is A Mess</h3>
         <p>RM 36.00</p>
-        <a class="view" href="../Book 6/Book_6.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 6/Book_6.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div>
     </div> 
 </section>
@@ -105,25 +105,25 @@
         <img src="100 Ways To Bake.png" alt="100 Ways To Bake">
         <h3>100 Ways To Bake</h3>
         <p>RM 40.00</p>
-        <a class="view" href="../Book 7/Book_7.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 7/Book_7.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="Knit It.png" alt="Knit It">
         <h3>Knit It</h3>
         <p>RM 48.00</p>
-        <a class="view" href="../Book 8/Book_8.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 8/Book_8.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="Cook Like A Pro.png" alt="Cook Like A Pro">
         <h3>Cook Like A Pro</h3>
         <p>RM 70.00</p>
-        <a class="view" href="../Book 9/Book_9.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 9/Book_9.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
     <div>
         <img src="Know Your Plants.png" alt="Know Your Plants">
         <h3>Know Your Plants</h3>
         <p>RM 50.00</p>
-        <a class="view" href="../Book 10/Book_10.html"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
+        <a class="view" href="../Book 10/Book_10.php"><button class="button type1"><span class="cart-txt">View Details</span></button></a>
     </div> 
 </section>
 

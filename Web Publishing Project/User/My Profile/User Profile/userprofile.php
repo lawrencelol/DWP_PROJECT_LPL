@@ -15,7 +15,7 @@
         <img src="logo.png" >
             <p>User Profile</p>
                 <ul>
-                    <li><a href="../../Main Page/Main_Page/index.html">Back To Home</a></li>
+                    <li><a href="../../Main Page/Main_Page/index.php">Back To Home</a></li>
                 </ul>
     </header>
 
@@ -64,7 +64,7 @@
                         <td>Completed</td>
                     </tr>
                 </table>
-                <a href="../../Landing_Page/Landing.html"><button class="log-out">Log Out</button></a>
+                <a href="../../Landing_Page/Landing.php"><button class="log-out">Log Out</button></a>
         </div>
     </section>
 
@@ -93,11 +93,11 @@
     <footer>
         <div>
             <h2>Facing problems? Contact us overhere!</h2>
-            <a href="../Contact Us/Contact_Us_Page.html">Contact Us</a>
+            <a href="../Contact Us/Contact_Us_Page.php">Contact Us</a>
         </div>
         <div>
             <h2>Feel free to rate our system here!</h2>
-            <a href="../Rate/Rate.html">Rate Us</a>
+            <a href="../Rate/Rate.php">Rate Us</a>
         </div>
     </footer>
 

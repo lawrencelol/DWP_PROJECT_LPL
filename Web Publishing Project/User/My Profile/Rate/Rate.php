@@ -14,8 +14,8 @@
             <img src="logo.png" >
             <p>Rate Us</p>
             <ul>
-                <li><a href="../../My Profile/About Us/About_Us_Page.html">< Back To About Us</a></li>
-                <li><a href="../../My Profile/User Profile/userprofile.html">< Back To My Profile</a></li>
+                <li><a href="../../My Profile/About Us/About_Us_Page.php">< Back To About Us</a></li>
+                <li><a href="../../My Profile/User Profile/userprofile.php">< Back To My Profile</a></li>
             </ul>
         </header>
 

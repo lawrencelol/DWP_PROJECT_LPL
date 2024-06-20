@@ -17,21 +17,21 @@
         </div>
         <div class="bar">
             <ul>
-                <li><a href="../Employee_Home_Page/Home_Page_EMP.html">DASHBOARD</a></li>
-                <li><a href="../Manage_Staff/Manage_Staff.html">STAFF</a></li>
-                <li ><a href="../Manage_USER/Manage_USER.html">USER</a></li>
-                <li ><a href="../Manage_Category/Category.html">CATEGORY</a></li>
+                <li><a href="../Employee_Home_Page/Home_Page_EMP.php">DASHBOARD</a></li>
+                <li><a href="../Manage_Staff/Manage_Staff.php">STAFF</a></li>
+                <li ><a href="../Manage_USER/Manage_USER.php">USER</a></li>
+                <li ><a href="../Manage_Category/Category.php">CATEGORY</a></li>
                 <li class="category" id="active">
-                    <a href="../Stock/stock.html">STOCK</a>
+                    <a href="../Stock/stock.php">STOCK</a>
                     <div class="choice" id="active">
                         <button><a href="#guidebook" class="selections">Guidebook</a></button>
                         <button><a href="#novel" class="selections">Novel</a></button>
                         <button><a href="#picturebook" class="selections">Picture Book</a></button>
                     </div>
                 </li>
-                <li><a href="../Manage_Order/Manage_Order.html">ORDER</a></li>
-                <li><a href="../Rate_Review/Rate_Review.html">RATE REVIEW</a></li>
-                <li><a href="../../User/Landing_Page/Landing.html">Log Out</a></li>
+                <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
+                <li><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
+                <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
             </ul>
         </div>
     </div>
@@ -40,7 +40,7 @@
 
     <fieldset>
         <h1 class="title">LPL Book Stock</h1>
-        <button class="addBook"><a href="Add Book/add book.html">New Book</a></button>
+        <button class="addBook"><a href="Add Book/add book.php">New Book</a></button>
 
         <div>   
             <h1 class="bType" id="guidebook">GUIDE BOOK</h1>

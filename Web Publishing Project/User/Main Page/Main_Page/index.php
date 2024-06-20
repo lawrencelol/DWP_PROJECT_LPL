@@ -15,10 +15,10 @@
             <img src="logo.png" >
             <p>Home Page</p>
                 <ul>
-                    <li><a href="../../Menu/Books/Display/BookDisplay.html">BOOKSHELF</a></li>
-                    <li><a href="../../Cart/Cart.html">CART</a></li>
-                    <li><a href="../../My Profile/User Profile/userprofile.html">MY.PROFILE</a></li>
-                    <li><a href="../../My Profile/About Us/About_Us_Page.html">ABOUT-US</a></li>
+                    <li><a href="../../Menu/Books/Display/BookDisplay.php">BOOKSHELF</a></li>
+                    <li><a href="../../Cart/Cart.php">CART</a></li>
+                    <li><a href="../../My Profile/User Profile/userprofile.php">MY.PROFILE</a></li>
+                    <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUT-US</a></li>
                 </ul>
                 
         </header>
@@ -46,7 +46,7 @@
                             <span class="lorem">Your kids are invited to meet those spectacular sea creatures with Flippy!</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 1/Book_1.html" class="btn-details">View Details</a>
+                            <a href="../../Menu/Books/Book 1/Book_1.php" class="btn-details">View Details</a>
 
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             <span class="lorem">Introducing Lilith and her pet... A Dinosaur!</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 3/Book_3.html" class="btn-details">View Details</a>
+                            <a href="../../Menu/Books/Book 3/Book_3.php" class="btn-details">View Details</a>
 
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <span class="lorem">"You're my Sister?!"<br>"Yeah, but dead."</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 5/Book_5.html" class="btn-details">View Details</a>
+                            <a href="../../Menu/Books/Book 5/Book_5.php" class="btn-details">View Details</a>
                         </div>
                     </div>
                 </label>
@@ -102,7 +102,7 @@
                             <span class="lorem">Don't cry. I'll guide you to home.</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 4/Book_4.html" class="btn-details">View Details</a>
+                            <a href="../../Menu/Books/Book 4/Book_4.php" class="btn-details">View Details</a>
 
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                             <span class="lorem">The strings in my mind have been tangled for so long, and I don't know what to do.</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 6/Book_6.html" class="btn-details">View Details</a>
+                            <a href="../../Menu/Books/Book 6/Book_6.php" class="btn-details">View Details</a>
 
                         </div>
                     </div>

@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <button class="backtoStock"><a href="../stock.html">back</a></button>
+        <button class="backtoStock"><a href="../stock.php">back</a></button>
         <fieldset>
             <form>
                 <h1 class="header">Add New Book</h1>
