@@ -31,36 +31,50 @@
             <h1>User Management</h1>
             <form class="form" id="addStaffForm">
                 <h2>Add New User</h2>
-                <label for="staffName">Username:</label>
-                <input type="text" id="staffName" name="staffName" required>
-                <label for="staffEmail">Email:</label>
-                <input type="email" id="staffEmail" name="staffEmail" required>
+                <label for="UserName">Username:</label>
+                <input type="text" id="UserName" name="UserName" required>
+                <label for="UserEmail">Email:</label>
+                <input type="email" id="UserEmail" name="UserEmail" required>
+                <label for="userpassword">Password: </label>
+                <input type="text" id="UserPassword" name="UserPassword" required>
                 <button type="submit">Add User</button>
             </form>
             <table>
                 <thead>
                     <tr>
+                        <th>UserID</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th></th>
+                        <th>Password</th>
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Dot Jason</td>
-                        <td>Iwillmakeyoutribble@hahaha.com</td>
+                        <td>001</td>
+                        <td>Alubaba</td>
+                        <td>threewishesforyou@hahaha.com</td>
+                        <td>Alu0170156</td>
+                        <td class="edit"><button>⚙️</button></td>
                         <td class="remove"><button>❌</button></td>
                     </tr>
 
                     <tr>
-                        <td>Dot Jason</td>
-                        <td>Iwillmakeyoutribble@hahaha.com</td>
+                        <td>002</td>
+                        <td>NasiLemak</td>
+                        <td>mestiadasambalbest@hahaha.com</td>
+                        <td>Sambal99</td>
+                        <td class="edit"><button>⚙️</button></td>
                         <td class="remove"><button>❌</button></td>
                     </tr>
                     
                     <tr>
+                        <td>003</td>
                         <td>Dot Jason</td>
                         <td>Iwillmakeyoutribble@hahaha.com</td>
+                        <td>Dot1234</td>
+                        <td class="edit"><button>⚙️</button></td>
                         <td class="remove"><button>❌</button></td>
                     </tr>
                 </tbody>

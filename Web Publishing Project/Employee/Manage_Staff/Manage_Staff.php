@@ -35,6 +35,8 @@
                 <input type="text" id="staffName" name="staffName" required>
                 <label for="staffEmail">Email:</label>
                 <input type="email" id="staffEmail" name="staffEmail" required>
+                <label for="Emp_password">Password</label>
+                <input type="text" id="staffpass" name="staffpass" required>
                 <button type="submit">Add Staff</button>
             </form>
             <table>
@@ -42,6 +44,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Password</th>
                         <th>DELETE</th>
                         <th>UPDATE</th>
                     </tr>
@@ -50,6 +53,7 @@
                     <tr>
                         <td>Dot Jason</td>
                         <td>Iwillmakeyoutribble@hahaha.com</td>
+                        <td>Dot1234</td>
                         <td id="remove"><button>❌</button></td>
                         <td id="Update"><button>⚙️</button></td>
                     </tr>
@@ -57,6 +61,7 @@
                     <tr>
                         <td>Johnson no son</td>
                         <td>Johnonnoson@hahaha.com</td>
+                        <td>Johnson5678</td>
                         <td id="remove"><button>❌</button></td>
                         <td id="Update"><button>⚙️</button></td>
                     </tr>
@@ -64,6 +69,7 @@
                     <tr>
                         <td>Ex Sam</td>
                         <td>samenamewithsomephp@hahaha.com</td>
+                        <td>Ex2024</td>
                         <td id="remove"><button>❌</button></td>
                         <td id="Update"><button>⚙️</button></td>
                     </tr>
