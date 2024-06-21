@@ -15,7 +15,11 @@
     
     <div class="input-box">
         <i class="bx bxs-user"></i>
-        <input type="text" placeholder="User">
+        <input type="text" placeholder="Username">
+    </div>
+    <div class="input-box">
+        <i class="bx bxs-user"></i>
+        <input type="text" placeholder="Email">
     </div>
     <div class="input-box">
         <i class="bx bxs-lock-alt"></i>
