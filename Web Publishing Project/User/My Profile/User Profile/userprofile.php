@@ -77,19 +77,20 @@
             <h3>Update Profile Info</h3>
             <div class="editinfo">
                 <label for="profilepic">Profile Picture</label>
-                <input type="file" id="profilepicture" placeholder="Insert Your Profile Picture Here">
+                <input type="file" id="profilepicture" name="profilepicture" placeholder="Insert Your Profile Picture Here">
                 <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter New Username">
+                <input type="text" id="username" name="username" placeholder="Enter New Username">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter New Email Address">
+                <input type="email" id="email" name="email" placeholder="Enter New Email Address">
                 <label for="password">Password</label>
-                <input type="password" id="password" minlength="10" placeholder="Enter New Password">
+                <input type="password" id="password" name="password" minlength="10" placeholder="Enter New Password">
                 <label for="conpassword">Confirm Password</label>
-                <input type="password" id="conpassword" minlength="10" placeholder="Enter Confirm Password">
-                <button class="done">Done</button>
+                <input type="password" id="conpassword" name="conpassword" minlength="10" placeholder="Enter Confirm Password">
+                <button type="submit" name="done" class="done">Done</button>
             </div>
         </div>
     </div>
+    
 
     <!-- allow user to contact and rate -->
     <footer>
@@ -108,6 +109,32 @@
         document.querySelector(".edit").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
         document.querySelector(".popup .close").addEventListener("click", function(){document.querySelector(".popup").classList.remove("active");})
     </script>
+    
+<?php 
 
+if (isset($_POST["done"]))
+{
+    $profilePIC = $_POST["profilepicture"];
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $conpassword = $_POST["conpassword"];
+
+    if($conpassword == $password)
+    {
+    mysqli_query($connect, "update user_account set Username='$username', User_Password='$password', UserEmail='$email', Profile_PIC='$profilePIC'");
+    } else {
+        ?>
+        <script type="text/javascript"> alert("Your password not same with confirm password");</script>
+        <?php
+    }
+?>
+
+<script type="text/javascript"> alert("Your Profile Sucessfully Updated");</script>
+
+<?php
+}
+
+?>
 </body>
 </html>
