@@ -13,10 +13,10 @@
     <body>
         <button class="backtoStock"><a href="../stock.php">back</a></button>
         <fieldset>
-            <form>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
                 <h1 class="header">Add New Book</h1>
-                <table>
                     <tr class="book">
+                        <table>
                         <td class="bImg">Book Image:
                         <td><input type="file" name="image" required></td>
                     </tr>
@@ -31,21 +31,21 @@
                         </td>
                     </tr>
                     <tr class="book">
-                        <td class="bName">Book Name:</td>
+                        <td class="bName" name="bName">Book Name:</td>
                         <td><input type="text" required></td>
                     </tr>
                     <tr class="book">
-                        <td class="bAuthor">Author:</td>
+                        <td class="bAuthor" name="bAuthor">Author:</td>
                         <td><input type="text"required></td>
                     </tr>
                     <tr class="book">
-                        <td class="bPublisher">Publisher:</td>
+                        <td class="bPublisher" name="bPublisher">Publisher:</td>
                         <td><input type="text" required></td>
                     </tr>
                     <tr class="book">
                         <td class="bPrice">Price:</td>
                         <td><input type="number" name="bPrice" min="0.00" step="5.00" required></td>
-                        <td class="submitBtn"><button type="submit">Submit</button>
+                        <td class="submitBtn"><button type="submit" name="submitbtn">Submit</button>
                         </td>
                     </tr>
                 </table>
