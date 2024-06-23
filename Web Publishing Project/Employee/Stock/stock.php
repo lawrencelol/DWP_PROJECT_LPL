@@ -1,6 +1,5 @@
 <?php include('../../connection.php')?>
 
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTP-8">
@@ -9,6 +8,14 @@
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Stock.css">
 </head>
+
+<script type="text/javascript">
+    function confirmation()
+    {
+        answer=confirm("Do you want to delete the book?");
+        return answer;
+    }
+</script>
 
 <body>
 
@@ -26,9 +33,15 @@
                 <li class="category" id="active">
                     <a href="../Stock/stock.php">STOCK</a>
                     <div class="choice" id="active">
-                        <button><a href="#guidebook" class="selections">Guidebook</a></button>
-                        <button><a href="#novel" class="selections">Novel</a></button>
-                        <button><a href="#picturebook" class="selections">Picture Book</a></button>
+                        <?php
+                            $query = "SELECT DISTINCT Category FROM booklist ORDER BY Category ASC";
+                            $result = mysqli_query($connect, $query);
+
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $category = $row['Category'];
+                                echo '<button><a href="#' . strtolower($category) . '" class="selections">' . $category . '</a></button>';
+                            }
+                        ?>
                     </div>
                 </li>
                 <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
@@ -39,153 +52,66 @@
     </div>
 
     
-
     <fieldset>
         <h1 class="title">LPL Book Stock</h1>
         <button class="addBook"><a href="Add Book/add book.php">New Book</a></button>
 
-        <div>   
-            <h1 class="bType" id="guidebook">GUIDE BOOK</h1>
-            <table>                
-                <thead>
-                    <tr>
-                        <th class="bImg">Book Image</th>
-                        <th class="bName">Book Name</th>
-                        <th class="bAuthor">Author</th> 
-                        <th class="bPublisher">Publisher</th>
-                        <th class="bPrice">Price (RM)</th>
-                        <th class="delBook"></th>                                   
-                    </tr>
-                </thead>
+            <?php
+                mysqli_select_db($connect,"dwp_project");
+                $result = mysqli_query($connect, "select * from booklist ORDER BY Category");	
+                $currentType = '';
+
+                while($row = mysqli_fetch_assoc($result))
+                {		               
+                    if ($currentType != $row['Category'])
+                    {
+                        if ($currentType != '')
+                        {
+                            echo '</table></div>';
+                        }
+                        $currentType = $row['Category'];
+                        echo'<div>';  
+                        echo'<h1 class="bType" id="'. strtolower($currentType) . '">' . strtoupper($currentType) . '</h1>';
+                        echo'<table>';             
+                        echo'<thead>
+                            <tr>
+                                <th class="bImg">Book Image</th>
+                                <th class="bName">Book Name</th>
+                                <th class="bAuthor">Author</th> 
+                                <th class="bPublisher">Publisher</th>
+                                <th class="bPrice">Price (RM)</th>
+                                <th class="editBook"></th>
+                                <th class="delBook"></th>                                   
+                            </tr>
+                        </thead>';
+                    }
+            ?>
                 <tr>
-                    <td><img class="book_pic"src="100 Ways To Bake.png" alt="100 Ways To Bake"></td>
-                    <td class="bName">100 Ways To Bake</td>
-                    <td class="bAuthor">Law Ryance</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">40.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Cook Like A PRO.png" alt="Cook Like A PRO"></td>
-                    <td class="bName">Cook Like A PRO</td>
-                    <td class="bAuthor">Lethew Jean</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">70.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Knit It.png" alt="Knit It"></td>
-                    <td class="bName">Knit It</td>
-                    <td class="bAuthor">Panzy Syin</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">48.00</td>
+                    <td><img class="bImg"></td>
+                    <td class="bName"><?php echo $row["Book_Name"]; ?></td>
+                    <td class="bAuthor"><?php echo $row["Author"]; ?></td>
+                    <td class="bPublisher"><?php echo $row["Publisher"]; ?></td>
+                    <td class="bPrice"><?php echo $row["Price"]; ?></td>
+                    <td class="editBook"><a href="connection.php?edit&BookID=<?php echo $row['BookID'];?>">Edit</td>
                     <td>
-                        <button class="delBook">-</button>
+                        <button class="delBook">
+                            <a href="booklist(delete).php?del&BookID=<?php echo $row['BookID'];?>" onclick="return confirmation();">-</a>
+                        </button>
                     </td>
                 </tr>
-                <tr>
-                    <td><img class="book_pic" src="Know your Plants.png" alt="Know Your Plants"></td>
-                    <td class="bName">Know Your Plants</td>
-                    <td class="bAuthor">Wong Shelly</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">50.00</td>
-                    <td>
-                        <button type="delBook">-</button>
-                    </td>
-                </tr>
+            <?php
+                }
+            ?>
             </table>
         </div>
     </fieldset>
-
-
-    <fieldset>
-        <div>
-            <h1 class="bType" id="novel">NOVEL</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="bImg">Book Image</th>
-                        <th class="bName">Book Name</th>
-                        <th class="bAuthor">Author</th> 
-                        <th class="bPublisher">Publisher</th>
-                        <th class="bPrice">Price (RM)</th>      
-                        <th class="delBook"></th>                
-                    </tr>
-                </thead>
-                <tr>
-                    <td><img class="book_pic" src="Children Of The Star.png"></td>
-                    <td class="bName">Children Of The Star</td>
-                    <td class="bAuthor">Stella Drew</td>
-                    <td class="bPublisher">Star Publisher</td>
-                    <td class="bPrice">20.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="My Mind Is a Mess.png"></td>
-                    <td class="bName">My Mind Is a Mess</td>
-                    <td class="bAuthor">Yicell L. Y. Xyan</td>
-                    <td class="bPublisher">Hope Publisher</td>
-                    <td class="bPrice">36.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Twins.png"></td>
-                    <td class="bName">Twins</td>
-                    <td class="bAuthor">Sherlin K.</td>
-                    <td class="bPublisher">Star Publisher</td>
-                    <td class="bPrice">22.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </fieldset>
-
-    <fieldset>  
-        <div>
-            <h1 class="bType" id="picturebook">PICTURE BOOK</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="bImg">Book Image</th>
-                        <th class="bName">Book Name</th>
-                        <th class="bAuthor">Author</th> 
-                        <th class="bPublisher">Publisher</th>
-                        <th class="bPrice">Price (RM)</th>
-                        <th class="delBook"></th>                                   
-                    </tr>
-                </thead>
-                <tr>
-                    <td><img class="book_pic" src="That Thing Under My Bed.png"></td>
-                    <td class="bName">That Thing Under My Bed</td>
-                    <td class="bAuthor">William Colin</td>
-                    <td class="bPublisher">Dream Publisher</td>
-                    <td class="bPrice">15.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Flippy.png"></td>
-                    <td class="bName">Flippy The Silly Little Fish</td>
-                    <td class="bAuthor">Noah Grantt</td>
-                    <td class="bPublisher">Dream Publisher</td>
-                    <td class="bPrice">12.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Me And My Pet Dinosaur.png"></td>
-                    <td class="bName">Me And My Pet Dinosaur</td>
-                    <td class="bAuthor">Julie May</td>
-                    <td class="bPublisher">Candy Publisher</td>
-                    <td class="bPrice">10.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </fieldset>
-
 </body>
+</html>
+<?php
+    if (isset($_REQUEST["del"])) 
+    {
+        $BookID=$_REQUEST["BookID"];
+        mysqli_query($connect,"delete from booklist where BookID=$BookID");
+        header("Location: stock.php"); //refresh the page
+    }
+?>

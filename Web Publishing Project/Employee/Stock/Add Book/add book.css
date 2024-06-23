@@ -79,3 +79,29 @@ button:hover
     font-weight: bold;
 }
 
+
+/* display_message decoration */
+.display_message {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    position: relative;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.display_message span {
+    font-size: 16px;
+    color: #333;
+}
+.display_message i {
+    cursor: pointer;
+    font-size: 20px;
+    color: #888;
+    margin-left: 10px;
+}
+.display_message i:hover {
+    color: #555;
+}

@@ -212,21 +212,30 @@ th
     width: 100px;
 }
 
+.editBook
+{
+    width: 150px;
+}
+
 td.bPrice
 {
     text-align: center;
+}
+
+button.delBook a
+{
+    text-decoration: none;
+    font-weight: 600;
 }
 
 button.delBook
 {
     color: red;
     border-radius: 7px;
-    transform: translateY(-40px);
     border: 1px black solid;
     height: 25px;
     width: 25px;
     padding: 0;
-    font-weight: 900;
 }
 
 button.delBook:hover 
@@ -235,7 +244,7 @@ button.delBook:hover
     color: #ffffff; 
 }
 
-fieldset img
+img.bImg
 {
     padding: 0;
     width: 80px;
