@@ -1,4 +1,28 @@
-<?php include('../../../connection.php')?>
+<?php include('../../../connection.php');
+
+ if(isset($_POST['submitbtn'])){
+    $bn = $_POST['bName'];
+    $bA = $_POST['bAuthor'];
+    $bP = $_POST['bPublisher'];
+    $bp = $_POST['bPrice'];
+    $bC = $_POST['bType'];
+    $bIMG = $_Files['image']['name'];
+    $bIMG_temp_name = $_Files['image']['tmp_name'];
+    $bIMG_folder = '../../../images/'.$bIMG;
+
+    $insert_query = mysqli_query($connect, "INSERT INTO booklist(Book_Name, Price, Author, Publisher, BoookIMG, Catagory) VALUES ('$bn', $bp, '$bA', '$bP', '$bIMG', '$bC')");
+    if($insert_query){
+        move_uploaded_file($bIMG_temp_name, $bIMG_folder);
+        $display_message="Book Added Sucessfully";
+    }else{
+        $display_message="There is some error on your item";
+    }
+ }
+
+
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
