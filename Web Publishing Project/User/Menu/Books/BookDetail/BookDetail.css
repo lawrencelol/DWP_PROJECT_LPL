@@ -77,15 +77,14 @@ header li {
   display: inline;
 }
 
-
 body{
     background-color: #ffdeab;
     margin: 0px;
     padding: 0px;
 }
 
-/* Book1 Decoration */
-.book1{
+/* Book Decoration */
+.book{
     left: 0;
     top: 0;
     display: flex;
@@ -165,5 +164,4 @@ body{
     visibility: visible;
     transform: scale(100) translateX(2px);
   }
-
 

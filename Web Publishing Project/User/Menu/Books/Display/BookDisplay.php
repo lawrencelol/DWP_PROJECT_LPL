@@ -28,7 +28,7 @@ if(mysqli_connect_errno()){
 </head>
 <body>
 
-<!--这里是上方标签-->
+<!--This is the tab selection-->
 <header>
     <img src="logo.png" >
     <h1>Welcome To Our Bookshelf!</h1>
@@ -38,9 +38,16 @@ if(mysqli_connect_errno()){
             <div class="dropdown">
                 <span>CATEGORY</span>
                 <div class="choice">
-                <a href="#picturebook" class="selections">Picture Book</a>
-                <a href="#novel" class="selections">Novel</a>
-                <a href="#guidebook" class="selections">Guidebook</a>
+                <?php 
+                    $sql_categories = "SELECT * FROM book_category";
+                    $result_categories = mysqli_query($connect, $sql_categories);
+                    
+                    if ($result_categories && mysqli_num_rows($result_categories) > 0) {
+                        while ($category = mysqli_fetch_assoc($result_categories)) {
+                            echo '<h3 class="selections">' . $category["CategoryName"] . '</h3>';
+                        }
+                    }
+                ?>
                 </div>
             </div>
         </li>
@@ -49,102 +56,53 @@ if(mysqli_connect_errno()){
 </header>
 
 
-<!--这里是品牌头-->
+<!--This is the part displays our bookstore's slogan image-->
 <p><br><br><br><br></p>
 <section class="slogan">
     <img src="bookshelf.png">
 </section>
 
 
-<!--这里是书籍展示-->
+<!--This will be the book display section-->
+<!-- First, at here I fetch all the book category -->
 
-<!--这里是儿童读物-->
-<p id="picturebook"><br><br><br><br>
-<h3 class="desc_h3">PICTURE BOOK</h3>
-<p class="desc_p">Teaching a toddler is a challenge, since the wisest sentence coming out from a toddler’s mouth is either “Gugugaga” or “Gagageegee”. But fear not, a picture book with colourful illustrations and basic vocabulary is all you need! Let them become Einstein from a young age! </p> 
-
-<section class="book">
-    <div class="picturebook">
-    <div>
-    <?php 
-    $sql = "SELECT * FROM booklist WHERE Category='Picture Book'";
-    $result = mysqli_query($connect, $sql);
+<?php 
+    $sql_categories = "SELECT * FROM book_category";
+    $result_categories = mysqli_query($connect, $sql_categories);
     
-    if ($result && mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            echo '<div>';
-            echo '<img src="'.$row["BookIMG"].'" alt="'.$row["Book_Name"].'">';
-            echo '<h3>'.$row["Book_Name"].'</h3>';
-            echo '<p>$'.$row["Price"].'</p>';
-            echo '<a class="view" href="BookDetail.php?id='.$row["id"].'"><button class="button type1"><span class="cart-txt">View Details</span></button></a>';
-            echo '</div>';
+    if ($result_categories && mysqli_num_rows($result_categories) > 0) {
+        while ($category = mysqli_fetch_assoc($result_categories)) {
+            echo '<h3 class="desc_h3">' . $category["CategoryName"] . '</h3>';
+            echo '<p class="desc_p">' . $category["Category_Description"] . '</p>';
+
+// At here, I fetch all the books under the specific category, such as Picture Book, Novel, etc
+
+            $sql_books = "SELECT * FROM booklist WHERE Category='" . $category["CategoryName"] . "'";
+            $result_books = mysqli_query($connect, $sql_books);
+    
+            if ($result_books && mysqli_num_rows($result_books) > 0) {
+                echo '<section class="book">';
+                echo '<div class="picturebook">';
+                while ($book = mysqli_fetch_assoc($result_books)) {
+                    echo '<div>';
+                    echo '<img src="' . $book["BookIMG"] . '" alt="' . $book["Book_Name"] . '">';
+                    echo '<h3>' . $book["Book_Name"] . '</h3>';
+                    echo '<p>$' . $book["Price"] . '</p>';
+                    echo '<a class="view" href="../BookDetail/BookDetail.php?id=' . $book["BookID"] . '"><button class="button type1"><span class="cart-txt">View Details</span></button></a>';
+                    echo '</div>';
+                }
+                echo '</div>';
+                echo '</section>';
+            } else {
+                // This will show out if no books are related to that category
+                echo "<p>No books found in this category.</p>";
+            }
         }
     } else {
-        echo "No books found.";
+        // This will show out if no category is detected
+        echo "<p>No categories found.</p>";
     }
     ?>
-    </div> 
-    </div>
-</section>
-
-<!--这里是小说-->
-<p id="novel"><br><br><br><br></p>
-    <h3 class="desc_h3">NOVEL</h3>
-    <p class="desc_p">Imagine diving into the world of a novel. It's like embarking on an epic adventure without ever leaving your chair. Whether you're uncovering secrets in a mystery, exploring distant galaxies in sci-fi, or falling in love in a romance, a novel lets your mind explore endless possibilities.</p> 
-
-<section class="book">
-    <div class="novel">
-    <div>
-    <?php 
-    $sql = "SELECT * FROM booklist WHERE Category='Novel'";
-    $result = mysqli_query($connect, $sql);
     
-    if ($result && mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            echo '<div>';
-            echo '<img src="'.$row["BookIMG"].'" alt="'.$row["Book_Name"].'">';
-            echo '<h3>'.$row["Book_Name"].'</h3>';
-            echo '<p>$'.$row["Price"].'</p>';
-            echo '<a class="view" href="BookDetail.php?id='.$row["id"].'"><button class="button type1"><span class="cart-txt">View Details</span></button></a>';
-            echo '</div>';
-        }
-    } else {
-        echo "No books found.";
-    }
-    ?>
-    </div> 
-    </div> 
-</section>
-
-<!--这里是教材书-->
-    <p id="guidebook"><br><br><br><br></p>
-    <h3 class="desc_h3">GUIDEBOOK</h3>
-    <p class="desc_p">When it comes to mastering a new skill or hobby, nothing beats a guidebook. Think of it as your personal mentor, patiently walking you through each step with clear instructions and helpful tips. Whether you're looking to cook gourmet meals, build a birdhouse, or start a garden, a guidebook provides you with the knowledge and confidence to succeed. </p> 
-
-<section class="book">
-    <div class="guidebook">
-    <div>
-    <?php 
-    $sql = "SELECT * FROM booklist WHERE Category='Guidebook'";
-    $result = mysqli_query($connect, $sql);
-    
-    if ($result && mysqli_num_rows($result) > 0) {
-        while($row = mysqli_fetch_assoc($result)) {
-            echo '<div>';
-            echo '<img src="'.$row["BookIMG"].'" alt="'.$row["Book_Name"].'">';
-            echo '<h3>'.$row["Book_Name"].'</h3>';
-            echo '<p>$'.$row["Price"].'</p>';
-            echo '<a class="view" href="BookDetail.php?id='.$row["id"].'"><button class="button type1"><span class="cart-txt">View Details</span></button></a>';
-            echo '</div>';
-        }
-    } else {
-        echo "No books found.";
-    }
-    ?>
-    </div> 
-    </div> 
-</section>
-
-    
-</body>
-</html>
+    </body>
+    </html>
