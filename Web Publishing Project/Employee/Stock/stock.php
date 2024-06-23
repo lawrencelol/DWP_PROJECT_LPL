@@ -57,135 +57,29 @@
                         <th class="delBook"></th>                                   
                     </tr>
                 </thead>
+                <?php
+                    mysqli_select_db($connect,"dwp_project");
+                    $result = mysqli_query($connect, "select * from booklist");	
+                    $count = mysqli_num_rows($result);
+                    
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                    
+                ?>			
                 <tr>
-                    <td><img class="book_pic"src="100 Ways To Bake.png" alt="100 Ways To Bake"></td>
-                    <td class="bName">100 Ways To Bake</td>
-                    <td class="bAuthor">Law Ryance</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">40.00</td>
+                    <td><img class="bImg" src="<?php echo $row["BookIMG"]; ?>"></td>
+                    <td class="bName"><?php echo $row["Book_Name"]; ?></td>
+                    <td class="bAuthor"><?php echo $row["Author"]; ?></td>
+                    <td class="bPublisher"><?php echo $row["Publisher"]; ?></td>
+                    <td class="bPrice"><?php echo $row["Price"]; ?></td>
                     <td><button class="delBook">-</button></td>
                 </tr>
-                <tr>
-                    <td><img class="book_pic" src="Cook Like A PRO.png" alt="Cook Like A PRO"></td>
-                    <td class="bName">Cook Like A PRO</td>
-                    <td class="bAuthor">Lethew Jean</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">70.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Knit It.png" alt="Knit It"></td>
-                    <td class="bName">Knit It</td>
-                    <td class="bAuthor">Panzy Syin</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">48.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Know your Plants.png" alt="Know Your Plants"></td>
-                    <td class="bName">Know Your Plants</td>
-                    <td class="bAuthor">Wong Shelly</td>
-                    <td class="bPublisher">Life Publisher</td>
-                    <td class="bPrice">50.00</td>
-                    <td>
-                        <button type="delBook">-</button>
-                    </td>
-                </tr>
+                <?php
+                    }
+                ?>
             </table>
         </div>
     </fieldset>
 
-
-    <fieldset>
-        <div>
-            <h1 class="bType" id="novel">NOVEL</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="bImg">Book Image</th>
-                        <th class="bName">Book Name</th>
-                        <th class="bAuthor">Author</th> 
-                        <th class="bPublisher">Publisher</th>
-                        <th class="bPrice">Price (RM)</th>      
-                        <th class="delBook"></th>                
-                    </tr>
-                </thead>
-                <tr>
-                    <td><img class="book_pic" src="Children Of The Star.png"></td>
-                    <td class="bName">Children Of The Star</td>
-                    <td class="bAuthor">Stella Drew</td>
-                    <td class="bPublisher">Star Publisher</td>
-                    <td class="bPrice">20.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="My Mind Is a Mess.png"></td>
-                    <td class="bName">My Mind Is a Mess</td>
-                    <td class="bAuthor">Yicell L. Y. Xyan</td>
-                    <td class="bPublisher">Hope Publisher</td>
-                    <td class="bPrice">36.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Twins.png"></td>
-                    <td class="bName">Twins</td>
-                    <td class="bAuthor">Sherlin K.</td>
-                    <td class="bPublisher">Star Publisher</td>
-                    <td class="bPrice">22.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </fieldset>
-
-    <fieldset>  
-        <div>
-            <h1 class="bType" id="picturebook">PICTURE BOOK</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="bImg">Book Image</th>
-                        <th class="bName">Book Name</th>
-                        <th class="bAuthor">Author</th> 
-                        <th class="bPublisher">Publisher</th>
-                        <th class="bPrice">Price (RM)</th>
-                        <th class="delBook"></th>                                   
-                    </tr>
-                </thead>
-                <tr>
-                    <td><img class="book_pic" src="That Thing Under My Bed.png"></td>
-                    <td class="bName">That Thing Under My Bed</td>
-                    <td class="bAuthor">William Colin</td>
-                    <td class="bPublisher">Dream Publisher</td>
-                    <td class="bPrice">15.00</td>
-                    <td><button class="delBook">-</button></td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Flippy.png"></td>
-                    <td class="bName">Flippy The Silly Little Fish</td>
-                    <td class="bAuthor">Noah Grantt</td>
-                    <td class="bPublisher">Dream Publisher</td>
-                    <td class="bPrice">12.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><img class="book_pic" src="Me And My Pet Dinosaur.png"></td>
-                    <td class="bName">Me And My Pet Dinosaur</td>
-                    <td class="bAuthor">Julie May</td>
-                    <td class="bPublisher">Candy Publisher</td>
-                    <td class="bPrice">10.00</td>
-                    <td>
-                        <button class="delBook">-</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </fieldset>
 
 </body>
