@@ -11,23 +11,7 @@ if(isset($_POST['submitbtn'])){
     $bIMG_temp_name = $_FILES['image']['tmp_name'];
     $bIMG_folder = '../../../images/'.$bIMG;
 
-    switch($bC)
-    {
-        case "GuideB":
-            $BC = "Guide Book";
-            break;
-        case "novel":
-            $BC = "Novel";
-            break;
-        case "pictureB":
-            $BC = "Picture Book";
-            break;
-        default:
-            $BC = "Unknown";
-            break;
-    }
-
-    $insert_query = mysqli_query($connect, "INSERT INTO booklist (Book_Name, Price, Author, Publisher, BookIMG, Category) VALUES ('$bn', $bp, '$bA', '$bP', '$bIMG', '$BC')");
+    $insert_query = mysqli_query($connect, "INSERT INTO booklist (Book_Name, Price, Author, Publisher, BookIMG, Category) VALUES ('$bn', $bp, '$bA', '$bP', '$bIMG', '$bC')");
 
     if($insert_query){
         move_uploaded_file($bIMG_temp_name, $bIMG_folder);
@@ -71,9 +55,14 @@ if(isset($display_message)){
                     <td class="bType">Type of book:</td>
                     <td>
                         <select name="bType">
-                            <option value="GuideB">Guide Book</option>
-                            <option value="novel">Novel</option>
-                            <option value="pictureB">Picture Book</option>
+                            <?php
+                                $query = "SELECT * FROM book_category ORDER BY CategoryName ASC";
+                                $result = mysqli_query($connect, $query);
+                                while ($row = mysqli_fetch_assoc($result))
+                                {
+                                    echo '<option value="' . $row['CategoryName'] . '">' . $row['CategoryName'] . '</option>';
+                                }
+                            ?>
                         </select>
                     </td>
                 </tr>
