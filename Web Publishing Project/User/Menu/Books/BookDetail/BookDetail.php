@@ -1,4 +1,6 @@
 <?php
+session_start(); // Start session at the beginning
+
 include('../../../../connection.php');
 
 $serverName = "localhost";
@@ -13,6 +15,11 @@ $connect = mysqli_connect($serverName, $userName, $password, $dbName);
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
     exit();
+}
+
+// Initialize a session variable to track if book has been added before
+if (!isset($_SESSION['book_added'])) {
+    $_SESSION['book_added'] = array(); // Initialize an empty array
 }
 
 // At here I identified the BookID related with the button clicked
@@ -34,6 +41,41 @@ if (isset($_GET['id'])) {
     // This will show up if the BookID does not exist in the SQL table 
     echo "BookID is unavailable.";
     exit();
+}
+
+// Handle form submission for adding to cart
+if (isset($_POST['add_to_cart'])) {
+    $bookIMG = mysqli_real_escape_string($connect, $_POST['BookIMG']);
+    $bookName = mysqli_real_escape_string($connect, $_POST['Book_Name']);
+    $price = mysqli_real_escape_string($connect, $_POST['Price']);
+
+    // Check if the book is already in the cart (based on book name as an example)
+    $check_sql = "SELECT * FROM cart WHERE Book_Name = '$bookName'";
+    $check_result = mysqli_query($connect, $check_sql);
+
+    if (mysqli_num_rows($check_result) > 0) {
+        // Book is already in the cart, set session variable
+        $_SESSION['book_already_added'] = true;
+        header("Location: BookDetail.php?id=$bookID");
+        exit();
+    }
+
+    // If not already in cart, insert into cart table
+    $insert_sql = "INSERT INTO cart (BookIMG, Book_Name, Price) VALUES ('$bookIMG', '$bookName', '$price')";
+    
+    if (mysqli_query($connect, $insert_sql)) {
+        // Check if book has been added for the first time
+        if (!in_array($bookName, $_SESSION['book_added'])) {
+            $_SESSION['book_added'][] = $bookName; // Add book to session array
+            
+            // JavaScript alert to notify user
+            echo '<script>alert("Book added successfully!");</script>';
+        }
+        header("Location: BookDetail.php?id=$bookID&added=true");
+        exit();
+    } else {
+        echo "Error: " . mysqli_error($connect);
+    }
 }
 ?>
 
@@ -72,9 +114,25 @@ if (isset($_GET['id'])) {
         </div>
         <h3>Synopsis: </h3>
         <p><?php echo isset($book['Synopsis']) ? $book['Synopsis'] : ''; ?></p>
-        <button class="button type1"><span class="cart-txt">Add To Cart</span></button>
+        <form method="POST">
+            <input type="hidden" name="BookIMG" value="<?php echo $book['BookIMG']; ?>">
+            <input type="hidden" name="Book_Name" value="<?php echo $book['Book_Name']; ?>">
+            <input type="hidden" name="Price" value="<?php echo $book['Price']; ?>">
+            <button type="submit" name="add_to_cart" class="button type1"><span class="cart-txt">Add To Cart</span></button>
+        </form>
     </div>
 </section>
+
+<?php
+// Check if the session variable for book already added is set
+if (isset($_SESSION['book_already_added']) && $_SESSION['book_already_added']) {
+    echo '<script>';
+    echo 'alert("The book is already added to your cart!");';
+    echo '</script>';
+    // Unset the session variable to prevent further alerts on refresh
+    unset($_SESSION['book_already_added']);
+}
+?>
 
 </body>
 </html>

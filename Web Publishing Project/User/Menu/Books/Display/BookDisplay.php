@@ -25,6 +25,27 @@ if(mysqli_connect_errno()){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Display</title>
     <link rel='stylesheet' href='BookDisplay.css'>
+
+    <!--At here I adjust the scroll, ensuring that the user is guided to a position where they can see both the category name and description after click the tab.-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const offset = 100; 
+            document.querySelectorAll('.selections a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - offset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                });
+            });
+        });
+    </script>
 </head>
 <body>
 
@@ -44,7 +65,7 @@ if(mysqli_connect_errno()){
                     
                     if ($result_categories && mysqli_num_rows($result_categories) > 0) {
                         while ($category = mysqli_fetch_assoc($result_categories)) {
-                            echo '<h3 class="selections">' . $category["CategoryName"] . '</h3>';
+                            echo '<h3 class="selections"><a href="#' . $category["CategoryName"] . '">' . $category["CategoryName"] . '</a></h3>';
                         }
                     }
                 ?>
@@ -72,7 +93,7 @@ if(mysqli_connect_errno()){
     
     if ($result_categories && mysqli_num_rows($result_categories) > 0) {
         while ($category = mysqli_fetch_assoc($result_categories)) {
-            echo '<h3 class="desc_h3">' . $category["CategoryName"] . '</h3>';
+            echo '<h3 id="' . $category["CategoryName"] . '" class="desc_h3">' . $category["CategoryName"] . '</h3>';
             echo '<p class="desc_p">' . $category["Category_Description"] . '</p>';
 
 // At here, I fetch all the books under the specific category, such as Picture Book, Novel, etc

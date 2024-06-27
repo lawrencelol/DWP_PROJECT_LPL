@@ -152,46 +152,43 @@ header li
 /* Decoration for the dropdown list of category */
 .dropdown {
   font-weight: bold;
-    color: #cec1b2;
-    position: relative;
-    display: inline-block;
+  color: #cec1b2;
+  position: relative;
+  display: inline-block;
 }
-  
-  
-  .choice {
-    border-radius: 10px;
-    font-weight: bold;
-    font-weight: bold;
-    display: none;
-    position: absolute;
-    background-color: #a9adb0;
-    opacity: 1.0;
-    text-align: center;
-    width: 160px;
-    word-spacing: 0px;
-    box-shadow: 0px 8px 8px 0px #000000;
-    padding: 12px 16px;
-    z-index: 1;
-  }
 
-  .selections {
-    color: #cec1b2;
-    background-color: #4c4f75;
-    padding: 0px ;
-    text-decoration: none;
-    display: block;
-  }
+.choice {
+  border-radius: 10px;
+  font-weight: bold;
+  display: none;
+  position: absolute;
+  background-color: #d0d4d7;
+  opacity: 1.0;
+  text-align: center;
+  width: 160px;
+  word-spacing: 0px;
+  box-shadow: 0px 8px 8px 0px #000000;
+  padding: 12px 16px;
+  z-index: 1;
+}
 
-  .selections:hover {
-    background-color: #f9f9f9;
-    color: #4c4f75;
-    opacity: 0.6;
-  }
+.selections a {
+  color: #cec1b2;
+  background-color: #4c4f75;
+  padding: 0px;
+  text-decoration: none;
+  display: block;
+}
 
-  .dropdown:hover .choice {
-    display: block;
-  }
+.selections a:hover {
+  background-color: #ffffff;
+  color: #4c4f75;
+  opacity: 0.6;
+}
 
+.dropdown:hover .choice {
+  display: block;
+}
 
   /* Special effect for the button */
   /* original setting for button */
