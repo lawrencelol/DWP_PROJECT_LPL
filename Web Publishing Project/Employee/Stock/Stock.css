@@ -186,11 +186,6 @@ th
     font-weight: 700;
 }
 
-.bImg
-{
-    width: 150px;
-}
-
 .bName
 {
     width: 250px;
@@ -215,6 +210,7 @@ th
 .editBook
 {
     width: 150px;
+    padding: 0;
 }
 
 td.bPrice
@@ -243,7 +239,6 @@ button.delBook:hover
     background-color: #ff0000; 
     color: #ffffff; 
 }
-
 img.bImg
 {
     padding: 0;

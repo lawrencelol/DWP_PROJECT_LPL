@@ -9,8 +9,11 @@ if(isset($_POST['submitbtn'])){
     $bC = $_POST['bType'];
     $bIMG = $_FILES['image']['name'];
     $bIMG_temp_name = $_FILES['image']['tmp_name'];
-    $bIMG_folder = '../../../images/'.$bIMG;
 
+    $sanitized_bName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $bn);
+    $file_extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+    $bIMG = $sanitized_bName . '.' . $file_extension;
+    $bIMG_folder = '../../../images/'.$bIMG;
     $insert_query = mysqli_query($connect, "INSERT INTO booklist (Book_Name, Price, Author, Publisher, BookIMG, Category) VALUES ('$bn', $bp, '$bA', '$bP', '$bIMG', '$bC')");
 
     if($insert_query){
