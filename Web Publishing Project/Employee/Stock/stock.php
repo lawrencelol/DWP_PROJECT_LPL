@@ -12,7 +12,7 @@
 <script type="text/javascript">
     function confirmation()
     {
-        answer=confirm("Do you want to delete the book?");
+        answer = confirm("Do you want to delete the book?");
         return answer;
     }
 </script>
@@ -87,7 +87,7 @@
                     }
             ?>
                 <tr>
-                    <td><img class="bImg"></td>
+                    <td><img class="bImg" src="../../images/<?php echo $row["Book_Name"]; ?>.png"></td>
                     <td class="bName"><?php echo $row["Book_Name"]; ?></td>
                     <td class="bAuthor"><?php echo $row["Author"]; ?></td>
                     <td class="bPublisher"><?php echo $row["Publisher"]; ?></td>
@@ -110,8 +110,8 @@
 <?php
     if (isset($_REQUEST["del"])) 
     {
-        $BookID=$_REQUEST["BookID"];
-        mysqli_query($connect,"delete from booklist where BookID=$BookID");
-        header("Location: stock.php"); //refresh the page
+        $BookID = $_REQUEST["BookID"];
+        mysqli_query($connect,"DELETE FROM booklist WHERE BookID = $BookID");
+        header("Location: stock.php");
     }
 ?>
