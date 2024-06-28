@@ -8,11 +8,6 @@ body{
   background-color: #ffdeab;
 }
 
-/* To guide customer from CATEGORY tab to the prefered book section */
-html{
-    scroll-behavior: smooth;
-}
-
 
 /* Header Decoration */
 header{

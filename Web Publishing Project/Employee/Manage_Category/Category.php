@@ -1,15 +1,47 @@
-<?php include('../../connection.php')?>
+<?php 
+include('../../connection.php');
+
+// Fetch categories
+$sql = "SELECT *, (SELECT COUNT(*) FROM booklist WHERE booklist.Category = book_category.CategoryName) AS Total_Book FROM book_category";
+$result = mysqli_query($connect, $sql);
+
+// Handle delete
+if (isset($_GET['delete'])) {
+    $categoryID = $_GET['delete'];
+    $delete_sql = "DELETE FROM book_category WHERE CategoryID='$categoryID'";
+    if (mysqli_query($connect, $delete_sql)) {
+        echo "<script>alert('Book Category deleted successfully!'); window.location.href='Category.php';</script>";
+    } else {
+        echo "<script>alert('Error deleting category: " . mysqli_error($connect) . "'); window.location.href='Category.php';</script>";
+    }
+}
+
+// Handle add new category
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
+    $categoryID = $_POST['id'];
+    $categoryName = $_POST['catname'];
+    $addedDate = $_POST['date'];
+    $categoryDescription = $_POST['catdesc'];
+    
+    $insert_sql = "INSERT INTO book_category (CategoryID, CategoryName, AddedDate, Category_Description) 
+                   VALUES ('$categoryID', '$categoryName', '$addedDate', '$categoryDescription')";
+    if (mysqli_query($connect, $insert_sql)) {
+        echo "<script>alert('Book Category added successfully!'); window.location.href='Category.php';</script>";
+    } else {
+        echo "<script>alert('Error adding category: " . mysqli_error($connect) . "'); window.location.href='Category.php';</script>";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTP-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Emp_Category</title>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Category.css"> 
     </head>
-
     <body>
         <div class="selection">
             <div class="Logo">
@@ -42,31 +74,25 @@
                         <th>Category Name</th>
                         <th>Total of Book</th>
                         <th>Added Date</th>
+                        <th>Category Description</th>
                         <th>Remove Category</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>cat1</td>
-                        <td>Picture Book</td>
-                        <td>3</td>
-                        <td>1 January, 2024</td>
-                        <td><button type="delCat">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>cat2</td>
-                        <td>Novel</td>
-                        <td>3</td>
-                        <td>1 January, 2024</td>
-                        <td><button type="delCat">-</button></td>
-                    </tr>
-                    <tr>
-                        <td>cat3</td>
-                        <td>Guidebook</td>
-                        <td>4</td>
-                        <td>1 January, 2024</td>
-                        <td><button type="delCat">-</button></td>
-                    </tr>
+                    <?php
+                    if ($result && mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<tr>';
+                            echo '<td>' . $row['CategoryID'] . '</td>';
+                            echo '<td>' . $row['CategoryName'] . '</td>';
+                            echo '<td>' . $row['Total_Book'] . '</td>';
+                            echo '<td>' . $row['AddedDate'] . '</td>';
+                            echo '<td style="font-size:13px;">' . $row['Category_Description'] . '</td>';
+                            echo '<td><button type="button" class="delCat" onclick="confirmDelete(\'' . $row['CategoryID'] . '\')">Delete</button></td>';
+                            echo '</tr>';
+                        }
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -76,24 +102,37 @@
         <div class="close">&times;</div>
         <div class="form">
             <h3>New Category Details</h3>
-            <div class="info">
-                <label for="id">ID</label>
-                <input type="text" id="id" placeholder="Enter Category ID">
-                <label for="catname">Category Name</label>
-                <input type="text" id="catname" placeholder="Enter Category Name">
-                <label for="book">Total of Books</label>
-                <input type="number" id="book" min="1" placeholder="Enter Total Number of Books">
-                <label for="date">Date Added</label>
-                <input type="date" id="date" placeholder="Enter Added Date">
-                <button class="add">Add</button>
-            </div>
+            <form method="POST" action="">
+                <div class="info">
+                    <label for="id">ID</label>
+                    <input type="text" id="id" name="id" placeholder="Enter Category ID" required>
+                    <label for="catname">Category Name</label>
+                    <input type="text" id="catname" name="catname" placeholder="Enter Category Name" required>
+                    <label for="catdesc">Category Description</label>
+                    <input type="text" id="catdesc" name="catdesc" placeholder="Enter Category Description" required>
+                    <label for="date">Date Added</label>
+                    <input type="date" id="date" name="date" required>
+                    <button type="submit" name="add_category" class="add">Add</button>
+                </div>
+            </form>
         </div>
     </div>
 </fieldset>
 
 <script>
-    document.querySelector(".add").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
-    document.querySelector(".popup .close").addEventListener("click", function(){document.querySelector(".popup").classList.remove("active");})
+    document.querySelector(".add").addEventListener("click", function() {
+        document.querySelector(".popup").classList.add("active");
+    });
+    document.querySelector(".popup .close").addEventListener("click", function() {
+        document.querySelector(".popup").classList.remove("active");
+    });
+
+    function confirmDelete(categoryID) {
+        if (confirm("Are you sure you want to delete this category?")) {
+            window.location.href = "?delete=" + categoryID;
+        }
+    }
+
 </script>
 
     </body>

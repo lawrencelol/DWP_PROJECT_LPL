@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
 
 *{
     font-family: 'Poppins';
@@ -11,7 +11,6 @@ body{
     background-size: cover;
     height: 110vh;
 }
-
 
 /* TAB BAR */
 .selection {
@@ -26,7 +25,6 @@ body{
   border-radius: 30px;
   margin: 20px;
 }
-
 
 .Logo p{
   display: flex;
@@ -83,7 +81,6 @@ body{
   background-color: #575757;
 }
 
-
 /* HEADER */
 .header h1{
     color: #3f290d;
@@ -96,41 +93,42 @@ fieldset{
 }
 
 /* TABLE */
-.table{
-    display: flex;
-    background-color: #fff5;
-    box-shadow: 5px 10px 10px 5px #3f290d;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-left: 25px;
+.table {
+  display: flex;
+  background-color: #fff5;
+  box-shadow: 5px 10px 10px 5px #3f290d;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 25px auto; 
+  width: 100%; 
 }
 
-.table, th, td{
-    padding: 20px;
-    border-collapse: collapse;
+.table, th, td {
+  padding: 20px;
+  border-collapse: collapse;
 }
 
-th{
-    background-color: #cec7c7;
+th {
+  background-color: #cec7c7;
 }
 
-.content{
-    text-align: center;
-    width: 95%;
-    max-height: calc(89%-.10px);
-    background-color: #fffb;
-    margin: 10px auto;
-    border-radius: 25px;
-    overflow: auto;
+.content {
+  text-align: center;
+  width: 100%;
+  max-height: calc(89% - 0.10px);
+  background-color: #fffb;
+  margin: 10px auto;
+  border-radius: 25px;
+  overflow: auto;
 }
 
-tbody tr:hover{
-    background-color:#e9e3e3;
-    transition: 0.2s linear;
+tbody tr:hover {
+  background-color: #e9e3e3;
+  transition: 0.2s linear;
 }
 
-tbody tr:nth-child(even){
-    background-color: #0000000b;
+tbody tr:nth-child(even) {
+  background-color: #0000000b;
 }
 
 button
@@ -139,8 +137,6 @@ button
     border-radius: 10px;
     margin-left: 20px;
 }
-
-
 
 button[type="delCat"]
 {
@@ -161,101 +157,107 @@ button[type="delCat"]:hover
 }
 
 /* Special effect for the add new category button */
-  /* original setting for button */
-  .add{
-    height: 40px;
-    width: 150px;
-    position: relative;
-    font-weight: bold;
-    background-color: transparent;
-    cursor: pointer;
-    border: 1px solid #252525;
-    overflow: hidden;
-    border-radius: 30px;
-    color: #3f290d;
-    transition: all 0.2s ease-in-out;
-    margin-top: 30px;
-    margin-left: 30px;
-  }
+.add{
+  height: 40px;
+  width: 150px;
+  position: relative;
+  font-weight: bold;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #252525;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #3f290d;
+  transition: all 0.2s ease-in-out;
+  margin: 30px auto;  /* Center the button */
+  display: block;  /* Ensure the button is a block element */
+  text-align: center;
+}
 
-  .add:hover{
-    background-color: #3f290d;
-    color: #ED9017;
-  }
-
+.add:hover{
+  background-color: #3f290d;
+  color: #ED9017;
+}
 
 /* pop up FORM */
-  .popup{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.25);
-    width:300px;
-    padding: 20px 30px;
-    margin-top: 50px;
-    background-color: white;
-    box-shadow: #3f290d 1px 2px 3px 0px;
-    border-radius: 20px;
-    transition: top 0ms ease-in-out 200ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
-  }
+.popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-30%, -50%) scale(1.25);
+  width: 400px;
+  padding: 20px 30px;
+  margin-top: 50px;
+  background-color: white;
+  box-shadow: #3f290d 1px 2px 3px 0px;
+  border-radius: 20px;
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+  display: none; /* Initially hidden */
+}
 
-  .popup.active{
-    top:50%;
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.25);
-    transition: top 0ms ease-in-out 0ms, opacity 200ms ease-in-out 0ms, transform 20ms ease-in-out 0ms;
-  }
+.popup.active {
+  display: block; /* Show when active */
+  top: 50%;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+}
 
-  .popup.close{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    width: 15px;
-    height: 15px;
-    text-align: center;
-    line-height: 15px;
-    border-radius: 50%;
-    cursor: pointer;
-  }
+.popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
 
-  .popup .form h3{
-    text-align: center;
-    font-weight: bold;
-    margin: 10px 0px 20px;
-    font-size: 25px;
-  }
+.popup .form h3 {
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 0px 20px;
+  font-size: 25px;
+}
 
-  .popup .form .info{
-    margin:15px 0px;
-  }
+.popup .form .info {
+  margin: 15px 0px;
+}
 
-  .popup .form .info label{
-    font-size: 14px;
-  }
+.popup .form .info label {
+  font-size: 14px;
+}
 
-  .popup .form .info input[type="text"], .popup .form .info input[type="number"], .popup .form .info input[type="date"]{
-    margin-top: 5px;
-    display: block;
-    width: 100%;
-    padding: 10px;
-    outline: none;
-    border: 1px solid #575757;
-    border-radius: 5px;
-  } 
+.popup .form .info input[type="text"],
+.popup .form .info input[type="number"],
+.popup .form .info input[type="date"] {
+  margin-top: 5px;
+  display: block;
+  width: calc(100% - 20px);
+  padding: 10px;
+  outline: none;
+  border: 1px solid #575757;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
-  .popup .form .info button{
-    margin-top: 20px;
-    width: 100%;
-    height: 40px;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: bold;
-    background: #3f290d;
-    color: #ED9017;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
+.popup .form .info button {
+  margin-top: 20px;
+  width: calc(100% - 20px);
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: bold;
+  background: #3f290d;
+  color: #ED9017;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
