@@ -1,7 +1,8 @@
 <?php 
-
+include('../../../../Login/Log-in.php');
 include('../../../../connection.php');
 
+$loggedName = $_SESSION['Username'];
 $serverName = "localhost";
 $userName = "root";
 $password = "";
@@ -105,8 +106,9 @@ if(mysqli_connect_errno()){
                 echo '<section class="book">';
                 echo '<div class="picturebook">';
                 while ($book = mysqli_fetch_assoc($result_books)) {
+                    $bookIMGPath = "../../../../images/". $book["BookIMG"];
                     echo '<div>';
-                    echo '<img src="' . $book["BookIMG"] . '" alt="' . $book["Book_Name"] . '">';
+                    echo '<img src=" '. $bookIMGPath . '" alt="' . $book["Book_Name"] . '">';
                     echo '<h3>' . $book["Book_Name"] . '</h3>';
                     echo '<p>$' . $book["Price"] . '</p>';
                     echo '<a class="view" href="../BookDetail/BookDetail.php?id=' . $book["BookID"] . '"><button class="button type1"><span class="cart-txt">View Details</span></button></a>';

@@ -1,6 +1,7 @@
 <?php
+include('../../Login/Log-in.php');
 session_start(); // Start session at the beginning
-
+$loggedName = $_SESSION['Username']; // Take the Section that keep in Log-In.php 
 include('../../../../connection.php');
 
 $serverName = "localhost";
@@ -61,7 +62,7 @@ if (isset($_POST['add_to_cart'])) {
     }
 
     // If not already in cart, insert into cart table
-    $insert_sql = "INSERT INTO cart (BookIMG, Book_Name, Price) VALUES ('$bookIMG', '$bookName', '$price')";
+    $insert_sql = "INSERT INTO cart (Username, BookIMG, Book_Name, Price) VALUES ('$loggedName','$bookIMG', '$bookName', '$price')";
     
     if (mysqli_query($connect, $insert_sql)) {
         // Check if book has been added for the first time
@@ -103,7 +104,7 @@ if (isset($_POST['add_to_cart'])) {
 <!--The Book Detail will be shown for the user at HERE-->
 <section class="book">
     <div class="image">
-        <img src="<?php echo isset($book['BookIMG']) ? $book['BookIMG'] : ''; ?>" alt="<?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?>">
+        <img src="<?php $bookIMGPath = "../../../../images/". $book["BookIMG"]; echo isset($book['BookIMG']) ? $bookIMGPath : ''; ?>" alt="<?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?>">
     </div>
     <div class="desc">
         <h2><?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?></h2>
