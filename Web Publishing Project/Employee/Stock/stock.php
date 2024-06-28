@@ -1,13 +1,13 @@
 <?php include('../../connection.php')?>
 
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTP-8">
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
         <title>Stock</title>
         <link href="" rel="stylesheet">
-        <link rel="stylesheet" href="Stock.css">
-</head>
+    </head>
 
 <script type="text/javascript">
     function confirmation()
@@ -17,7 +17,16 @@
     }
 </script>
 
+
 <body>
+    <?php 
+        if(isset($display_message))
+        {
+    ?>
+        <script type="delMessage/javascript">alert("<?php echo "$bn". "$display_message"?>")</script>
+    <?php
+        }
+    ?>
 
     <!-- tab bar -->
     <div class="selection">
@@ -84,21 +93,18 @@
                                 <th class="delBook"></th>                                   
                             </tr>
                         </thead>';
+
                     }
             ?>
                 <tr>
-                    <td><img class="bImg" src="../../images/<?php echo $row["Book_Name"]; ?>.png"></td>
+                    <td><img class="bImg" src="../../images/<?php echo htmlspecialchars($row["Book_Name"]); ?>.png"?></td>
                     <td class="bName"><?php echo $row["Book_Name"]; ?></td>
                     <td class="bAuthor"><?php echo $row["Author"]; ?></td>
                     <td class="bPublisher"><?php echo $row["Publisher"]; ?></td>
                     <td class="bPrice"><?php echo $row["Price"]; ?></td>
-                    <td class="editBook"><a href="connection.php?edit&BookID=<?php echo $row['BookID'];?>">Edit</td>
-                    <td>
-                        <button class="delBook">
-                            <a href="booklist(delete).php?del&BookID=<?php echo $row['BookID'];?>" onclick="return confirmation();">-</a>
-                        </button>
-                    </td>
-                </tr>
+                    <td class="editBook"><a href="connection.php?edit&book_ID=<?php echo $row['BookID'];?>">Edit</td>
+                    <td class="delBook"><button class="delBook"><a href="stock.php?del&book_ID=<?php echo $row['BookID'];?>" onclick="return confirmation();">-</a></button></td>
+                    </tr>
             <?php
                 }
             ?>
@@ -108,10 +114,29 @@
 </body>
 </html>
 <?php
-    if (isset($_REQUEST["del"])) 
+if (isset($_GET["del"]) && isset($_GET["book_ID"]))
+{
+    $book_ID = $_GET["book_ID"];
+
+    $result = mysqli_query($connect, "SELECT Book_Name FROM booklist WHERE BookID = '$book_ID'");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row)
     {
-        $BookID = $_REQUEST["BookID"];
-        mysqli_query($connect,"DELETE FROM booklist WHERE BookID = $BookID");
-        header("Location: stock.php");
+        $book_name = $row["Book_Name"];
+        $file_path = "../../images/" . $book_name . ".png";
+
+        if (file_exists($file_path))
+        {
+            unlink($file_path);
+            $display_message = " Deleted Successfully";
+        }
+        else
+        {
+            $display_message = " Deleted Failed";
+        }
+
     }
+}
+
 ?>
