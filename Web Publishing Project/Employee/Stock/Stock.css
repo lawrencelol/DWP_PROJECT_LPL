@@ -213,21 +213,10 @@ th
     text-align: center;
 }
 
-.editBook
+td.delBook, th.delBook
 {
-    width: 80px;
+    width: 60px;
     text-align: center;
-}
-
-.delBook
-{
-    width: 30px;
-    text-align: center;
-}
-
-.editBook a:hover
-{
-    border: 1px sol;
 }
 
 .delBook a
@@ -244,17 +233,17 @@ th
 button.delBook
 {
     color: red;
-    border-radius: 7px;
     border: 1px black solid;
     height: 25px;
-    width: 25px;
+    width: 50px;
     padding: 0;
-    font-weight: 900;
+    font-weight: 500;
 }
 
 button.delBook:hover
 {
     background-color: #ff0000; 
+    font-weight: 800;
 }
 
 img.bImg

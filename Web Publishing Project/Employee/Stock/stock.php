@@ -31,7 +31,7 @@
             }
         }
     }
-?>
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,20 +112,18 @@
                     <th class="bAuthor">Author</th>
                     <th class="bPublisher">Publisher</th>
                     <th class="bPrice">Price (RM)</th>
-                    <th class="editBook"></th>
                     <th class="delBook"></th>
                 </tr>
             </thead>';
         }
     ?>
         <tr>
-            <td><img class="bImg" src="../../images/<?php echo htmlspecialchars($row["Book_Name"]); ?>.png"?></td>
-            <td class="bName"><?php echo $row["Book_Name"]; ?></td>
+        <td><img class="bImg" src="../../images/<?php echo $row["Book_Name"]; ?>.png"></td>
+        <td class="bName"><?php echo $row["Book_Name"]; ?></td>
             <td class="bAuthor"><?php echo $row["Author"]; ?></td>
             <td class="bPublisher"><?php echo $row["Publisher"]; ?></td>
             <td class="bPrice"><?php echo $row["Price"]; ?></td>
-            <td class="editBook"><a href="connection.php?edit&book_ID=<?php echo $row['BookID'];?>">Edit</a></td>
-            <td class="delBook"><button class="delBook"><a href="stock.php?del&book_ID=<?php echo $row['BookID'];?>" onclick="return confirmation();">-</a></button></td>
+            <td class="delBook"><button class="delBook"><a href="stock.php?del&book_ID=<?php echo $row['BookID'];?>" onclick="return confirmation();">DEL</a></button></td>
         </tr>
     <?php
     }
@@ -134,7 +132,7 @@
         echo '</table></div>';
     }
     ?>
-</fieldset>
 
+</fieldset>
 </body>
 </html>
