@@ -11,23 +11,23 @@
 </head>
 
 <body>
-    <form action="#" class="Login-form">
+    <form action="Log-in-EMP.php" class="Login-form" method="POST">
     <h1 class="login-title">ADMIN</h1>
     
     <div class="input-box">
         <i class="bx bxs-user"></i>
-        <input type="text" placeholder="User ID">
+        <input type="text" placeholder="User ID" name="ID">
     </div>
     <div class="input-box">
         <i class="bx bxs-lock-alt"></i>
-        <input type="password" placeholder="Password"> 
+        <input type="password" placeholder="Password" name="password"> 
     </div>
 
     <div class="Forget_Pass">
         <a herf="#">Forget Password?</a>
     </div>
 
-    <a href="../Employee_Home_Page/Home_Page_EMP.php"><div class="login-ptn">Login</div></a>
+    <button class="login-ptn" name="loginbtn">Login</button>
 
 </form>
 </body>
