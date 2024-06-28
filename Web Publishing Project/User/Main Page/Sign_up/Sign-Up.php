@@ -1,3 +1,5 @@
+<?php include ('../../../connection.php')?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,29 +11,29 @@
 </head>
 
 <body>
-    <form action="#" class="Sign-form">
+    <form action="register.php" class="Sign-form" method="POST">
     <img src="logo.png">
     <h1 class="sign-title">Sign Up</h1>
     
     <div class="input-box">
         <i class="bx bxs-user"></i>
-        <input type="text" placeholder="Username">
+        <input type="text" name="username" placeholder="Username">
     </div>
     <div class="input-box">
         <i class="bx bxs-user"></i>
-        <input type="text" placeholder="Email">
+        <input type="text" name="email" placeholder="Email">
     </div>
     <div class="input-box">
         <i class="bx bxs-lock-alt"></i>
-        <input type="password" placeholder="Password"> 
+        <input type="password" name="pass" placeholder="Password"> 
     </div>
     <div class="input-box">
         <i class="bx bxs-lock-alt"></i>
-        <input type="password" placeholder="Confirm Password">
+        <input type="password" name="conpass" placeholder="Confirm Password">
     </div>
 
     <p>&nbsp;</p>
-    <button class="Submit-btn">Submit</button>
+    <button class="Submit-btn" name="submitbtn">Submit</button>
         <p>&nbsp;</p>
 
     <p class="Back-btn">

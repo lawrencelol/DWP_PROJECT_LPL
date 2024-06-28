@@ -12,17 +12,17 @@
 
 <body>
 
-    <form action="#" class="Login-form">
+    <form action="Log-in.php" class="Login-form" method="POST">
     <img src="logo.png">
     <h1 class="login-title">LOGIN</h1>
     
     <div class="input-box">
         <i class="bx bxs-user"></i>
-        <input type="text" placeholder="Username">
+        <input type="text" name="username" placeholder="Username">
     </div>
     <div class="input-box">
         <i class="bx bxs-lock-alt"></i>
-        <input type="password" placeholder="Password"> 
+        <input type="password" name="pass" placeholder="Password"> 
     </div>
 
     <div class="remember-box">
@@ -33,9 +33,9 @@
         <a herf="#">Forget Password?</a>
     </div>
 
-        <a class="login-ptn" href="../Main_Page/index.php">
+        <button class="login-ptn" name="loginbtn">
         Login
-        </a>
+        </button>
     
     <p class="register">
         Don't have any account?
