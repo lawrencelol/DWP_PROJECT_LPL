@@ -1,5 +1,6 @@
 <?php include('../../../connection.php');
 
+//remember me function
 if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
     $username = $_COOKIE['username'];
     $password = $_COOKIE['password'];
