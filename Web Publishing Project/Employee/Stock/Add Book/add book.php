@@ -12,10 +12,10 @@ if(isset($_POST['submitbtn']))
 
     $sanitized_bName = preg_replace('/[^a-zA-Z0-9_-]/', '_', $bn);
     $file_extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-    $bIMG = $sanitized_bName . '.' . $file_extension;
+    $bIMG = $sanitized_bName . '.png';
     $bIMG_folder = '../../../images/'.$bIMG;
     $insert_query = mysqli_query($connect, "INSERT INTO booklist (Book_Name, Price, Author, Publisher, Synopsis, BookIMG, Category) VALUES ('$bn', $bp, '$bA', '$bP', '$bS', '$bIMG', '$bC')");
-
+    
     if($insert_query)
     {
         move_uploaded_file($_FILES['image']['tmp_name'], $bIMG_folder);
@@ -35,6 +35,8 @@ if(isset($_POST['submitbtn']))
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Book</title>
     <link href="'https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'" rel="stylesheet">
+    <link rel="stylesheet" href="add book.css">
+
 </head>
 <body>
     <button class="backtoStock"><a href="../stock.php">Back</a></button>
@@ -84,7 +86,7 @@ if(isset($_POST['submitbtn']))
                     <td><input type="text" name="bPublisher" required></td>
                 <tr>
                     <th class="bPrice">Price:</th>
-                    <td><input type="number" name="bPrice" min="0" max="200" step="5.00" placeholder="RM 0.00" required></td>
+                    <td><input type="number" name="bPrice" min="0" max="200" placeholder="RM 0.00" required></td>
                 </tr>
                 <tr>
                     <th class="bSynopsis">Synopsis:</th>
