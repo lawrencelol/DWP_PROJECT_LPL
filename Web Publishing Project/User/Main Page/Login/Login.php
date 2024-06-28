@@ -1,4 +1,17 @@
-<?php include('../../../connection.php')?>
+<?php include('../../../connection.php');
+
+if(isset($_COOKIE['username']) && isset($_COOKIE['password'])){
+    $username = $_COOKIE['username'];
+    $password = $_COOKIE['password'];
+}else{
+    $username = $password = "";
+}
+
+if(isset($_REQUEST['remember'])){
+    setcookie('username',$_REQUEST['username'],time()+20);
+    setcookie('password',$_REQUEST['password'],time()+20); //20 seconds
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +31,16 @@
     
     <div class="input-box">
         <i class="bx bxs-user"></i>
-        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="username" placeholder="Username" value="<?php echo $username; ?>">
     </div>
     <div class="input-box">
         <i class="bx bxs-lock-alt"></i>
-        <input type="password" name="pass" placeholder="Password"> 
+        <input type="password" name="password" placeholder="Password" value="<?php echo $password; ?>"> 
     </div>
 
     <div class="remember-box">
         <label fr="remember">
-            <input type="checkbox" id="rememeber">
+            <input type="checkbox" id="remember" name="remember">
             Remember me
         </label>
         <a herf="#">Forget Password?</a>
