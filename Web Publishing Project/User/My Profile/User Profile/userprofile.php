@@ -24,9 +24,9 @@ if (mysqli_num_rows($result) > 0) {
         $password = sanitize($_POST["password"]);
         $conpassword = sanitize($_POST["conpassword"]);
 
-        // Validate and update if passwords match
+        //Approve the profile update if the passwords match
         if ($conpassword == $password) {
-            // Update user information in the database
+            // Update user information in the table user_account
             $query = "UPDATE user_account SET Username='$username', User_Password='$password', UserEmail='$email', Profile_PIC='$profilePIC' WHERE UserID = $userId";
             if (mysqli_query($connect, $query)) {
                 ?>
