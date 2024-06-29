@@ -75,6 +75,7 @@ $totalComments = $rowTotalComments['totalComments'] ?? 0;
                     <li><a href="../Stock/stock.php">STOCK</a></li>
                     <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
                     <li><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
+                    <li><a href="../Contact_Record/Contact_Record.php">CONTACT</a></li>
                     <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
                 </ul>
             </div>

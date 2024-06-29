@@ -30,9 +30,9 @@
                     <li><a href="../Manage_Category/Category.php">CATEGORY</a></li>
                     <li><a href="../Stock/stock.php">STOCK</a></li>
                     <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
-                    <li class="active"><a href="../Manage_Order/Manage_Order.php">RATE REVIEW</a></li>
-                    <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
-                </ul>
+                    <li class="active"><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
+                    <li><a href="../Contact_Record/Contact_Record.php">CONTACT</a></li>
+                    <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>                </ul>
             </div>
         </div>
     
