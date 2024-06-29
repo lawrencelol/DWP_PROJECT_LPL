@@ -1,48 +1,40 @@
 <?php
-include('../../Login/Log-in.php');
-session_start(); 
-$loggedName = $_SESSION['Username']; // Take the session that keep in Log-in.php 
-include('../../../../connection.php');
+session_start();
+include('connection.php'); // Adjust this include as per your file structure
 
-$serverName = "localhost";
-$userName = "root";
-$password = "";
-$dbName = "dwp_project";
-
-// Function to connect with MySQL
-$connect = mysqli_connect($serverName, $userName, $password, $dbName);
-
-// Check if the connection is successful
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-    exit();
+// Check if the connection to the database is successful
+if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-// Initialize a session variable to track if book has been added before
+// Initialize a session variable to track if a book has been added before
 if (!isset($_SESSION['book_added'])) {
     $_SESSION['book_added'] = array(); // Initialize an empty array
 }
 
-// At here I identified the BookID related with the button clicked
+// Check if the BookID is set in the URL
 if (isset($_GET['id'])) {
     $bookID = mysqli_real_escape_string($connect, $_GET['id']);
 
-    // At here I fetch the book details based on the BookID 
+    // Fetch book details based on BookID from the database
     $sql = "SELECT * FROM booklist WHERE BookID = '$bookID'";
     $result = mysqli_query($connect, $sql);
 
     if ($result && mysqli_num_rows($result) > 0) {
-        $book = mysqli_fetch_assoc($result); 
+        $book = mysqli_fetch_assoc($result);
     } else {
-        // This will show up if the book does not exist
+        // Handle case where book is not found
         echo "Book not found.";
         exit();
     }
 } else {
-    // This will show up if the BookID does not exist in the SQL table 
+    // Handle case where BookID is unavailable
     echo "BookID is unavailable.";
     exit();
 }
+
+// Get user_id from session or wherever it's stored (replace with your actual mechanism)
+$user_id = $_SESSION['user_id']; // Adjust this based on your session structure
 
 // Handle form submission for adding to cart
 if (isset($_POST['add_to_cart'])) {
@@ -50,21 +42,24 @@ if (isset($_POST['add_to_cart'])) {
     $bookName = mysqli_real_escape_string($connect, $_POST['Book_Name']);
     $price = mysqli_real_escape_string($connect, $_POST['Price']);
 
-    // Check if the book is already in the cart (based on book name as an example)
-    $check_sql = "SELECT * FROM cart WHERE Book_Name = '$bookName'";
+    // Check if the book is already in the cart (based on book name as an example for the current user)
+    $check_sql = "SELECT * FROM cart WHERE user_id = '$user_id' AND Book_Name = '$bookName'";
     $check_result = mysqli_query($connect, $check_sql);
 
     if (mysqli_num_rows($check_result) > 0) {
-        // Book is already in the cart, set session variable
+        // Book is already in the cart, set session variable and redirect
         $_SESSION['book_already_added'] = true;
         header("Location: BookDetail.php?id=$bookID");
         exit();
     }
 
-    // If not already in cart, insert into cart table
-    $insert_sql = "INSERT INTO cart (Username, BookIMG, Book_Name, Price) VALUES ('$loggedName','$bookIMG', '$bookName', '$price')";
-    
+    // Insert the book into the cart table
+    $insert_sql = "INSERT INTO cart (user_id, BookIMG, Book_Name, Price) 
+                   VALUES ('$user_id', '$bookIMG', '$bookName', '$price')";
+
     if (mysqli_query($connect, $insert_sql)) {
+        $cart_id = mysqli_insert_id($connect); // Get the Cart_id of the inserted row
+        
         // Check if book has been added for the first time
         if (!in_array($bookName, $_SESSION['book_added'])) {
             $_SESSION['book_added'][] = $bookName; // Add book to session array
@@ -72,12 +67,16 @@ if (isset($_POST['add_to_cart'])) {
             // JavaScript alert to notify user
             echo '<script>alert("Book added successfully!");</script>';
         }
-        header("Location: BookDetail.php?id=$bookID&added=true");
+        // Redirect back to the book detail page with added parameter
+        header("Location: BookDetail.php?id=$bookID&added=true&cart_id=$cart_id");
         exit();
     } else {
+        // Handle database insertion error
         echo "Error: " . mysqli_error($connect);
     }
 }
+
+mysqli_close($connect); // Close database connection
 ?>
 
 <!DOCTYPE html>
@@ -85,14 +84,13 @@ if (isset($_POST['add_to_cart'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flippy The Silly Little Fish</title>
-    <link rel='stylesheet' href='BookDetail.css'>
+    <title><?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?></title>
+    <link rel="stylesheet" href="BookDetail.css">
 </head>
 <body>
 
-<!-- Tab selection -->
 <header>
-    <img src="logo.png" >
+    <img src="logo.png" alt="Logo">
     <p>You Have Great Taste!</p>
     <ul>
         <li><a href="../../Books/Display/BookDisplay.php">&lt; Back To Bookshelf</a></li>
@@ -101,10 +99,9 @@ if (isset($_POST['add_to_cart'])) {
 
 <br><br><br><br>
 
-<!--The Book Detail will be shown for the user at HERE-->
 <section class="book">
     <div class="image">
-        <img src="<?php $bookIMGPath = "../../../../images/". $book["BookIMG"]; echo isset($book['BookIMG']) ? $bookIMGPath : ''; ?>" alt="<?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?>">
+        <img src="<?php echo isset($book['BookIMG']) ? "../../../../images/" . $book['BookIMG'] : ''; ?>" alt="<?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?>">
     </div>
     <div class="desc">
         <h2><?php echo isset($book['Book_Name']) ? $book['Book_Name'] : ''; ?></h2>
