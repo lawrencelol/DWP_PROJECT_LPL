@@ -73,7 +73,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <!-- User Personal Info -->
     <section class="profile">
-        <img src="<?php echo $row['Profile_PIC']; ?>" alt="Profile Picture">
+        <img src=<?php echo "../../../images/".$row['Profile_PIC']?> alt="Profile Picture">
         <div class="info">
             <h2 class="information">Personal Information</h2>
             <h2>Username: </h2>
