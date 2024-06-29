@@ -1,7 +1,7 @@
 <?php
 include('../../Login/Log-in.php');
-session_start(); // Start session at the beginning
-$loggedName = $_SESSION['Username']; // Take the Section that keep in Log-In.php 
+session_start(); 
+$loggedName = $_SESSION['Username']; // Take the session that keep in Log-in.php 
 include('../../../../connection.php');
 
 $serverName = "localhost";
