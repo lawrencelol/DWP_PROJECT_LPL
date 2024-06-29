@@ -128,11 +128,15 @@ fieldset
     border: transparent;
     margin: auto;
 }
+div.addBook
+{
+    display: flex;
+    justify-content: flex-end;
+}
 
 button.addBook
 {
     background-color: wheat;
-    margin-left: 750px;
     border-radius: 5px;
     border: transparent;
     width: 120px;

@@ -37,40 +37,42 @@
     
         <fieldset>
             <h1>Contact Record</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="name">Name</th>
-                            <th class="tel">Tel.</th>
-                            <th class="email">Email</th>
-                            <th class="message">Message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            $query = "SELECT Username, Contact_Number, UserEmail, Message FROM contact_record ";
-                            $result = mysqli_query($connect, $query);
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="name">Name</th>
+                                <th class="tel">Tel.</th>
+                                <th class="email">Email</th>
+                                <th class="message">Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $query = "SELECT Username, Contact_Number, UserEmail, Message FROM contact_record ";
+                                $result = mysqli_query($connect, $query);
 
-                            if ($result && mysqli_num_rows($result) > 0) {
-                            while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<tr>';
-                                echo '<td class="name">' . $row['Username'] . '</td>';
-                                echo '<td class="tel">' . $row['Contact_Number'] . '</td>';
-                                echo '<td class="email">' . $row['UserEmail'] . '</td>';
-                                echo '<td class="message">' . $row['Message'] . '</td>';
-                                echo '</tr>';
+                                if ($result && mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<tr>';
+                                    echo '<td class="name">' . $row['Username'] . '</td>';
+                                    echo '<td class="tel">' . $row['Contact_Number'] . '</td>';
+                                    echo '<td class="email">' . $row['UserEmail'] . '</td>';
+                                    echo '<td class="message">' . $row['Message'] . '</td>';
+                                    echo '</tr>';
+                                }
                             }
-                        }
-                        ?>
-                    </tbody>
-                </table>
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
     </section>
             <fieldset>
 
-            <label class="print">
+            <div class="print">
                 <button onclick="printRate()">Print</button>
-            </label>
+            </div>
         
             </body>
         </html>
