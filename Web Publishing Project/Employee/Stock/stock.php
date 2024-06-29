@@ -87,7 +87,9 @@
 
 <fieldset>
     <h1 class="title">LPL Book Stock</h1>
-    <button class="addBook"><a href="Add Book/add book.php">New Book</a></button>
+    <div class="addBook">
+        <button class="addBook"><a href="Add Book/add book.php">New Book</a></button>
+    </div>
 
     <?php
     mysqli_select_db($connect,"dwp_project");
