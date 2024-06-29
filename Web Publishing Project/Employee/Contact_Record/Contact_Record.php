@@ -7,6 +7,7 @@
         <meta name="viewport" content="width-device-width, initial-scale=1.0">
         <title>Emp_Home</title>
         <link href="" rel="stylesheet">
+        <link rel="stylesheet" href="Contact_Record.css"> 
         <script>
             function printRate() {
                 window.print();

@@ -14,28 +14,31 @@ body{
 
 /* TAB BAR */
 .selection {
-  width: 200px;
-  background-color: #3f290d;
-  color: white;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  border-radius: 30px;
-  margin: 20px;
+    width: 200px;
+    background-color: #3f290d;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0px;
+    border-radius: 30px;
+    margin: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .Logo p{
   display: flex;
   margin: 5px 10px 5px;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 12.5px;
   margin-top: 25px;
+  transform: translateX(6px);
 }
 
 .Logo img{
-  padding: 10px 10px;
+  padding: 10px 3px;
   float: left;
   display: flex;
   height: 60px;
@@ -67,18 +70,18 @@ body{
 
 .selection ul li.active a,
 .selection ul li a:hover {
-  background-color: #ED9017;
+  background-color: #ed9017;
   color: white;
   border-radius: 10px;
 }
 
 .selection ul li.active a:hover{
-  background-color: #ED9017;
+  background-color: #ed9017;
   color: white;
   border-radius: 10px;
 }
 .selection ul li a:hover {
-  background-color: #575757;
+  background-color: rgb(136, 136, 136);
 }
 
 /* HEADER */
@@ -260,4 +263,3 @@ button[type="delCat"]:hover
   margin-left: 10px;
   margin-right: 10px;
 }
-
