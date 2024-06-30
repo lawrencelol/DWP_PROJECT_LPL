@@ -23,10 +23,16 @@ if (!$result) {
     exit();
 }
 
-// Fetch current user information
+// Fetch current user information including phone number
 $result = mysqli_query($connect, "SELECT * FROM user_register WHERE id = $user_id");
+
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
+
+    // Fetch order information for the current user
+    $order_query = "SELECT * FROM orders WHERE user_id = $user_id";
+    $order_result = mysqli_query($connect, $order_query);
+    $orders = mysqli_fetch_all($order_result, MYSQLI_ASSOC);
 
     // Function to sanitize input data
     function sanitize($data) {
@@ -35,40 +41,64 @@ if (mysqli_num_rows($result) > 0) {
     }
 
     // Process form submission
-    if (isset($_POST["done"])) {
-        // Sanitize user inputs
-        $profilePIC = sanitize($_POST["profilepicture"]);
-        $username = sanitize($_POST["username"]);
-        $email = sanitize($_POST["email"]);
-        $password = sanitize($_POST["password"]);
-        $conpassword = sanitize($_POST["conpassword"]);
+if (isset($_POST["done"])) {
+    // Sanitize user inputs
+    $username = sanitize($_POST["username"]);
+    $birthday = sanitize($_POST["birthday"]);
+    $email = sanitize($_POST["email"]);
+    $password = sanitize($_POST["password"]);
+    $conpassword = sanitize($_POST["conpassword"]);
+    $phone = sanitize($_POST["phone"]);
+    $profilePIC = $row['profile_picture']; // Default to the current profile picture
 
-        // Approve the profile update if the passwords match
-        if ($conpassword == $password) {
-            // Update user information in the table user_register
-            $query = "UPDATE user_register SET username='$username', userpass='$password', email='$email', profile_picture='$profilePIC' WHERE id = $user_id";
-            if (mysqli_query($connect, $query)) {
-                ?>
-                <script type="text/javascript">
-                    alert("Your Profile Successfully Updated");
-                    window.location.href = "userprofile.php"; // Redirect to profile page after update
-                </script>
-                <?php
+    // Handle file upload
+    if (isset($_FILES['profilepicture']) && $_FILES['profilepicture']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['profilepicture']['tmp_name'];
+        $fileName = $_FILES['profilepicture']['name'];
+        $fileSize = $_FILES['profilepicture']['size'];
+        $fileType = $_FILES['profilepicture']['type'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
+
+        $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
+        if (in_array($fileExtension, $allowedfileExtensions)) {
+            // Directory where the file is to be saved
+            $uploadFileDir = '../../../images/';
+            $newFileName = $user_id . '.' . $fileExtension;
+            $dest_path = $uploadFileDir . $newFileName;
+
+            if (move_uploaded_file($fileTmpPath, $dest_path)) {
+                $profilePIC = $newFileName;
             } else {
-                ?>
-                <script type="text/javascript">
-                    alert("Error updating profile: <?php echo mysqli_error($connect); ?>");
-                </script>
-                <?php
+                echo '<script type="text/javascript">alert("Error uploading the file");</script>';
             }
-        } else {
-            ?>
-            <script type="text/javascript">
-                alert("Your password does not match the confirm password");
-            </script>
-            <?php
         }
     }
+
+    // Approve the profile update if the passwords match
+    if ($conpassword == $password) {
+        // Update user information in the table user_register
+        $query = "UPDATE user_register SET username='$username', birthday='$birthday', email='$email', phone='$phone', profile_picture='$profilePIC'";
+        
+        // Check if password fields are not empty to update the password
+        if (!empty($password)) {
+            $query .= ", userpass='$password'";
+        }
+
+        $query .= " WHERE id = $user_id";
+
+        if (mysqli_query($connect, $query)) {
+            echo '<script type="text/javascript">
+                alert("Your Profile Successfully Updated");
+                window.location.href = "userprofile.php"; // Redirect to profile page after update
+            </script>';
+        } else {
+            echo '<script type="text/javascript">alert("Error updating profile: ' . mysqli_error($connect) . '");</script>';
+        }
+    } else {
+        echo '<script type="text/javascript">alert("Your password does not match the confirm password");</script>';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,8 +106,8 @@ if (mysqli_num_rows($result) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="userprofile.css"> 
-</head> 
+    <link rel="stylesheet" href="userprofile.css">
+</head>
 <body>
     <!-- Header -->
     <header>
@@ -92,48 +122,56 @@ if (mysqli_num_rows($result) > 0) {
 
     <!-- User Personal Info -->
     <section class="profile">
-        <img src=<?php echo "../../../images/".$row['profile_picture']?> alt="Profile Picture">
+        <img src="<?php echo "../../../images/" . $row['profile_picture']; ?>" alt="Profile Picture">
         <div class="info">
             <h2 class="information">Personal Information</h2>
-            <h2>Username: </h2>
-            <p><?php echo $row['username']; ?></p>
-            <h2>Password: </h2>
-            <p><?php echo $row['userpass']; ?></p>
-            <h2>Email address: </h2>
-            <p><?php echo $row['email']; ?></p>
+            <div class="info2">
+            <div>
+                <h2>Username: </h2>
+                <p><?php echo $row['username']; ?></p>
+                <h2>Birthday: </h2>
+                <p><?php echo $row['birthday']; ?></p>
+                <h2>Phone.no: </h2>
+                <p><?php echo $row['phone']; ?></p>
+                <h2>Email address: </h2>
+                <p><?php echo $row['email']; ?></p>
+            </div>
+            </div>
             <button class="edit">Edit User Info</button>
             <h2 class="information-1">Order Information</h2>
-            <!-- Replace with actual order data retrieved from database -->
             <table class="order">
                 <tr>
                     <th>Order ID</th>
                     <th>Book Name</th>
                     <th>Total (RM)</th>
                     <th>Order Date</th>
-                    <th>Order Status</th>
                 </tr>
-                <!-- Example rows (replace with dynamic data from database) -->
-                <tr>
-                    <td>0114</td>
-                    <td>Knit It</td>
-                    <td>48.00</td>
-                    <td>31 May 2024</td>
-                    <td>Completed</td>
-                </tr>
-                <tr>
-                    <td>0114</td>
-                    <td>Twins</td>
-                    <td>22.00</td>
-                    <td>31 May 2024</td>
-                    <td>Completed</td>
-                </tr>
-                <tr>
-                    <td>0114</td>
-                    <td>That Thing Under My Bed</td>
-                    <td>15.00</td>
-                    <td>31 May 2024</td>
-                    <td>Completed</td>
-                </tr>
+                <?php if (!empty($orders)): ?>
+                    <?php 
+                        $totalPrice = 0;
+                        foreach ($orders as $order): 
+                            $totalPrice += $order['Price'];
+                    ?>
+                        <tr>
+                            <td><?php echo $order['order_id']; ?></td>
+                            <td><?php echo $order['Book_Name']; ?></td>
+                            <td><?php echo $order['Price']; ?></td>
+                            <td><?php echo $order['order_date']; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <tr>
+                        <td colspan="2"><strong>Total Orders:</strong></td>
+                        <td colspan="2"><?php echo count($orders); ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Total Cost:</strong></td>
+                        <td colspan="2">RM <?php echo number_format($totalPrice, 2); ?></td>
+                    </tr>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="4">Oops! You haven't ordered any books yet! It's time to SHOPPING!</td>
+                    </tr>
+                <?php endif; ?>
             </table>
             <a href="../../Landing_Page/Landing.php"><button class="log-out">Log Out</button></a>
         </div>
@@ -144,12 +182,20 @@ if (mysqli_num_rows($result) > 0) {
         <div class="close">&times;</div>
         <div class="form">
             <h3>Update Profile Info</h3>
-            <form method="POST" action="">
+            <form method="POST" action="" enctype="multipart/form-data">
                 <div class="editinfo">
                     <label for="profilepicture">Profile Picture</label>
                     <input type="file" id="profilepicture" name="profilepicture" placeholder="Insert Your Profile Picture Here">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username" placeholder="Enter New Username" value="<?php echo $row['username']; ?>">
+                    <br>
+                    <label for="birthday">Birthday</label>
+                    <br>
+                    <input type="date" id="birthday" name="birthday" value="<?php echo $row['birthday']; ?>">
+                    <br><br>
+                    <label for="phone">Phone.no</label>
+                    <input type="text" id="phone" name="phone" placeholder="Enter New Phone Number" value="<?php echo $row['phone']; ?>">
+                    <br><br>
                     <label for="email">Email Address</label>
                     <input type="email" id="email" name="email" placeholder="Enter New Email Address" value="<?php echo $row['email']; ?>">
                     <label for="password">Password</label>
@@ -165,7 +211,7 @@ if (mysqli_num_rows($result) > 0) {
     <!-- Footer -->
     <footer>
         <div>
-            <h2>Facing problems? Contact us overhere!</h2>
+            <h2>Facing problems? Contact us over here!</h2>
             <a href="../Contact Us/Contact_Us_Page.php">Contact Us</a>
         </div>
         <div>
@@ -177,7 +223,7 @@ if (mysqli_num_rows($result) > 0) {
     <!-- Script to handle edit profile popup -->
     <script>
         document.querySelector(".edit").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
-        document.querySelector(".popup .close").addEventListener("click", function(){document.querySelector(".popup").classList.remove("active");})
+        document.querySelector(".popup .close").addEventListener("click", function(){document.querySelector(".popup").classList.remove("active");});
     </script>
 </body>
 </html>
