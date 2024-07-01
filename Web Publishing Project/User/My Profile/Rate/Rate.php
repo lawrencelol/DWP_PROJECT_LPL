@@ -1,30 +1,24 @@
-<?php 
+<?php
 include('../../../connection.php');
 
-    if (isset($_POST['submit_btn'])) {
-        $uID = $connect->real_escape_string($_POST['uID']);
-        $username = $_POST['username'];
-        $comment = $_POST['comment'];
-        $ratedIndex = $connect->real_escape_string($_POST['ratedIndex']);
-        $ratedIndex++;
+if (isset($_POST['submit_btn'])) {
+    $RateID = $connect->real_escape_string($_POST['RateID']); // Assuming RateID is passed from the form
+    $userEmail = $connect->real_escape_string($_POST['userEmail']);
+    $comment = $connect->real_escape_string($_POST['comment']);
+    $ratedIndex = $connect->real_escape_string($_POST['ratedIndex']);
+    $ratedIndex++;
+    $rateDate = date('Y-m-d');
 
-        $connect->query("INSERT INTO ratingreview (Rating, username, Comment) VALUES ('$ratedIndex','$username','$comment');");
+    if ($connect->query("INSERT INTO ratingreview (user_id, Rating, UserEmail, Comment, Rate_Date) VALUES ('$RateID', '$ratedIndex++', '$userEmail', '$comment', '$rateDate')")) {
         $sql = $connect->query("SELECT RateID FROM ratingreview ORDER BY RateID DESC LIMIT 1");
         $uData = $sql->fetch_assoc();
         $uID = $uData['RateID'];
 
-        exit(json_encode(array('id' => $uID)));
+        echo json_encode(array('status' => 'success', 'id' => $uID));
+    } else {
+        echo json_encode(array('status' => 'error'));
     }
-
-    // AVARAGE CALCULATE IF NEEDED
-    // $sql = $connect->query(query: "SELECT id FROM ratingreview");
-    // $numR = $sql -> num_rows;
-    
-    // $sql = $connect->query(query: "SELECT SUM(rateIndex) As total FROM ratingreview");
-    // $rDate = $sql -> fetch_array();
-    // $total = $rData['total'];
-
-    // $avg = $total/ $numR;
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +42,7 @@ include('../../../connection.php');
 </header>
 
 <section>
-    <form action="" class="rating-frm" >
+    <form action="" class="rating-frm">
         <div class="rating">
             <input type="number" name="rating" hidden value="0">
             <i class='bx bx-star star' data-index="0"></i>
@@ -58,78 +52,95 @@ include('../../../connection.php');
             <i class='bx bx-star star' data-index="4"></i>
         </div>
 
-        <label for="username">Username</label>
-        <textarea name="username" id="username" placeholder="Type your username here..."></textarea>
+        <label for="userEmail">User Email</label>
+        <textarea name="userEmail" id="userEmail" cols="30" row="1" placeholder="Type your email here..."></textarea>
 
         <label for="comment">Your Comment:</label>
         <textarea name="comment" id="comment" cols="30" rows="5" placeholder="Type your comment here..."></textarea>
 
         <div class="btn">
-            <button type="button" class="submit_btn" >Submit</button>
+            <button type="button" class="submit_btn">Submit</button>
             <button type="button" class="cancel" onclick="history.back();">Cancel</button>
         </div>
     </form>
 </section>
 
-<script src="rate.js"></script>
-    
-    <!-- Star rate number -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script>
-        var ratedIndex = -1, uID = 0;
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+    var ratedIndex = -1, uID = 0;
 
-        $(document).ready(function () {
-    if (localStorage.getItem('ratedIndex') != null) {
-        ratedIndex = parseInt(localStorage.getItem('ratedIndex'));
-        uID = localStorage.getItem('uID');
-        setStars(ratedIndex);
-    }
-
-    $('.bx-star').on('click', function () {
-        ratedIndex = parseInt($(this).data('index'));
-        localStorage.setItem('ratedIndex', ratedIndex);
-        saveToDB();
-    });
-
-    $('.bx-star').mouseover(function () {
-        var currentIndex = parseInt($(this).data('index'));
-        setStars(currentIndex);
-    });
-
-    $('.bx-star').mouseleave(function () {
-        if (ratedIndex != -1)
+    $(document).ready(function () {
+        if (localStorage.getItem('ratedIndex') != null) {
+            ratedIndex = parseInt(localStorage.getItem('ratedIndex'));
+            uID = localStorage.getItem('uID');
             setStars(ratedIndex);
-        else
-            setStars(-1);
-    });
+        }
 
-    function setStars(max) {
-        $('.bx-star').css('color', 'gray');
-        for (var i = 0; i <= max; i++)
-            $('.bx-star:eq(' + i + ')').css('color', 'yellow');
-    }
-});
+        $('.bx-star').on('click', function () {
+            ratedIndex = parseInt($(this).data('index'));
+            localStorage.setItem('ratedIndex', ratedIndex);
+            setStars(ratedIndex);
+        });
 
-function saveToDB() {
-    $.ajax({
-        url: "Rate.php",
-        method: "POST",
-        dataType: 'json',
-        data: {
-            submit_btn: 1,
-            uID: uID,
-            ratedIndex: ratedIndex
-        },
-        success: function (r) {
-            uID = r.id;
-            localStorage.setItem('uID', uID);
+        $('.bx-star').mouseover(function () {
+            var currentIndex = parseInt($(this).data('index'));
+            setStars(currentIndex);
+        });
+
+        $('.bx-star').mouseleave(function () {
+            if (ratedIndex != -1)
+                setStars(ratedIndex);
+            else
+                setStars(-1);
+        });
+
+        $('.submit_btn').on('click', function() {
+            saveToDB();
+        });
+
+        function setStars(max) {
+            $('.bx-star').css('color', 'gray');
+            for (var i = 0; i <= max; i++)
+                $('.bx-star:eq(' + i + ')').css('color', 'yellow');
         }
     });
-}
 
-    </script>
+        function saveToDB() {
+        var RateID = 1; // Replace with actual RateID if available
+        var userEmail = $('#userEmail').val();
+        var comment = $('#comment').val();
+
+        $.ajax({
+            url: "Rate.php",
+            method: "POST",
+            dataType: 'json',
+            data: {
+                submit_btn: 1,
+                RateID: RateID,
+                userEmail: userEmail,
+                comment: comment,
+                ratedIndex: ratedIndex
+            },
+            success: function (response) {
+                if (response.status == 'success') {
+                    uID = response.id;
+                    localStorage.setItem('uID', uID);
+                    alert("Data Saved");
+                    location.reload(); // Reload the page after successful submission
+                } else {
+                    alert("Data Not Saved");
+                }
+            },
+            error: function() {
+                alert("Thanks for Rating!!!!!");
+                location.reload();
+            }
+        });
+    }
+</script>
+
 <footer>
 </footer>
-
+<!-- hehe -->
 </body>
 </html>
