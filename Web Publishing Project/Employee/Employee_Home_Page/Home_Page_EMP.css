@@ -1,13 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
-    font-family: 'Poppins';
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    margin: 0;
+body {
     display: flex;
-    background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
+    background-image: linear-gradient(25deg, #f6e7ca, #e0a456, #ed9017);
 }
 
 .selection {
@@ -23,25 +25,17 @@ body{
     margin: 20px;
 }
 
-
-.Logo p{
-    display: flex;
-    margin: 5px 10px 5px;
-    font-weight: 500;
-    font-size: 13px;
-    margin-top: 25px;
-}
-
 .Logo img{
-    padding: 10px 10px;
+    padding: 10px 3px;
     float: left;
     display: flex;
-    height: 60px;
-}
+    height: 80px;
+    margin-bottom: 16px;
+  }
 
 .selection .bar img {
     width: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .selection ul {
@@ -70,85 +64,107 @@ body{
     border-radius: 10px;
 }
 
-.selection ul li.active a:hover{
-    background-color: #ED9017;
-    color: white;
-    border-radius: 10px;
-}
-.selection ul li a:hover {
-    background-color: #575757;
-}
-
-.header h1{
+.header h1 {
     color: #3f290d;
     font-size: 40px;
+    margin-left: 20px;
+}
+
+.dashboard {
+    flex: 1;
+    padding: 20px;
 }
 
 .box {
     display: flex;
-    gap: 50px;
-    margin: 10px;
-    justify-content: space-between;
-}
-
-.box h4{
-    font-size: 30px;
-}
-
-strong{
-    color: rgb(132, 173, 72);
-}
-
-.box div{
-    padding: 10px 30px 25px 30px;
-    box-shadow: #3f290d 2px 2px 2px 2px;
-    flex: 1;
-    background-color: #f1f1f1;
-    border-radius: 5px;
-    width: 200px;
-    height: 180px;
-    transition: 0.5s ease-in-out;
-}
-
-.box div:hover{
-    transform: translateY(-15px);
-}
-
-.chart{
-    display: flex;
-}
-
-.selection li.Log_Out{
-    margin-top: 350px;
-}
-
-#bar, #donut{
-    margin-left: 10px;
-    margin-top: 25px;
-    height: 325px;
-    width: 543px;
-    display: flex;
     gap: 20px;
-    margin-bottom: 20px;
-    flex: 1;
+    margin-top: 20px;
+}
+
+.box > div {
+    flex: 1 1 0;
     padding: 20px;
     background-color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.total-value {
+    font-size: 28px; 
+    font-weight: bold;
+}
+
+.change-value {
+    font-size: 14px; 
+}
+
+@media only screen and (max-width: 768px) {
+    .box > div {
+        flex: 1 1 100%;
+    }
+}
+
+.box > div:hover {
+    transform: translateY(-10px);
+}
+
+.box h4 {
+    font-size: 24px;
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.canvas-container {
+    width: 48%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.print_btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3f290d;
+    color: white;
+    border: none;
     border-radius: 5px;
-    box-shadow: #3f290d 2px 2px 2px 2px;
-    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
 }
 
-#donut:hover, #bar:hover{
-    transform: translateY(-15px)
+.print_btn:hover {
+    background-color: #ED9017;
 }
 
-.print{
-    height:40px;
-    width:70px;
-    margin-top: 50px;
-    font-size: 25px;
-    transform: translateX(-50px);
+@media only screen and (max-width: 480px) {
+    .selection {
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .selection ul li {
+        width: 100%;
+    }
+
+    .box > div {
+        flex: 1 1 100%;
+    }
+
+    .chart-container {
+        flex-direction: column;
+    }
+
+    .canvas-container {
+        width: 100%;
+        margin-top: 20px;
+    }
 }
-
-
 

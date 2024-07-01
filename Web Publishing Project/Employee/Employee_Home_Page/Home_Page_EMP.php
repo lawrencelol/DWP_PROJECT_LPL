@@ -7,9 +7,8 @@ $monthlySales = array_fill(1, 12, 0);
 // Get total sales for each month in the current year
 $currentYear = date('Y');
 $queryMonthlySales = "
-    SELECT MONTH(order_date) as month, SUM(o.Price) as totalSales 
-    FROM orders o
-    JOIN booklist b ON o.Book_Name = b.Book_Name
+    SELECT MONTH(order_date) as month, SUM(Price) as totalSales 
+    FROM orders
     WHERE YEAR(order_date) = '$currentYear'
     GROUP BY MONTH(order_date)";
 $resultMonthlySales = mysqli_query($connect, $queryMonthlySales);
@@ -21,6 +20,24 @@ while ($row = mysqli_fetch_assoc($resultMonthlySales)) {
 // Prepare data for JavaScript
 $months = json_encode(array_keys($monthlySales));
 $sales = json_encode(array_values($monthlySales));
+
+// Initialize an array to hold category sales
+$categorySales = [];
+
+// Query to get total sales by category
+$queryCategorySales = "
+    SELECT Category, SUM(Price) AS totalSales
+    FROM orders
+    GROUP BY Category";
+$resultCategorySales = mysqli_query($connect, $queryCategorySales);
+
+while ($row = mysqli_fetch_assoc($resultCategorySales)) {
+    $categorySales[$row['Category']] = (float)$row['totalSales'];
+}
+
+// Prepare data for JavaScript
+$categoryLabels = json_encode(array_keys($categorySales));
+$categoryData = json_encode(array_values($categorySales));
 
 // Initialize variables to avoid undefined variable warnings
 $totalSales = 0;
@@ -42,9 +59,8 @@ $prevYear = date('Y', strtotime('-1 month'));
 
 // Fetch total sales for current month
 $queryTotalSales = "
-    SELECT SUM(o.Price) as totalSales 
-    FROM orders o
-    JOIN booklist b ON o.Book_Name = b.Book_Name
+    SELECT SUM(Price) as totalSales 
+    FROM orders
     WHERE MONTH(order_date) = '$currentMonth' 
     AND YEAR(order_date) = '$currentYear'";
 $resultTotalSales = mysqli_query($connect, $queryTotalSales);
@@ -53,9 +69,8 @@ $totalSales = $rowTotalSales['totalSales'] ?? 0;
 
 // Fetch total sales for previous month
 $queryPrevTotalSales = "
-    SELECT SUM(o.Price) as totalSales 
-    FROM orders o
-    JOIN booklist b ON o.Book_Name = b.Book_Name
+    SELECT SUM(Price) as totalSales 
+    FROM orders
     WHERE MONTH(order_date) = '$prevMonth' 
     AND YEAR(order_date) = '$prevYear'";
 $resultPrevTotalSales = mysqli_query($connect, $queryPrevTotalSales);
@@ -65,13 +80,16 @@ $prevTotalSales = $rowPrevTotalSales['totalSales'] ?? 0;
 // Calculate sales change percentage
 if ($prevTotalSales != 0) {
     $salesChange = (($totalSales - $prevTotalSales) / $prevTotalSales) * 100;
+    $salesChange = number_format($salesChange, 2); // Format to 2 decimal places
+    $salesChange = ($salesChange >= 0 ? '+' : '-') . abs($salesChange) . '%';
+} else {
+    $salesChange = 'N/A'; // Handle case where previous total sales are zero
 }
 
 // Fetch total orders for current month
 $queryTotalOrders = "
-    SELECT COUNT(o.order_id) as totalOrders 
-    FROM orders o
-    JOIN booklist b ON o.Book_Name = b.Book_Name
+    SELECT COUNT(order_id) as totalOrders 
+    FROM orders
     WHERE MONTH(order_date) = '$currentMonth' 
     AND YEAR(order_date) = '$currentYear'";
 $resultTotalOrders = mysqli_query($connect, $queryTotalOrders);
@@ -80,9 +98,8 @@ $totalOrders = $rowTotalOrders['totalOrders'] ?? 0;
 
 // Fetch total orders for previous month
 $queryPrevTotalOrders = "
-    SELECT COUNT(o.order_id) as totalOrders 
-    FROM orders o
-    JOIN booklist b ON o.Book_Name = b.Book_Name
+    SELECT COUNT(order_id) as totalOrders 
+    FROM orders
     WHERE MONTH(order_date) = '$prevMonth' 
     AND YEAR(order_date) = '$prevYear'";
 $resultPrevTotalOrders = mysqli_query($connect, $queryPrevTotalOrders);
@@ -92,6 +109,10 @@ $prevTotalOrders = $rowPrevTotalOrders['totalOrders'] ?? 0;
 // Calculate orders change percentage
 if ($prevTotalOrders != 0) {
     $ordersChange = (($totalOrders - $prevTotalOrders) / $prevTotalOrders) * 100;
+    $ordersChange = number_format($ordersChange, 2); // Format to 2 decimal places
+    $ordersChange = ($ordersChange >= 0 ? '+' : '-') . abs($ordersChange) . '%';
+} else {
+    $ordersChange = 'N/A'; // Handle case where previous total orders are zero
 }
 
 // Fetch total rates for current month
@@ -117,6 +138,10 @@ $prevTotalRates = $rowPrevTotalRates['totalRates'] ?? 0;
 // Calculate rates change percentage
 if ($prevTotalRates != 0) {
     $ratesChange = (($totalRates - $prevTotalRates) / $prevTotalRates) * 100;
+    $ratesChange = number_format($ratesChange, 2); // Format to 2 decimal places
+    $ratesChange = ($ratesChange >= 0 ? '+' : '-') . abs($ratesChange) . '%';
+} else {
+    $ratesChange = 'N/A'; // Handle case where previous total rates are zero
 }
 
 // Fetch total comments for current month
@@ -142,6 +167,10 @@ $prevTotalComments = $rowPrevTotalComments['totalComments'] ?? 0;
 // Calculate comments change percentage
 if ($prevTotalComments != 0) {
     $commentsChange = (($totalComments - $prevTotalComments) / $prevTotalComments) * 100;
+    $commentsChange = number_format($commentsChange, 2); // Format to 2 decimal places
+    $commentsChange = ($commentsChange >= 0 ? '+' : '-') . abs($commentsChange) . '%';
+} else {
+    $commentsChange = 'N/A'; // Handle case where previous total comments are zero
 }
 ?>
 
@@ -150,93 +179,163 @@ if ($prevTotalComments != 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emp_Home</title>
-    <link rel="stylesheet" href="Home_Page_EMP.css">
-    <!-- Include Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Employee Dashboard</title>
     <script>
-        function printDashboard() {
+        function printDash() {
             window.print();
         }
     </script>
+    <link rel="stylesheet" href="Home_Page_EMP.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
     <div class="selection">
-        <div class="Logo">
-            <img src="Logo.png" />
-        </div>
-        <div class="bar">
-            <ul>
-                <li class="active"><a href="../Employee_Home_Page/Home_Page_EMP.php">DASHBOARD</a></li>
-                <li><a href="../Manage_Staff/Manage_Staff.php">STAFF</a></li>
-                <li><a href="../Manage_USER/Manage_USER.php">USER</a></li>
-                <li><a href="../Manage_Category/Category.php">CATEGORY</a></li>
-                <li><a href="../Stock/stock.php">STOCK</a></li>
-                <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
-                <li><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
-                <li><a href="../Contact_Record/Contact_Record.php">CONTACT</a></li>
-                <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
-            </ul>
-        </div>
-    </div>
+                <div class="Logo">
+                    <img src="Logo.png" />
+                </div>
+                <div class="bar">
+                    <ul>
+                        <li class="active"><a href="../Employee_Home_Page/Home_Page_EMP.php">DASHBOARD</a></li>
+                        <li><a href="../Manage_Staff/Manage_Staff.php">STAFF</a></li>
+                        <li><a href="../Manage_USER/Manage_USER.php">USER</a></li>
+                        <li><a href="../Manage_Category/Category.php">CATEGORY</a></li>
+                        <li><a href="../Stock/stock.php">STOCK</a></li>
+                        <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
+                        <li><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
+                        <li><a href="../Contact_Record/Contact_Record.php">CONTACT</a></li>
+                        <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
 
     <div class="dashboard">
         <div class="header">
-            <h1>Dashboard</h1>
+            <h1>Welcome to the Dashboard</h1>
         </div>
+        <!-- This is where I show The Total Sales, Orders, Rates, and Comments every month -->
         <div class="box">
             <div>
-                <h3>Total Sales</h3>
-                <h4>RM <?= number_format($totalSales, 2) ?></h4>
-                <p><?= ($salesChange >= 0 ? '+' : '') . number_format($salesChange, 2) ?>% This month</p>
+                <h4>Total Sales</h4>
+                <br>
+                <p class="total-value">RM <?= number_format($totalSales, 2) ?></p>
+                <br>
+                <p class="change-value"><?= $salesChange ?> from previous month</p>
             </div>
             <div>
-                <h3>Total Orders</h3>
-                <h4><?= $totalOrders ?></h4>
-                <p><?= ($ordersChange >= 0 ? '+' : '') . number_format($ordersChange, 2) ?>% This month</p>
+                <h4>Total Orders</h4>
+                <br>
+                <p class="total-value"><?= $totalOrders ?></p>
+                <br>
+                <p class="change-value"><?= $ordersChange ?> from previous month</p>
             </div>
             <div>
-                <h3>Total Rates</h3>
-                <h4><?= $totalRates ?></h4>
-                <p><?= ($ratesChange >= 0 ? '+' : '') . number_format($ratesChange, 2) ?>% This month</p>
+                <h4>Total Rates</h4>
+                <br>
+                <p class="total-value"><?= $totalRates ?></p>
+                <br>
+                <p class="change-value"><?= $ratesChange ?> from previous month</p>
             </div>
             <div>
-                <h3>Total Comments</h3>
-                <h4><?= $totalComments ?></h4>
-                <p><?= ($commentsChange >= 0 ? '+' : '') . number_format($commentsChange, 2) ?>% This month</p>
+                <h4>Total Comments</h4>
+                <br>
+                <p class="total-value"><?= $totalComments ?></p>
+                <br>
+                <p class="change-value"><?= $commentsChange ?> from previous month</p>
             </div>
-            <button class="print_btn" onclick="printDashboard()">Print</button>
         </div>
-        <div class="container">
-            <h2>Monthly Sales</h2>
-            <canvas id="salesChart"></canvas>
+
+        <div class="chart-container">
+            <div class="canvas-container">
+                <h3>MONTHLY SALES</h3>
+                <canvas id="monthlySalesChart"></canvas>
+            </div>
+            <div class="canvas-container">
+                <h3>BOOK CATEGORY TOTAL SALES</h3>
+                <canvas id="categorySalesChart"></canvas>
+            </div>
         </div>
+        <button class="print_btn" onclick="printDash()">Print Report</button>
     </div>
 
-    <!-- Chart.js script to render the sales chart -->
     <script>
-        const ctx = document.getElementById('salesChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: <?= $months ?>,
-                datasets: [{
-                    label: 'Monthly Sales',
-                    data: <?= $sales ?>,
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
+    // Monthly Sales Bar Chart
+    var ctxMonthly = document.getElementById('monthlySalesChart').getContext('2d');
+    var monthlyChart = new Chart(ctxMonthly, {
+        type: 'bar',
+        data: {
+            labels: <?= $months ?>,
+            datasets: [{
+                label: 'Sales (RM)',
+                data: <?= $sales ?>,
+                backgroundColor: '#F5C63C', 
+                borderColor: '#ED9017',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Sales (RM)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Months'
                     }
                 }
             }
-        });
+        }
+    });
+
+    // Pie Chart for Category Sales
+    var ctxCategory = document.getElementById('categorySalesChart').getContext('2d');
+    var categoryChart = new Chart(ctxCategory, {
+        type: 'pie',
+        data: {
+            labels: <?= $categoryLabels ?>,
+            datasets: [{
+                label: 'Sales (RM)',
+                data: <?= $categoryData ?>,
+                backgroundColor: ['#F5C63C', '#ED9017', '#3f290d', '#ffffff', '#cccccc'], // Change pie chart colors here
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': RM' + tooltipItem.raw.toFixed(2);
+                        }
+                    }
+                }
+            },
+            elements: {
+                arc: {
+                    borderWidth: 0 
+                }
+            },
+            layout: {
+                padding: {
+                    top: 20,
+                    bottom: 20,
+                    left: 20,
+                    right: 20
+                }
+            },
+            aspectRatio: 1.5, //the roundness of the pie
+            radius: '80%', //the size of the pie chart
+        }
+    });
     </script>
+
 </body>
 </html>
