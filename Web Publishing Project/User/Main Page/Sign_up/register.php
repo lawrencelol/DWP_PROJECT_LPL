@@ -12,30 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty(trim($_POST["username"]))) {
         $username_err = "Please enter a username.";
     } else {
-        // Prepare a select statement
-        $sql = "SELECT id FROM user_register WHERE username = :username";
-
-        if ($stmt = $connect->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-
-            // Set parameters
-            $param_username = trim($_POST["username"]);
-
-            // Attempt to execute the prepared statement
-            if ($stmt->execute()) {
-                if ($stmt->rowCount() == 1) {
-                    $username_err = "This username is already taken.";
-                } else {
-                    $username = trim($_POST["username"]);
-                }
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-
-            // Close statement
-            unset($stmt);
-        }
+        $username = trim($_POST["username"]);
     }
 
     // Validate password
@@ -60,18 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check input errors before inserting into database
     if (empty($username_err) && empty($password_err) && empty($email_err)) {
         // Prepare an insert statement
-        $sql = "INSERT INTO user_register (username, userpass, email) VALUES (:username, :password, :email)";
+        $sql = "INSERT INTO user_register (username, userpass, email) VALUES (?, ?, ?)";
 
         if ($stmt = $connect->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
-            $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
-            $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
-
-            // Set parameters
-            $param_username = $username;
-            $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            $param_email = $email;
+            $stmt->bind_param("sss", $username, $password, $email);
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
@@ -83,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             // Close statement
-            unset($stmt);
+            $stmt->close();
         }
     }
 
@@ -99,10 +69,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <style>
-    .right-side{
+        .right-side{
         position: relative;
         width:250px;
-        margin-right: 10%;
+        margin-right: 15%;
+
     }
 
     .dheader{
@@ -140,6 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .show-bar{
         justify-content: space-between;
+        margin-left:15%;
         background-color: #00000060;
         display: flex;
         padding: 50px;
@@ -167,54 +139,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="show-bar">
-        <div class="right-side">
-            
-            <div class="dheader">
-                <img src="logo.png">
-                <h3>Look Pick Learn</h3>
-            </div>
-            <hr>
+            <div class="left-side">
+                
+                <div class="dheader">
+                    <img src="logo.png">
+                    <h3>Look Pick Learn</h3>
+                </div>
+                <hr>
 
-            <div class="description">
-                <h2 style="color: white; font-size: 25px; font-weight: 600;">Become one of the LPL bookworm! 🐛</h2>
-                <p><br>Pick your book, easy to use</p>
-                <p><br><i class='bx bx-check-circle'></i>Look for A Book</p>
-                <p><i class='bx bx-check-circle'></i>Pick it up</p>
-                <p><i class='bx bx-check-circle'></i>Learn it</p>
-                <img src>
+                <div class="description">
+                    <h2 style="color: white; font-size: 25px; font-weight: 600;">Become one of the LPL bookworm! 🐛</h2>
+                    <p><br>Pick your book, easy to use</p>
+                    <p><br><i class='bx bx-check-circle'></i>Look for A Book</p>
+                    <p><i class='bx bx-check-circle'></i>Pick it up</p>
+                    <p><i class='bx bx-check-circle'></i>Learn it</p>
+                    <img src>
+                </div>
             </div>
-        </div>
-        
-        <div class="left-side">
+
+        <div class="right-side">
             <div class="wrapper">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="Signfrm" method="post">
-                <h2 style="color:white; font-size:25px; font-weight: 700px; text-align:center; margin-bottom:5px;">Sign Up</h2>
-                <p style="color:white; font-size:15px; font-weight: 700px; text-align:center; margin-bottom:20px;">Please fill this form to create an account.</p>
-                    <div class="input-box">
-                        <label>Username</label>
-                        <i class='bx bx-user' style="font-size: 25px; bottom: 35px"></i>
-                        <input type="text" name="username" value="<?php echo $username; ?>" required>
-                        <?php echo (!empty($username_err)) ? '<div>' . $username_err . '</div>' : ''; ?>
-                    </div>
-                    
-                    <div class="input-box">
-                        <label>Email</label>
-                        <i class='bx bx-envelope' style="font-size: 25px; bottom: 35px"></i>
-                        <input type="email" name="email" value="<?php echo $email; ?>" required>
-                        <?php echo (!empty($email_err)) ? '<div>' . $email_err . '</div>' : ''; ?>
-                    </div>
+                    <h2 style="color:white; font-size:25px; font-weight: 700px; text-align:center; margin-bottom:5px;">Sign Up</h2>
+                    <p style="color:white; font-size:15px; font-weight: 700px; text-align:center; margin-bottom:20px;">Please fill this form to create an account.</p> 
+                        <div class="input-box">
+                            <label>Username</label>
+                            <i class='bx bx-user' style="font-size: 25px; bottom: 35px"></i>
+                            <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" required>
+                            <?php echo (!empty($username_err)) ? '<div>' . $username_err . '</div>' : ''; ?>
+                        </div>
+                        
+                        <div class="input-box">
+                            <label>Email</label>
+                            <i class='bx bx-envelope' style="font-size: 25px; bottom: 35px"></i>
+                            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
+                            <?php echo (!empty($email_err)) ? '<div>' . $email_err . '</div>' : ''; ?>
+                        </div>
 
-                    <div class="input-box">
-                        <label>Password</label>
-                        <i class='bx bxs-lock-alt' style="font-size: 25px; bottom: 35px"></i>
-                        <input type="password" name="password" value="<?php echo $password; ?>" required>
-                        <?php echo (!empty($password_err)) ? '<div>' . $password_err . '</div>' : ''; ?>
-                    </div>
-            
-                    <div>
-                        <input type="submit" class="Submit-btn" value="Submit">
-                    </div>
-                    <p>Already have an account? <a href="../Login/Login.php">Login here</a>.</p>
+                        <div class="input-box">
+                            <label>Password</label>
+                            <i class='bx bxs-lock-alt' style="font-size: 25px; bottom: 35px"></i>
+                            <input type="password" name="password" required>
+                            <?php echo (!empty($password_err)) ? '<div>' . $password_err . '</div>' : ''; ?>
+                        </div>
+                
+                        <div>
+                            <input type="submit" class="Submit-btn" value="Submit">
+                        </div>
+                        <p>Already have an account? <a href="../Login/Login.php">Login here</a>.</p>
                 </form>
             </div>
         </div>

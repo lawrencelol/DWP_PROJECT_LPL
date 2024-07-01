@@ -64,8 +64,8 @@ $conn->close();
                 <p><input type="password" name="userpass" required/></p>
                 <p><input type="submit" name="loginbtn" value="LOGIN" /></p>
             </form>
-            <p><a href="../login/forget_password.php">Forgot your password?</a></p>
-            <p><a href="../Register/register.php">No Account? Register Now!</a></p>
+            <p><a href="forget_password.php">Forgot your password?</a></p>
+            <p><a href="../Sign_up/register.php">No Account? Register Now!</a></p>
         </div>
     </div>
 </div>
