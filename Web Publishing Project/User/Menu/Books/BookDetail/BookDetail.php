@@ -64,8 +64,8 @@ if (isset($_POST['add_to_cart'])) {
         if (!in_array($bookName, $_SESSION['book_added'])) {
             $_SESSION['book_added'][] = $bookName; // Add book to session array
             
-            // JavaScript alert to notify user
-            echo '<script>alert("Book added successfully!");</script>';
+            // Set a session variable to trigger the alert
+            $_SESSION['book_added_success'] = true;
         }
         // Redirect back to the book detail page with added parameter
         header("Location: BookDetail.php?id=$bookID&added=true&cart_id=$cart_id");
@@ -129,6 +129,15 @@ if (isset($_SESSION['book_already_added']) && $_SESSION['book_already_added']) {
     echo '</script>';
     // Unset the session variable to prevent further alerts on refresh
     unset($_SESSION['book_already_added']);
+}
+
+// Check if the session variable for successful addition is set
+if (isset($_SESSION['book_added_success']) && $_SESSION['book_added_success']) {
+    echo '<script>';
+    echo 'alert("Book added to cart successfully!");';
+    echo '</script>';
+    // Unset the session variable to prevent further alerts on refresh
+    unset($_SESSION['book_added_success']);
 }
 ?>
 
