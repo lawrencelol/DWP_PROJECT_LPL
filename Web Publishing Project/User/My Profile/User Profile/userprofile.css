@@ -98,9 +98,13 @@ header li {
     margin-left: 50px;
 }
 
-.info{
+.info2{
     margin-left: 30px;
     width: 100%;
+}
+
+.info2 div{
+  display: flex;
 }
 
 .info .information{
@@ -159,7 +163,6 @@ footer{
     display: flex;
     justify-content: space-around;
     background-color: #000000;
-    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
@@ -256,10 +259,6 @@ footer a:hover{
     margin:15px 0px;
   }
 
-  .popup .form .editinfo label{
-    font-size: 14px;
-  }
-
   .popup .form .editinfo input[type="text"], .popup .form .editinfo input[type="file"], .popup .form .editinfo input[type="password"], .popup .form .editinfo input[type="email"]{
     margin-top: 5px;
     display: block;
@@ -269,6 +268,21 @@ footer a:hover{
     border: 1px solid #575757;
     border-radius: 5px;
   } 
+
+  .popup .form .editinfo label {
+    font-size: 14px;
+}
+
+.popup .form .editinfo input[type="date"] {
+    margin-top: 5px;
+    display: block;
+    width: calc(100% - 20px); 
+    padding: 10px;
+    outline: none;
+    border: 1px solid #575757;
+    border-radius: 5px;
+}
+
 
   .popup .form .editinfo button{
     margin-top: 20px;

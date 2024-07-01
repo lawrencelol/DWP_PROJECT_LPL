@@ -1,32 +1,75 @@
 <?php
 include('../../connection.php');
 
-// Get current month
+// Initialize variables to avoid undefined variable warnings
+$totalSales = 0;
+$salesChange = 0;
+$totalOrders = 0;
+$ordersChange = 0;
+$totalRates = 0;
+$ratesChange = 0;
+$totalComments = 0;
+$commentsChange = 0;
+
+// Get current month and year
 $currentMonth = date('m');
 $currentYear = date('Y');
 
-// Fetch total sales
+// Get previous month and year
+$prevMonth = date('m', strtotime('-1 month'));
+$prevYear = date('Y', strtotime('-1 month'));
+
+// Fetch total sales for current month
 $queryTotalSales = "
-    SELECT SUM(Total) as totalSales 
-    FROM purchase_history 
-    WHERE Order_Status = 'Complete' 
-    AND MONTH(Purchase_Date) = '$currentMonth' 
-    AND YEAR(Purchase_Date) = '$currentYear'";
+    SELECT SUM(Price) as totalSales 
+    FROM orders
+    WHERE MONTH(order_date) = '$currentMonth' 
+    AND YEAR(order_date) = '$currentYear'";
 $resultTotalSales = mysqli_query($connect, $queryTotalSales);
 $rowTotalSales = mysqli_fetch_assoc($resultTotalSales);
 $totalSales = $rowTotalSales['totalSales'] ?? 0;
 
-// Fetch total orders
+// Fetch total sales for previous month
+$queryPrevTotalSales = "
+    SELECT SUM(Price) as totalSales 
+    FROM orders
+    WHERE MONTH(order_date) = '$prevMonth' 
+    AND YEAR(order_date) = '$prevYear'";
+$resultPrevTotalSales = mysqli_query($connect, $queryPrevTotalSales);
+$rowPrevTotalSales = mysqli_fetch_assoc($resultPrevTotalSales);
+$prevTotalSales = $rowPrevTotalSales['totalSales'] ?? 0;
+
+// Calculate sales change percentage
+if ($prevTotalSales != 0) {
+    $salesChange = (($totalSales - $prevTotalSales) / $prevTotalSales) * 100;
+}
+
+// Fetch total orders for current month
 $queryTotalOrders = "
-    SELECT COUNT(OrderID) as totalOrders 
-    FROM purchase_history 
-    WHERE MONTH(Purchase_Date) = '$currentMonth' 
-    AND YEAR(Purchase_Date) = '$currentYear'";
+    SELECT COUNT(order_id) as totalOrders 
+    FROM orders
+    WHERE MONTH(order_date) = '$currentMonth' 
+    AND YEAR(order_date) = '$currentYear'";
 $resultTotalOrders = mysqli_query($connect, $queryTotalOrders);
 $rowTotalOrders = mysqli_fetch_assoc($resultTotalOrders);
 $totalOrders = $rowTotalOrders['totalOrders'] ?? 0;
 
-// Fetch total rates
+// Fetch total orders for previous month
+$queryPrevTotalOrders = "
+    SELECT COUNT(order_id) as totalOrders 
+    FROM orders
+    WHERE MONTH(order_date) = '$prevMonth' 
+    AND YEAR(order_date) = '$prevYear'";
+$resultPrevTotalOrders = mysqli_query($connect, $queryPrevTotalOrders);
+$rowPrevTotalOrders = mysqli_fetch_assoc($resultPrevTotalOrders);
+$prevTotalOrders = $rowPrevTotalOrders['totalOrders'] ?? 0;
+
+// Calculate orders change percentage
+if ($prevTotalOrders != 0) {
+    $ordersChange = (($totalOrders - $prevTotalOrders) / $prevTotalOrders) * 100;
+}
+
+// Fetch total rates for current month
 $queryTotalRates = "
     SELECT COUNT(RateID) as totalRates 
     FROM ratingreview 
@@ -36,7 +79,22 @@ $resultTotalRates = mysqli_query($connect, $queryTotalRates);
 $rowTotalRates = mysqli_fetch_assoc($resultTotalRates);
 $totalRates = $rowTotalRates['totalRates'] ?? 0;
 
-// Fetch total comments
+// Fetch total rates for previous month
+$queryPrevTotalRates = "
+    SELECT COUNT(RateID) as totalRates 
+    FROM ratingreview 
+    WHERE MONTH(Rate_Date) = '$prevMonth' 
+    AND YEAR(Rate_Date) = '$prevYear'";
+$resultPrevTotalRates = mysqli_query($connect, $queryPrevTotalRates);
+$rowPrevTotalRates = mysqli_fetch_assoc($resultPrevTotalRates);
+$prevTotalRates = $rowPrevTotalRates['totalRates'] ?? 0;
+
+// Calculate rates change percentage
+if ($prevTotalRates != 0) {
+    $ratesChange = (($totalRates - $prevTotalRates) / $prevTotalRates) * 100;
+}
+
+// Fetch total comments for current month
 $queryTotalComments = "
     SELECT COUNT(Comment) as totalComments 
     FROM ratingreview 
@@ -45,77 +103,87 @@ $queryTotalComments = "
 $resultTotalComments = mysqli_query($connect, $queryTotalComments);
 $rowTotalComments = mysqli_fetch_assoc($resultTotalComments);
 $totalComments = $rowTotalComments['totalComments'] ?? 0;
+
+// Fetch total comments for previous month
+$queryPrevTotalComments = "
+    SELECT COUNT(Comment) as totalComments 
+    FROM ratingreview 
+    WHERE MONTH(Rate_Date) = '$prevMonth' 
+    AND YEAR(Rate_Date) = '$prevYear'";
+$resultPrevTotalComments = mysqli_query($connect, $queryPrevTotalComments);
+$rowPrevTotalComments = mysqli_fetch_assoc($resultPrevTotalComments);
+$prevTotalComments = $rowPrevTotalComments['totalComments'] ?? 0;
+
+// Calculate comments change percentage
+if ($prevTotalComments != 0) {
+    $commentsChange = (($totalComments - $prevTotalComments) / $prevTotalComments) * 100;
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Emp_Home</title>
-        <link rel="stylesheet" href="Home_Page_EMP.css"> 
-        <script>
-            function printDashboard() {
-                window.print();
-            }
-        </script>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emp_Home</title>
+    <link rel="stylesheet" href="Home_Page_EMP.css"> 
+    <script>
+        function printDashboard() {
+            window.print();
+        }
+    </script>
+</head>
 
-    <body>
-        <div class="selection">
-            <div class="Logo">
-                <img src="Logo.png" />
+<body>
+    <div class="selection">
+        <div class="Logo">
+            <img src="Logo.png" />
+        </div>
+        <div class="bar">
+            <ul>
+                <li class="active"><a href="../Employee_Home_Page/Home_Page_EMP.php">DASHBOARD</a></li>
+                <li><a href="../Manage_Staff/Manage_Staff.php">STAFF</a></li>
+                <li><a href="../Manage_USER/Manage_USER.php">USER</a></li>
+                <li><a href="../Manage_Category/Category.php">CATEGORY</a></li>
+                <li><a href="../Stock/stock.php">STOCK</a></li>
+                <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
+                <li><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
+                <li><a href="../Contact_Record/Contact_Record.php">CONTACT</a></li>
+                <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="header">
+            <h1>Dashboard</h1>
+        </div>
+        <div class="box">
+            <div>
+                <h3>Total Sales</h3>
+                <h4>RM <?= number_format($totalSales, 2) ?></h4>
+                <p><?= ($salesChange >= 0 ? '+' : '') . number_format($salesChange, 2) ?>% This month</p>
             </div>
-            <div class="bar">
-                <ul>
-                    <li class="active"><a href="../Employee_Home_Page/Home_Page_EMP.php">DASHBOARD</a></li>
-                    <li><a href="../Manage_Staff/Manage_Staff.php">STAFF</a></li>
-                    <li><a href="../Manage_USER/Manage_USER.php">USER</a></li>
-                    <li><a href="../Manage_Category/Category.php">CATEGORY</a></li>
-                    <li><a href="../Stock/stock.php">STOCK</a></li>
-                    <li><a href="../Manage_Order/Manage_Order.php">ORDER</a></li>
-                    <li><a href="../Rate_Review/Rate_Review.php">RATE REVIEW</a></li>
-                    <li><a href="../Contact_Record/Contact_Record.php">CONTACT</a></li>
-                    <li><a href="../../User/Landing_Page/Landing.php">Log Out</a></li>
-                </ul>
+            <div>
+                <h3>Total Orders</h3>
+                <h4><?= $totalOrders ?></h4>
+                <p><?= ($ordersChange >= 0 ? '+' : '') . number_format($ordersChange, 2) ?>% This month</p>
+            </div>
+            <div>
+                <h3>Total Rates</h3>
+                <h4><?= $totalRates ?></h4>
+                <p><?= ($ratesChange >= 0 ? '+' : '') . number_format($ratesChange, 2) ?>% This month</p>
+            </div>
+            <div>
+                <h3>Total Comments</h3>
+                <h4><?= $totalComments ?></h4>
+                <p><?= ($commentsChange >= 0 ? '+' : '') . number_format($commentsChange, 2) ?>% This month</p>
             </div>
         </div>
-
-        <div class="dashboard">
-            <div class="header">
-                <h1>Dashboard</h1>
-            </div>
-            <div class="box">
-                <div>
-                    <h3>Total Sales</h3>
-                    <h4>RM <?= number_format($totalSales, 2) ?></h4>
-                    <p><strong>+6%</strong> This month</p>
-                </div>
-                <div>
-                    <h3>Total Orders</h3>
-                    <h4><?= $totalOrders ?></h4>
-                    <p><strong>+6%</strong> This month</p>
-                </div>
-                <div>
-                    <h3>Total Rates</h3>
-                    <h4><?= $totalRates ?></h4>
-                    <p><strong>+4%</strong> This month</p>
-                </div>
-                <div>
-                    <h3>Total Comments</h3>
-                    <h4><?= $totalComments ?></h4>
-                    <p><strong>+2%</strong> This month</p>
-                </div>
-            </div>
-            <div class="chart">
-                <div id="bar">
-                    <img src="bar.png">
-                </div>
-                <div id="donut">
-                    <img src="donut.png">
-                </div>
-            </div>
+        <div class="chart">
+            <!-- Add your charts or visualizations here -->
         </div>
-        <button class="print" onclick="printDashboard()">Print</button>
-    </body>
+    </div>
+    <button class="print" onclick="printDashboard()">Print</button>
+</body>
 </html>

@@ -1,8 +1,6 @@
 <?php 
-include('../../../../Login/Log-in.php');
 include('../../../../connection.php');
 
-$loggedName = $_SESSION['Username'];
 $serverName = "localhost";
 $userName = "root";
 $password = "";
