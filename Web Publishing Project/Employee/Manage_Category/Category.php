@@ -88,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
                             echo '<td>' . $row['CategoryName'] . '</td>';
                             echo '<td>' . $row['Total_Book'] . '</td>';
                             echo '<td>' . $row['AddedDate'] . '</td>';
-                            echo '<td style="font-size:13px;">' . $row['Category_Description'] . '</td>';
-                            echo '<td><button type="button" class="delCat" onclick="confirmDelete(\'' . $row['CategoryID'] . '\')">Delete</button></td>';
+                            echo "<td class='short-desc'>" . $row['Category_Description'] . '</td>';
+                            echo "<td class='short-button'><button type=\"button\" class=\"delCat\" onclick=\"confirmDelete('{$row['CategoryID']}')\">Delete</button></td>";
                             echo '</tr>';
                         }
                     }
