@@ -3,7 +3,7 @@
 
 *{
     margin: 0;
-    padding: 7px;
+    padding: 10px;
     font-family: 'Poppins';
 }
 
@@ -37,8 +37,9 @@ header p {
 
 h1.header
 {
-    margin-left: 10px;
     display: flex;
+    font-size: 40px;
+    justify-content: center;
 }
 
 header ul {
@@ -71,7 +72,7 @@ header li {
 
 img[alt="cart"]
 {
-    transform: translateY(-15px);
+    transform: translateY(-5px);
     width: 50px;
 }
 
@@ -101,110 +102,141 @@ body
     color: #28241e;
 }
 
+.payment a{
+    text-decoration: none;
+    font-size: 15px;
+    color: #28241e;
+}
+
 fieldset
 {
-    width: 400px;
+    width: 800px;
     margin:0 auto;
     background-color: rgb(255, 246, 246);
-    border-radius: 5px;
+    border-radius: 20px;
     border: none;
     transform: translateY(25px);
 }
 
-th
-{
-    text-align: left;
-    font-weight: 700;
-    padding: 10px;
-    background-color: #A9ADB0;
-}
-
 table
 {
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+th
+{
+    color: #3f290d;
+    text-align: center;
+    background-color: #cec7c7;
+    font-size: 16px;
+    padding: 15px;
+}
+
+th.bName
+{
+    text-align: left;
 }
 
 tr
 {
-    margin: 10px;
-    border-radius: 5px;
-    border: transparent;
-    box-shadow: 0 2px 2px;
-    align-items: center;
-    background-color: #eaebeb;
+    background-color: white;
 }
 
-.no,.cbox
+td
 {
-    width: 40px;
+    font-size: 15px;
 }
 
 input[type="checkbox"]
 {
-    width: 20px;
-    padding: 0;
-    margin-left: 10px;
+    width: 40px;
+    height: 18px;
+    transform: translateX(-5px);
 }
 
-.no
-{
-    text-align: center;
-    margin-right: 10px;
+tr:nth-child(even)
+{    
+    background-color:#e9e3e3;
+}
+
+tr:hover{
+    background-color: #d0cbcb;
+}
+
+tr:nth-child(even):hover{
+    background-color: #d0cbcb;
 }
 
 .bImg
 {
     width: 150px;
-    margin-right: 30px;
     text-align: center;
 }
 
 .bName
 {
-    width: 250px;
+    width: 280px;
 }
 
-.price
+.bPrice
 {
     text-align: center;
     width: 150px;
 }
 
-.del
+tr.delBook
 {
-    width: 30px;
+    justify-content: center;
 }
 
-td.no
+td.bName
 {
-    font-weight: 500;
+    transform: translateX(15px);
 }
 
 img[alt="book"]
 {
-    width: 80px;
+    width: 85px;
     box-shadow: 0px 4px 4px 0;
     padding: 0;
     align-items: center;
 }
 
-button[type="button"]
+a.delBook
 {
-    border: 1px black solid;
-    width: 20px;
-    padding: 0;
-    font-weight: 600;
+    text-decoration: none;
     color: red;
-    border-radius: 2px;
-    margin-left: 8px;
+    padding: 0;
+    font-weight: 800;
 }
 
-button[type="button"]:hover
+a.delBook:hover
 {
+    color: white;
+    padding: 0;
+    font-weight: 900;
+}
+
+button.delBook
+{
+    background-color: white;
+    border: 1px black solid;
+    padding: 0;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+button.delBook:hover
+{
+    border: 1px white solid;
     border-radius: 7px;
-    background-color: #ff0000; 
+    background-color: red; 
     color: #ffffff; 
-    font-weight: 500px;
+    font-weight: 800;
     padding: 0;
 }
 
@@ -217,20 +249,14 @@ hr
 
 .subTotal
 {
-    text-align: right;
-    margin: 20px 80px 20px;
     font-size: 20px;
-    padding: 0;
-}
-
-.popup.active
-{
-    display: flex;
+    margin-right: 80px;
 }
 
 button.payment
 {
     margin-left: 550px;
+    margin-top: 30px;
     margin-bottom: 20px;
     width: 200px;
 }
@@ -240,20 +266,19 @@ button.payment:hover
     font-weight: bold;
 }
 
-.popup
-{
+.popup {
     background: #fff;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 15px;
     width: 700px;
     position: fixed;
     display: none;
     flex-direction: row;
-    height: 500px;
+    height: 680px;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-
+    line-height: 2.5;
 }
 
 .popup.active
@@ -261,8 +286,7 @@ button.payment:hover
     display: flex;
 }
 
-.popup .close
-{
+.popup .close {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -270,59 +294,59 @@ button.payment:hover
     cursor: pointer;
 }
 
-.close:hover
+.info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 600px;
+}
+
+.receiverInfo,.paymentInfo {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.info label, .paymentInfo label 
 {
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Arial';
+    width: 100%;
+    padding: 0;
+}
+
+.receiverInfo input, .paymentInfo input
+{
+    padding: 5px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.close:hover {
     color: red;
 }
 
-.form.payment
-{
-    display: flex;
-    font-size: 15px;
-}
-
-form.info
-{
-    display: flex;
-    flex-direction: column;
-}
-
-form.paymentInfo
-{
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-}
-
-label
-{
+label {
     font-size: 13px;
     font-weight: bold;
     font-family: 'Arial';
     width: 200px;
 }
 
-label.header
-{
-    font-size: 20px;
+label.header {
+    font-size: 23px;
     font-family: 'Poppins';
-    margin-bottom: 20px;
-    padding: 0;
 }
 
-input.name
-{
-    width: 180px;
-}
-
-input
-{
+input {
     padding: 5px;
     font-size: 16px;
     width: 250px;
     font-size: 13px;
+    border-radius: 10px;
+    border: 1px black solid;
 }
-
 select
 {
     padding: 5px;
@@ -339,7 +363,7 @@ select
 .paymentMethod img
 {
     width: 40px;
-    height: 20px;
+    height: 18px;
     border: 1px black solid;
     border-radius: 5px;
     margin-right: 5px;
@@ -353,7 +377,8 @@ select
 
 .submit
 {
-    align-self: flex-end;
+    margin-top: 30px;
+    transform: translateX(20px);
     background-color: #4c4f75;
     color: white;
     border: 1px black solid;
@@ -361,7 +386,7 @@ select
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    transform: translateY(20px);
+    width: 100px;
 }
 
 .submit a{
