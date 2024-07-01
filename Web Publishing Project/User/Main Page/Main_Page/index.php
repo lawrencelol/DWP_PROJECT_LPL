@@ -22,8 +22,8 @@ include("../../../connection.php");
             <ul>
                 <li><a href="../../Menu/Books/Display/BookDisplay.php">BOOKSHELF</a></li>
                 <li><a href="../../Cart/Cart.php">CART</a></li>
-                <li><a href="../../My Profile/User Profile/userprofile.php">MY PROFILE</a></li>
-                <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUT US</a></li>
+                <li><a href="../../My Profile/User Profile/userprofile.php">MYPROFILE</a></li>
+                <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUTUS</a></li>
             </ul>
         </header>
 
