@@ -93,6 +93,7 @@ header li {
 }
 
 .profile img{
+    transform: translateX(-32%);
     height: 200px;
     border-radius: 50%;
     margin-left: 50px;
