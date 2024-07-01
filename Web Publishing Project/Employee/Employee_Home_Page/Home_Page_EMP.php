@@ -1,6 +1,27 @@
 <?php
 include('../../connection.php');
 
+// Initialize an array to hold sales data for each month
+$monthlySales = array_fill(1, 12, 0);
+
+// Get total sales for each month in the current year
+$currentYear = date('Y');
+$queryMonthlySales = "
+    SELECT MONTH(order_date) as month, SUM(o.Price) as totalSales 
+    FROM orders o
+    JOIN booklist b ON o.Book_Name = b.Book_Name
+    WHERE YEAR(order_date) = '$currentYear'
+    GROUP BY MONTH(order_date)";
+$resultMonthlySales = mysqli_query($connect, $queryMonthlySales);
+
+while ($row = mysqli_fetch_assoc($resultMonthlySales)) {
+    $monthlySales[(int)$row['month']] = (float)$row['totalSales'];
+}
+
+// Prepare data for JavaScript
+$months = json_encode(array_keys($monthlySales));
+$sales = json_encode(array_values($monthlySales));
+
 // Initialize variables to avoid undefined variable warnings
 $totalSales = 0;
 $salesChange = 0;
@@ -21,8 +42,9 @@ $prevYear = date('Y', strtotime('-1 month'));
 
 // Fetch total sales for current month
 $queryTotalSales = "
-    SELECT SUM(Price) as totalSales 
-    FROM orders
+    SELECT SUM(o.Price) as totalSales 
+    FROM orders o
+    JOIN booklist b ON o.Book_Name = b.Book_Name
     WHERE MONTH(order_date) = '$currentMonth' 
     AND YEAR(order_date) = '$currentYear'";
 $resultTotalSales = mysqli_query($connect, $queryTotalSales);
@@ -31,8 +53,9 @@ $totalSales = $rowTotalSales['totalSales'] ?? 0;
 
 // Fetch total sales for previous month
 $queryPrevTotalSales = "
-    SELECT SUM(Price) as totalSales 
-    FROM orders
+    SELECT SUM(o.Price) as totalSales 
+    FROM orders o
+    JOIN booklist b ON o.Book_Name = b.Book_Name
     WHERE MONTH(order_date) = '$prevMonth' 
     AND YEAR(order_date) = '$prevYear'";
 $resultPrevTotalSales = mysqli_query($connect, $queryPrevTotalSales);
@@ -46,8 +69,9 @@ if ($prevTotalSales != 0) {
 
 // Fetch total orders for current month
 $queryTotalOrders = "
-    SELECT COUNT(order_id) as totalOrders 
-    FROM orders
+    SELECT COUNT(o.order_id) as totalOrders 
+    FROM orders o
+    JOIN booklist b ON o.Book_Name = b.Book_Name
     WHERE MONTH(order_date) = '$currentMonth' 
     AND YEAR(order_date) = '$currentYear'";
 $resultTotalOrders = mysqli_query($connect, $queryTotalOrders);
@@ -56,8 +80,9 @@ $totalOrders = $rowTotalOrders['totalOrders'] ?? 0;
 
 // Fetch total orders for previous month
 $queryPrevTotalOrders = "
-    SELECT COUNT(order_id) as totalOrders 
-    FROM orders
+    SELECT COUNT(o.order_id) as totalOrders 
+    FROM orders o
+    JOIN booklist b ON o.Book_Name = b.Book_Name
     WHERE MONTH(order_date) = '$prevMonth' 
     AND YEAR(order_date) = '$prevYear'";
 $resultPrevTotalOrders = mysqli_query($connect, $queryPrevTotalOrders);
@@ -126,7 +151,9 @@ if ($prevTotalComments != 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emp_Home</title>
-    <link rel="stylesheet" href="Home_Page_EMP.css"> 
+    <link rel="stylesheet" href="Home_Page_EMP.css">
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         function printDashboard() {
             window.print();
@@ -179,11 +206,37 @@ if ($prevTotalComments != 0) {
                 <h4><?= $totalComments ?></h4>
                 <p><?= ($commentsChange >= 0 ? '+' : '') . number_format($commentsChange, 2) ?>% This month</p>
             </div>
+            <button class="print_btn" onclick="printDashboard()">Print</button>
         </div>
-        <div class="chart">
-            <!-- Add your charts or visualizations here -->
+        <div class="container">
+            <h2>Monthly Sales</h2>
+            <canvas id="salesChart"></canvas>
         </div>
     </div>
-    <button class="print" onclick="printDashboard()">Print</button>
+
+    <!-- Chart.js script to render the sales chart -->
+    <script>
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?= $months ?>,
+                datasets: [{
+                    label: 'Monthly Sales',
+                    data: <?= $sales ?>,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

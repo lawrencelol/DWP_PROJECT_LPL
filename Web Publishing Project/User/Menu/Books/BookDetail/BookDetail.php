@@ -41,6 +41,7 @@ if (isset($_POST['add_to_cart'])) {
     $bookIMG = mysqli_real_escape_string($connect, $_POST['BookIMG']);
     $bookName = mysqli_real_escape_string($connect, $_POST['Book_Name']);
     $price = mysqli_real_escape_string($connect, $_POST['Price']);
+    $category = mysqli_real_escape_string($connect, $_POST['Category']); // Get Category from form
 
     // Check if the book is already in the cart (based on book name as an example for the current user)
     $check_sql = "SELECT * FROM cart WHERE user_id = '$user_id' AND Book_Name = '$bookName'";
@@ -54,8 +55,8 @@ if (isset($_POST['add_to_cart'])) {
     }
 
     // Insert the book into the cart table
-    $insert_sql = "INSERT INTO cart (user_id, BookIMG, Book_Name, Price) 
-                   VALUES ('$user_id', '$bookIMG', '$bookName', '$price')";
+    $insert_sql = "INSERT INTO cart (user_id, BookIMG, Book_Name, Price, Category) 
+                   VALUES ('$user_id', '$bookIMG', '$bookName', '$price', '$category')";
 
     if (mysqli_query($connect, $insert_sql)) {
         $cart_id = mysqli_insert_id($connect); // Get the Cart_id of the inserted row
@@ -116,6 +117,7 @@ mysqli_close($connect); // Close database connection
             <input type="hidden" name="BookIMG" value="<?php echo $book['BookIMG']; ?>">
             <input type="hidden" name="Book_Name" value="<?php echo $book['Book_Name']; ?>">
             <input type="hidden" name="Price" value="<?php echo $book['Price']; ?>">
+            <input type="hidden" name="Category" value="<?php echo $book['Category']; ?>"> <!-- Add this line -->
             <button type="submit" name="add_to_cart" class="button type1"><span class="cart-txt">Add To Cart</span></button>
         </form>
     </div>
