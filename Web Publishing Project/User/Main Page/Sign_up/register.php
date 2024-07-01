@@ -203,14 +203,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="input-box">
                             <label>Username</label>
                             <i class='bx bx-user' style="font-size: 25px; bottom: 35px"></i>
-                            <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" placeholder="Type in your username" required>
+                            <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>"  required>
                             <?php echo (!empty($username_err)) ? '<div>' . $username_err . '</div>' : ''; ?>
                         </div>
                         
                         <div class="input-box">
                             <label>Email</label>
                             <i class='bx bx-envelope' style="font-size: 25px; bottom: 35px"></i>
-                            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>" required>
+                            <input type="email" name="email" value="<?php echo htmlspecialchars($email); ?>"  required>
                             <?php echo (!empty($email_err)) ? '<div>' . $email_err . '</div>' : ''; ?>
                         </div>
 
