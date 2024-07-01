@@ -133,6 +133,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         justify-self: center;
     }
 
+    .input-box{
+    margin: 20px 0;
+    position: relative;
+    }
+
+    .input-box input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border: none;
+        padding: 12px 12px 12px 45px;
+        border-radius: 99px;
+        outline: 3px solid transparent;
+        transition: 0.3s;
+        font-size: 17px;
+        color: white;
+        font-weight: 600;
+    }
+
+    .input-box input::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .input-box input:focus{
+        outline: 3px solid rgba(255, 255, 255, 0.3);
+    }
+    .input-box input::-ms-reveal {
+        filter: invert(100%); 
+    }
+
+    .input-box i {
+        border: none;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.8);
+    }
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="Sign.css">
@@ -158,14 +197,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
         <div class="right-side">
-            <div class="wrapper">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="Signfrm" method="post">
                     <h2 style="color:white; font-size:25px; font-weight: 700px; text-align:center; margin-bottom:5px;">Sign Up</h2>
                     <p style="color:white; font-size:15px; font-weight: 700px; text-align:center; margin-bottom:20px;">Please fill this form to create an account.</p> 
                         <div class="input-box">
                             <label>Username</label>
                             <i class='bx bx-user' style="font-size: 25px; bottom: 35px"></i>
-                            <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" required>
+                            <input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" placeholder="Type in your username" required>
                             <?php echo (!empty($username_err)) ? '<div>' . $username_err . '</div>' : ''; ?>
                         </div>
                         
@@ -188,7 +226,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <p>Already have an account? <a href="../Login/Login.php">Login here</a>.</p>
                 </form>
-            </div>
         </div>
     </div>
 </body>
