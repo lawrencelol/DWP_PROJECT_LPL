@@ -100,13 +100,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Sign Up</title>
     <style>
     .right-side{
-        position: related;
+        position: relative;
         width:250px;
         margin-right: 10%;
     }
 
     .dheader{
-    position:related;
+    position:relative;
     color: white; 
     display: flex;
     width: 10px;
