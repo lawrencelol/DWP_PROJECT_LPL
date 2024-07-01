@@ -6,8 +6,8 @@ include("../../../connection.php");
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTP-8">
-        <meta name="viewport" content="width-device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home page</title>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Home.css"> 
@@ -17,15 +17,14 @@ include("../../../connection.php");
         
     <!-- tab selection -->
         <header>
-            <img src="logo.png" >
+            <img src="logo.png">
             <p>Home Page</p>
-                <ul>
-                    <li><a href="../../Menu/Books/Display/BookDisplay.php">BOOKSHELF</a></li>
-                    <li><a href="../../Cart/Cart.php">CART</a></li>
-                    <li><a href="../../My Profile/User Profile/userprofile.php">MY.PROFILE</a></li>
-                    <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUT-US</a></li>
-                </ul>
-                
+            <ul>
+                <li><a href="../../Menu/Books/Display/BookDisplay.php">BOOKSHELF</a></li>
+                <li><a href="../../Cart/Cart.php">CART</a></li>
+                <li><a href="../../My Profile/User Profile/userprofile.php">MY PROFILE</a></li>
+                <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUT US</a></li>
+            </ul>
         </header>
 
         <body class="slider_body">
@@ -39,7 +38,6 @@ include("../../../connection.php");
             <div class="cards">
 
                 <label for="slide-1" id="slide1">
-
                     <div class="card">
                         <img class="bg-img" src="flippybackground.png" />
                         <div class="image">
@@ -51,14 +49,12 @@ include("../../../connection.php");
                             <span class="lorem">Your kids are invited to meet those spectacular sea creatures with Flippy!</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 1/Book_1.php" class="btn-details">View Details</a>
-
+                            <a href="../../Menu/Books/BookDetail/BookDetail.php?id=1" class="btn-details">View Details</a> <!-- Add BookID here -->
                         </div>
                     </div>
                 </label>
 
                 <label for="slide-2" id="slide2">
-
                     <div class="card">
                         <img class="bg-img" src="dinosaurbackground.png" /> <!--background image-->
                         <div class="image">
@@ -70,14 +66,12 @@ include("../../../connection.php");
                             <span class="lorem">Introducing Lilith and her pet... A Dinosaur!</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 3/Book_3.php" class="btn-details">View Details</a>
-
+                            <a href="../../Menu/Books/BookDetail/BookDetail.php?id=3" class="btn-details">View Details</a> <!-- Add BookID here -->
                         </div>
                     </div>
                 </label>
 
                 <label for="slide-3" id="slide3">
-
                     <div class="card">
                         <img class="bg-img" src="twinsbackground.png" /> <!--background image-->
                         <div class="image">
@@ -89,13 +83,12 @@ include("../../../connection.php");
                             <span class="lorem">"You're my Sister?!"<br>"Yeah, but dead."</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 5/Book_5.php" class="btn-details">View Details</a>
+                            <a href="../../Menu/Books/BookDetail/BookDetail.php?id=5" class="btn-details">View Details</a> <!-- Add BookID here -->
                         </div>
                     </div>
                 </label>
 
                 <label for="slide-4" id="slide4">
-
                     <div class="card">
                         <img class="bg-img" src="starbackground.png" /> <!--background image-->
                         <div class="image">
@@ -107,14 +100,12 @@ include("../../../connection.php");
                             <span class="lorem">Don't cry. I'll guide you to home.</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 4/Book_4.php" class="btn-details">View Details</a>
-
+                            <a href="../../Menu/Books/BookDetail/BookDetail.php?id=4" class="btn-details">View Details</a> <!-- Add BookID here -->
                         </div>
                     </div>
                 </label>
 
                 <label for="slide-5" id="slide5">
-
                     <div class="card">
                         <img class="bg-img" src="messbackground.png" /> <!--background image-->
                         <div class="image">
@@ -126,14 +117,12 @@ include("../../../connection.php");
                             <span class="lorem">The strings in my mind have been tangled for so long, and I don't know what to do.</span>
 
                             <!-- Book view -->
-                            <a href="../../Menu/Books/Book 6/Book_6.php" class="btn-details">View Details</a>
-
+                            <a href="../../Menu/Books/BookDetail/BookDetail.php?id=6" class="btn-details">View Details</a> <!-- Add BookID here -->
                         </div>
                     </div>
                 </label>
             </div>
         </div>
-
     </body>
 
         <footer>
