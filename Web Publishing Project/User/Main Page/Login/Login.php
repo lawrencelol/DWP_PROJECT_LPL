@@ -120,6 +120,47 @@ $connect->close();
         .bottom-selection a:hover {
             text-decoration: underline;
         }
+
+        .input-box{
+        margin: 20px 0;
+        position: relative;
+        }
+
+        .input-box input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 12px 12px 12px 45px;
+            border-radius: 99px;
+            outline: 3px solid transparent;
+            transition: 0.3s;
+            font-size: 17px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .input-box input::placeholder {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .input-box input:focus{
+            outline: 3px solid rgba(255, 255, 255, 0.3);
+        }
+        .input-box input::-ms-reveal {
+            filter: invert(100%); 
+        }
+
+        .input-box i {
+            border: none;
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            font-size: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
@@ -151,17 +192,21 @@ $connect->close();
                     ?>
                     <form name="loginfrm" method="post" class="Loginfrm" action="">
                         <h3 style="color:white; font-size:25px; font-weight: 700px; text-align:center; margin-bottom:5px;">Login</h3>
+                        
                         <div class="input-box">
                             <label>Username</label>
                             <i class='bx bx-user' style="font-size: 25px; bottom: 35px"></i>
                             <input type="username" name="username" placeholder="Enter your username" required>
                         </div>
+
                         <div class="input-box">
                             <label>Password</label>
                             <i class='bx bxs-lock-alt' style="font-size: 25px; bottom: 35px"></i>
                             <input type="password" name="userpass" placeholder="Enter your password" required>
                         </div>
+
                         <input type="submit" name="loginbtn" class="Submit-btn" value="LOGIN" />
+                        
                         <div class="bottom-selection">
                             <p>No Account?<a href="../Sign_up/register.php"> Register Now!</a></p>
                             <p><a href="forget_password.php">Forgot your password?</a></p>

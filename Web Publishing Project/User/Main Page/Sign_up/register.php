@@ -132,46 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
         justify-self: center;
     }
-
-    .input-box{
-    margin: 20px 0;
-    position: relative;
-    }
-
-    .input-box input {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
-        padding: 12px 12px 12px 45px;
-        border-radius: 99px;
-        outline: 3px solid transparent;
-        transition: 0.3s;
-        font-size: 17px;
-        color: white;
-        font-weight: 600;
-    }
-
-    .input-box input::placeholder {
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 13px;
-        font-weight: 500;
-    }
-
-    .input-box input:focus{
-        outline: 3px solid rgba(255, 255, 255, 0.3);
-    }
-    .input-box input::-ms-reveal {
-        filter: invert(100%); 
-    }
-
-    .input-box i {
-        border: none;
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        font-size: 30px;
-        color: rgba(255, 255, 255, 0.8);
-    }
+    
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="Sign.css">
