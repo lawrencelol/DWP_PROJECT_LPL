@@ -183,7 +183,7 @@ form .rating{
 
 .rating .star:active{
     opacity: 0;
-    animation: animete .5s ease-in-out forwards;
+    animation: animate .5s ease-in-out forwards;
 }
 
 @keyframes animate{
