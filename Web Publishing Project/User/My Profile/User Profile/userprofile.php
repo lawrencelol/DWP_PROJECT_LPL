@@ -125,7 +125,6 @@ if (isset($_POST["done"])) {
         <img src="<?php echo "../../../images/" . $row['profile_picture']; ?>" alt="Profile Picture">
         <div class="info">
             <h2 class="information">Personal Information</h2>
-            <div class="info2">
             <div>
                 <h2>Username: </h2>
                 <p><?php echo $row['username']; ?></p>
@@ -135,7 +134,6 @@ if (isset($_POST["done"])) {
                 <p><?php echo $row['phone']; ?></p>
                 <h2>Email address: </h2>
                 <p><?php echo $row['email']; ?></p>
-            </div>
             </div>
             <button class="edit">Edit User Info</button>
             <h2 class="information-1">Order Information</h2>
