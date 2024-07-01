@@ -9,7 +9,7 @@
 <body>
     <div class="black">
     <div class="container">
-        <h1>WHO YOU ARE?</h1>
+        <h1>WHO ARE YOU?</h1>
         <div class="options">
             <div class="option user">
                 <a class="link" href="../Main Page/Login/Login.php">
