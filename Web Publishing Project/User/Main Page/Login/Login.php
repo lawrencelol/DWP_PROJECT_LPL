@@ -8,11 +8,11 @@ if ($connect->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST["email"];
+    $username = $_POST["username"];
     $userpass = $_POST["userpass"];
 
-    $stmt = $connect->prepare("SELECT id FROM user_register WHERE email = ? AND userpass = ?");
-    $stmt->bind_param("ss", $email, $userpass);
+    $stmt = $connect->prepare("SELECT id FROM user_register WHERE username = ? AND userpass = ?");
+    $stmt->bind_param("ss", $username, $userpass);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../Main_Page/index.php"); // Redirect to user profile page
         exit(); // Ensure no further code is executed after redirection
     } else {
-        $error_message = "Invalid email or password.";
+        $error_message = "Invalid username or password.";
     }
 
     $stmt->close();
