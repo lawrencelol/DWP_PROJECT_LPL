@@ -14,7 +14,7 @@ body{
 
 /* TAB BAR */
 .selection {
-    width: 200px;
+    width: 180px;
     background-color: #3f290d;
     color: white;
     height: 100vh;
@@ -109,6 +109,19 @@ fieldset{
 .table, th, td {
   padding: 20px;
   border-collapse: collapse;
+}
+
+.short-desc {
+  width: 580px; /* Set width for the Comment column */
+  word-wrap: break-word; /* Wrap long words to fit the cell */
+  font-size: 14px;
+}
+
+.short-button {
+  width: 50px; /* Set width for the Comment column */
+  word-wrap: break-word; /* Wrap long words to fit the cell */
+  justify-content: center;
+  align-items: center;
 }
 
 th {

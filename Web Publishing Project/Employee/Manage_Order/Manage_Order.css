@@ -234,3 +234,8 @@ button[type="del"]:hover
     color: #3f290d;
     font-size: 40px;
 }
+
+.print {
+    margin-top: 25px;
+    font-size: 25px;
+}

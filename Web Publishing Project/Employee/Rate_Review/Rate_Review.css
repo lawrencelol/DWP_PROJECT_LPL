@@ -11,7 +11,7 @@ body {
 }
 
 .selection {
-    width: 200px;
+    width: 180px;
     background-color: #3f290d;
     color: white;
     height: 100vh;
@@ -120,7 +120,7 @@ th {
 }
 
 .short-comment {
-    width: 280px; /* Set width for the Comment column */
+    width: 600px; /* Set width for the Comment column */
     word-wrap: break-word; /* Wrap long words to fit the cell */
 }
 
