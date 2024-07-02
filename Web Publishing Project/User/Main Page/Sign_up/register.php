@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $uploads_dir = '../../../user images/'; // Directory where images will be uploaded
             $tmp_name = $_FILES['profile_picture']['tmp_name'];
             $file_name = basename($_FILES['profile_picture']['name']);
-            $profile_picture = $uploads_dir . $file_name;
+            $profile_picture = $file_name;
             move_uploaded_file($tmp_name, $profile_picture);
         } else {
             $profile_picture = null; // Set to null if file type is not allowed
