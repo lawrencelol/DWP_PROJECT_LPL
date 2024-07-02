@@ -122,7 +122,7 @@ if (isset($_POST["done"])) {
 
     <!-- User Personal Info -->
     <section class="profile">
-        <img src="<?php echo "../../../images/" . $row['profile_picture']; ?>" alt="Profile Picture">
+        <img src="<?php echo "../../../user images/" . $row['profile_picture']; ?>" alt="Profile Picture">
         <div class="info">
             <h2 class="information">Personal Information</h2>
             <div>
