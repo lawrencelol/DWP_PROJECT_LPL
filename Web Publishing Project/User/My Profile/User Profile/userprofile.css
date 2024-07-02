@@ -99,15 +99,6 @@ header li {
     margin-left: 50px;
 }
 
-.info2{
-    margin-left: 30px;
-    width: 100%;
-}
-
-.info2 div{
-  display: flex;
-}
-
 .info .information{
     margin-top: 20px;
     font-size: 50px;
