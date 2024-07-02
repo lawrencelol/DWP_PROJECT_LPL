@@ -23,6 +23,8 @@ if (!$result) {
     exit();
 }
 
+$isCartEmpty = mysqli_num_rows($result) === 0;
+
 // Handle deletion of cart items
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
     $cartID = $_GET['id'];
@@ -72,18 +74,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Insert into orders table for each cart item
         $order_date = date('Y-m-d H:i:s'); // Current date and time
         mysqli_data_seek($result, 0); // Reset the result pointer to the beginning
+
         while ($row = mysqli_fetch_assoc($result)) {
-            $insert_query = "INSERT INTO orders (CartID, user_id, username, email, order_date, Book_Name, Price, receiver_name, receiver_email)
-                         VALUES ('{$row['CartID']}', '$user_id', '$username', '$receiver_email', '$order_date', '{$row['Book_Name']}', '{$row['Price']}', '$receiver_name', '$receiver_email')";
-        
+            $insert_query = "INSERT INTO orders (user_id, username, email, order_date, Book_Name, Price, receiver_name, receiver_email, Category)
+                             VALUES ('$user_id', '$username', '$receiver_email', '$order_date', '{$row['Book_Name']}', '{$row['Price']}', '$receiver_name', '$receiver_email', '{$row['Category']}')";
+            echo "<script>alert('Payment successful.');</script>";
             if (!mysqli_query($connect, $insert_query)) {
                 throw new Exception("Error placing order: " . mysqli_error($connect));
             }
         }
 
-        // Delete all items from cart for the current user
-        $deleteQuery = "DELETE FROM cart WHERE user_id = '$user_id'";
-        if (!mysqli_query($connect, $deleteQuery)) {
+        // Delete all items from cart for the current user using user_id
+        $deleteCartQuery = "DELETE FROM cart WHERE user_id = '$user_id'";
+        if (!mysqli_query($connect, $deleteCartQuery)) {
             throw new Exception("Error deleting cart items: " . mysqli_error($connect));
         }
 
@@ -136,22 +139,29 @@ mysqli_close($connect);
                     <th class="bPrice"><b>Price</b></th>
                     <th class="delBook"></th>
                 </thead>
-                <?php 
-                    $no=1;
-                    while ($row = mysqli_fetch_assoc($result))
-                    {
+                <?php
+                $subTotal = 0;
+                $count = 0;
+
+                if ($isCartEmpty) {
+                    echo "<tr>";
+                    echo "<td colspan='5' style='text-align:center;'>Your shopping cart is empty.</td>";
+                    echo "</tr>";
+                } else {
+                    mysqli_data_seek($result, 0); // Reset the result pointer to the beginning
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        $count++;
+                        $subTotal += $row['Price'];
+                        echo "<tr>";
+                        echo "<td class='no'>{$count}</td>";
+                        echo "<td class='bImg'><img src='../../images/{$row['Book_Name']}.png' alt='book'></td>"; // Corrected image source
+                        echo "<td class='bName'>{$row['Book_Name']}</td>";
+                        echo "<td class='bPrice'>RM {$row['Price']}</td>"; // Corrected price display
+                        echo "<td class='delBook'><button class='delBook'><a class='delBook' href='cart.php?action=delete&id={$row['CartID']}'>X</a></button></td>";
+                        echo "</tr>";
+                    }
+                }
                 ?>
-                <tr>
-                    <td class='no'><?php echo $no; ?>.</td>                  
-                    <td class='bImg'><img src='../../images/<?php echo $row['Book_Name']; ?>.png' alt='book'></td>
-                    <td class='bName'><?php echo $row['Book_Name']; ?></td>
-                    <td class='bPrice'>RM <?php echo $row['Price']; ?></td>
-                    <td class='delBook'><button class='delBook'><a href='cart.php?action=delete&id=<?php echo $row['CartID']; ?>' class='delBook'>-</a></button></td>
-                </tr>
-                <?php 
-                    $subTotal += $row['Price'];
-                    $no++;
-                } ?>
             </table>
             <hr>
             <div class="subTotal">
@@ -189,7 +199,7 @@ mysqli_close($connect);
                             <label>CVV: </label>
                             <input type="text" name="cvv" maxlength="3" required>
                             <input type="hidden" name="selected_items[]" value="<?php echo $row['CartID']; ?>">
-                            <button type="submit" class="submit">Submit</button>
+                            <button type="submit" class="submit" value="proceedToPayment">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -198,13 +208,14 @@ mysqli_close($connect);
     </fieldset>
 </body>
     <script>
-
+        var cartItemCount = <?php echo $count; ?>;
+        if (cartItemCount != 0) {
         document.querySelector(".payment").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
 
         
         document.querySelector(".popup .close").addEventListener("click", function() {
             document.querySelector(".popup").classList.remove("active");
         });
-
+        }
     </script>
 </html>
