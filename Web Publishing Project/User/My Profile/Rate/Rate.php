@@ -2,22 +2,31 @@
 include('../../../connection.php');
 
 if (isset($_POST['submit_btn'])) {
-    $RateID = $connect->real_escape_string($_POST['RateID']); // Assuming RateID is passed from the form
     $userEmail = $connect->real_escape_string($_POST['userEmail']);
     $comment = $connect->real_escape_string($_POST['comment']);
     $ratedIndex = $connect->real_escape_string($_POST['ratedIndex']);
     $ratedIndex++;
     $rateDate = date('Y-m-d');
 
-    if ($connect->query("INSERT INTO ratingreview (user_id, Rating, UserEmail, Comment, Rate_Date) VALUES ('$RateID', '$ratedIndex++', '$userEmail', '$comment', '$rateDate')")) {
-        $sql = $connect->query("SELECT RateID FROM ratingreview ORDER BY RateID DESC LIMIT 1");
-        $uData = $sql->fetch_assoc();
-        $uID = $uData['RateID'];
+    // Fetch user ID based on the provided email
+    $userResult = $connect->query("SELECT id FROM user_register WHERE email='$userEmail'");
+    if ($userResult->num_rows > 0) {
+        $userData = $userResult->fetch_assoc();
+        $userID = $userData['id'];
 
-        echo json_encode(array('status' => 'success', 'id' => $uID));
+        if ($connect->query("INSERT INTO ratingreview (user_id, Rating, UserEmail, Comment, Rate_Date) VALUES ('$userID', '$ratedIndex', '$userEmail', '$comment', '$rateDate')")) {
+            $sql = $connect->query("SELECT RateID FROM ratingreview ORDER BY RateID DESC LIMIT 1");
+            $uData = $sql->fetch_assoc();
+            $uID = $uData['RateID'];
+
+            echo json_encode(array('status' => 'success', 'id' => $uID));
+        } else {
+            echo json_encode(array('status' => 'error'));
+        }
     } else {
-        echo json_encode(array('status' => 'error'));
+        echo json_encode(array('status' => 'error', 'message' => 'User not found'));
     }
+    exit;
 }
 ?>
 
@@ -103,44 +112,41 @@ if (isset($_POST['submit_btn'])) {
             for (var i = 0; i <= max; i++)
                 $('.bx-star:eq(' + i + ')').css('color', 'yellow');
         }
-    });
 
         function saveToDB() {
-        var RateID = 1; // Replace with actual RateID if available
-        var userEmail = $('#userEmail').val();
-        var comment = $('#comment').val();
+            var userEmail = $('#userEmail').val();
+            var comment = $('#comment').val();
 
-        $.ajax({
-            url: "Rate.php",
-            method: "POST",
-            dataType: 'json',
-            data: {
-                submit_btn: 1,
-                RateID: RateID,
-                userEmail: userEmail,
-                comment: comment,
-                ratedIndex: ratedIndex
-            },
-            success: function (response) {
-                if (response.status == 'success') {
-                    uID = response.id;
-                    localStorage.setItem('uID', uID);
-                    alert("Data Saved");
-                    location.reload(); // Reload the page after successful submission
-                } else {
-                    alert("Data Not Saved");
+            $.ajax({
+                url: "",
+                method: "POST",
+                dataType: 'json',
+                data: {
+                    submit_btn: 1,
+                    userEmail: userEmail,
+                    comment: comment,
+                    ratedIndex: ratedIndex
+                },
+                success: function (response) {
+                    if (response.status == 'success') {
+                        uID = response.id;
+                        localStorage.setItem('uID', uID);
+                        alert("Thanks for Rating!!!");
+                        location.reload(); // Reload the page after successful submission
+                    } else {
+                        alert("Data Not Saved: " + response.message);
+                    }
+                },
+                error: function() {
+                    alert("Thanks for Rating!!!!!");
+                    location.reload();
                 }
-            },
-            error: function() {
-                alert("Thanks for Rating!!!!!");
-                location.reload();
-            }
-        });
-    }
+            });
+        }
+    });
 </script>
 
 <footer>
 </footer>
-<!-- hehe -->
 </body>
 </html>
