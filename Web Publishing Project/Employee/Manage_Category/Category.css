@@ -179,7 +179,7 @@ button[type="delCat"]:hover
   transition: all 0.2s ease-in-out;
   margin: 30px auto;  /* Center the button */
   display: block;  /* Ensure the button is a block element */
-  text-align: center;
+  text-align: left;
 }
 
 .add:hover{
