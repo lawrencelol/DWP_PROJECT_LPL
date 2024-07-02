@@ -30,12 +30,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 
         if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
             $tmp_name = $_FILES['profile_picture']['tmp_name'];
+            $file_type = mime_content_type($tmp_name);
             $upload_dir = '../../user images/'; // Directory where you want to store uploads
             $file_name = basename($_FILES['profile_picture']['name']);
-            $profile_picture = $file_name; // Only save the filename
 
-            if (!move_uploaded_file($tmp_name, $upload_dir . $file_name)) {
-                echo '<script>alert("Error uploading profile picture.");</script>';
+            if ($file_type == 'image/jpeg' || $file_type == 'image/png' || $file_type == 'image/gif' || $file_type == 'image/jpg') {
+                $profile_picture = $file_name; // Only save the filename
+
+                if (!move_uploaded_file($tmp_name, $upload_dir . $file_name)) {
+                    echo '<script>alert("Error uploading profile picture.");</script>';
+                }
+            } else {
+                echo '<script>alert("Invalid file type. Only JPEG, PNG, GIF, and JPG are allowed.");</script>';
             }
         }
 
@@ -67,12 +73,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
         // Check if profile picture is being updated
         if (isset($_FILES['update_profile_picture']) && $_FILES['update_profile_picture']['error'] == UPLOAD_ERR_OK) {
             $tmp_name = $_FILES['update_profile_picture']['tmp_name'];
+            $file_type = mime_content_type($tmp_name);
             $upload_dir = '../../user images/'; // Directory where you want to store uploads
             $file_name = basename($_FILES['update_profile_picture']['name']);
-            $profile_picture = $file_name; // Only save the filename
 
-            if (!move_uploaded_file($tmp_name, $upload_dir . $file_name)) {
-                echo '<script>alert("Error uploading profile picture.");</script>';
+            if ($file_type == 'image/jpeg' || $file_type == 'image/png' || $file_type == 'image/gif' || $file_type == 'image/jpg') {
+                $profile_picture = $file_name; // Only save the filename
+
+                if (!move_uploaded_file($tmp_name, $upload_dir . $file_name)) {
+                    echo '<script>alert("Error uploading profile picture.");</script>';
+                }
+            } else {
+                echo '<script>alert("Invalid file type. Only JPEG, PNG, GIF, and JPG are allowed.");</script>';
             }
         }
 
@@ -93,15 +105,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
 // Delete user functionality
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'delete_user') {
     $id = sanitize($connect, $_POST['id']);
-
     $sql = "DELETE FROM user_register WHERE id = '$id'";
+    
     if (mysqli_query($connect, $sql)) {
-        echo "User deleted successfully!";
+        // Redirect back to the manage user page
+        header("Location: Manage_USER.php");
+        exit();
     } else {
-        echo "Error deleting user: " . mysqli_error($connect);
+        echo '<script>alert("Error deleting user: ' . mysqli_error($connect) . '");</script>';
     }
-    exit; // Ensure no further code is executed
 }
+
 
 // Fetch users functionality
 $sql = "SELECT id, username, userpass, email, phone, birthday, profile_picture FROM user_register";
@@ -192,16 +206,16 @@ $result = mysqli_query($connect, $sql);
                     <input type="hidden" name="action" value="add_user">
                     <label for="user_Username">Username:</label>
                     <input type="text" id="user_Username" name="user_Username" required>
+                    <label for="user_Password">Password:</label>
+                    <input type="password" id="user_Password" name="user_Password" required>
                     <label for="user_Email">Email:</label>
                     <input type="email" id="user_Email" name="user_Email" required>
-                    <label for="user_Password">Password:</label>
-                    <input type="text" id="user_Password" name="user_Password" required>
                     <label for="user_Phone">Phone:</label>
                     <input type="text" id="user_Phone" name="user_Phone" required>
                     <label for="user_Birthday">Birthday:</label>
                     <input type="date" id="user_Birthday" name="user_Birthday" required>
                     <label for="profile_picture">Profile Picture:</label>
-                    <input type="file" id="profile_picture" name="profile_picture">
+                    <input type="file" id="profile_picture" name="profile_picture" accept="image/jpeg, image/png, image/gif, image/jpg" required>
                     <button type="submit" style="background: #4c4f75; border-radius: 10px; color: white; padding: 10px; font-weight: 800; font-size: 15px;">Add User</button>
                 </form>
             </div>
@@ -211,132 +225,113 @@ $result = mysqli_query($connect, $sql);
         <div id="updateUserModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <form class="form" id="updateUserForm" method="post" action="Manage_USER.php">
+                <form class="form" id="updateUserForm" method="post" action="Manage_USER.php" enctype="multipart/form-data">
                     <h2>Update User</h2>
-                    <input type="hidden" name="action" value="update_user">
                     <input type="hidden" id="update_id" name="id">
+                    <input type="hidden" name="action" value="update_user">
                     <label for="update_user_Username">Username:</label>
                     <input type="text" id="update_user_Username" name="user_Username" required>
+                    <label for="update_user_Password">Password:</label>
+                    <input type="password" id="update_user_Password" name="user_Password" required>
                     <label for="update_user_Email">Email:</label>
                     <input type="email" id="update_user_Email" name="user_Email" required>
-                    <label for="update_user_Password">Password:</label>
-                    <input type="text" id="update_user_Password" name="user_Password" required>
                     <label for="update_user_Phone">Phone:</label>
                     <input type="text" id="update_user_Phone" name="user_Phone" required>
                     <label for="update_user_Birthday">Birthday:</label>
                     <input type="date" id="update_user_Birthday" name="user_Birthday" required>
-                    <label for="update_user_Profile_Picture">Profile Picture:</label>
-                    <input type="text" id="update_user_Profile_Picture" name="user_Profile_Picture" required>
-                    <button type="submit" style="background: #4c4f75; border-radius: 10px; color: white; padding: 10px; font-weight: 800; font-size: 15px;">Update User</button>
+                    <label for="update_profile_picture">Profile Picture:</label>
+                    <input type="file" id="update_profile_picture" name="update_profile_picture" accept="image/jpeg, image/png, image/gif, image/jpg">
+                    <button type="submit"  style="background: #4c4f75; border-radius: 10px; color: white; padding: 10px; font-weight: 800; font-size: 15px;">Update User</button>
                 </form>
             </div>
         </div>
 
+        <!-- User Table -->
         <table>
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Username</th>
-                    <th>Email</th>
                     <th>Password</th>
+                    <th>Email</th>
                     <th>Phone</th>
                     <th>Birthday</th>
                     <th>Profile Picture</th>
-                    <th>DELETE</th>
-                    <th>UPDATE</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if (mysqli_num_rows($result) > 0) {
-                    while($row = mysqli_fetch_assoc($result)) {
-                        echo "<tr id='user_" . $row['id'] . "'>";
-                        echo "<td>" . $row['username'] . "</td>";
-                        echo "<td>" . $row['email'] . "</td>";
-                        echo "<td>" . $row['userpass'] . "</td>";
-                        echo "<td>" . $row['phone'] . "</td>";
-                        echo "<td>" . $row['birthday'] . "</td>";
-                        echo "<td><img src='../../user images/" . htmlspecialchars($row['profile_picture']) . "' style='width: 60px; height: auto;' alt='Profile Picture'></td>";
-                        echo '<td><button onclick="deleteUser(\'' . $row['id'] . '\')">❌</button></td>';
-                        echo '<td><button onclick="openUpdateUserModal(\'' . $row['id'] . '\', \'' . addslashes($row['username']) . '\', \'' . addslashes($row['email']) . '\', \'' . addslashes($row['userpass']) . '\', \'' . addslashes($row['phone']) . '\', \'' . addslashes($row['birthday']) . '\', \'' . addslashes($row['profile_picture']) . '\')">⚙️</button></td>';
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='8'>No users found</td></tr>";
-                }
-                ?>
+                <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                    <tr>
+                        <td><?php echo $row['id']; ?></td>
+                        <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['userpass']; ?></td>
+                        <td><?php echo $row['email']; ?></td>
+                        <td><?php echo $row['phone']; ?></td>
+                        <td><?php echo $row['birthday']; ?></td>
+                        <td><img src="../../user images/<?php echo $row['profile_picture']; ?>" alt="Profile Picture" style="width: 50px;"></td>
+                        <td>
+                            <!-- Update Button -->
+                            <button class="editBtn" data-id="<?php echo $row['id']; ?>">⚙️</button>
+                            
+                            <!-- Delete Form -->
+                            <form method="post" action="Manage_USER.php" style="display:inline-block;" onsubmit="return confirmDelete();">
+                                <input type="hidden" name="action" value="delete_user">
+                                <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                <button type="submit">❌</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
             </tbody>
         </table>
     </div>
 
+    <!-- JavaScript for Modals and Confirmation -->
     <script>
-        // Get the modals
-        var addModal = document.getElementById("addUserModal");
-        var updateModal = document.getElementById("updateUserModal");
-
-        // Get the button that opens the add modal
-        var btn = document.getElementById("addUserBtn");
-
-        // Get the <span> element that closes the modals
-        var spans = document.getElementsByClassName("close");
-
-        // When the user clicks the button, open the add modal 
-        btn.onclick = function() {
-            addModal.style.display = "block";
+        // Function to handle confirmation for delete action
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this user?");
         }
 
-        // When the user clicks on <span> (x), close the modals
-        for (let i = 0; i < spans.length; i++) {
-            spans[i].onclick = function() {
-                addModal.style.display = "none";
-                updateModal.style.display = "none";
+        // Function to handle modal for adding new user
+        var addUserModal = document.getElementById("addUserModal");
+        var addUserBtn = document.getElementById("addUserBtn");
+        var closeAddUserModal = document.getElementsByClassName("close")[0];
+
+        addUserBtn.onclick = function() {
+            addUserModal.style.display = "block";
+        }
+
+        closeAddUserModal.onclick = function() {
+            addUserModal.style.display = "none";
+        }
+
+        // Function to handle modal for updating user
+        var updateUserModal = document.getElementById("updateUserModal");
+        var editBtns = document.getElementsByClassName("editBtn");
+        var closeUpdateUserModal = document.getElementsByClassName("close")[1];
+
+        for (var i = 0; i < editBtns.length; i++) {
+            editBtns[i].onclick = function() {
+                var id = this.getAttribute('data-id');
+                document.getElementById("update_id").value = id;
+                updateUserModal.style.display = "block";
             }
         }
 
-        // When the user clicks anywhere outside of the modals, close them
+        closeUpdateUserModal.onclick = function() {
+            updateUserModal.style.display = "none";
+        }
+
+        // Close the modal if user clicks outside the modal
         window.onclick = function(event) {
-            if (event.target == addModal) {
-                addModal.style.display = "none";
-            }
-            if (event.target == updateModal) {
-                updateModal.style.display = "none";
-            }
-        }
-
-        // Function to open update modal with user data
-        function openUpdateUserModal(id, username, email, password, phone, birthday, profile_picture) {
-            document.getElementById('update_id').value = id;
-            document.getElementById('update_user_Username').value = username;
-            document.getElementById('update_user_Email').value = email;
-            document.getElementById('update_user_Password').value = password;
-            document.getElementById('update_user_Phone').value = phone;
-            document.getElementById('update_user_Birthday').value = birthday;
-            document.getElementById('update_user_Profile_Picture').value = profile_picture;
-            updateModal.style.display = "block";
-        }
-
-        // JavaScript function to delete user via AJAX
-        function deleteUser(id) {
-            if (confirm("Are you sure you want to delete this user?")) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "Manage_USER.php", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        if (xhr.responseText.trim() === "User deleted successfully!") {
-                            document.getElementById('user_' + id).remove();
-                            alert("User deleted successfully!");
-                        } else {
-                            alert("Error: " + xhr.responseText);
-                        }
-                    }
-                };
-                xhr.send("action=delete_user&id=" + id);
+            if (event.target == addUserModal) {
+                addUserModal.style.display = "none";
+            } else if (event.target == updateUserModal) {
+                updateUserModal.style.display = "none";
             }
         }
     </script>
 </body>
 </html>
-
-<?php
-mysqli_close($connect);
-?>
