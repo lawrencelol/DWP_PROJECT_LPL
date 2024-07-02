@@ -161,6 +161,15 @@ $connect->close();
             color: rgba(255, 255, 255, 0.8);
         }
 
+        body {
+            background-image: url(register-bg.jpg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            background-size: cover;
+            background-position: center;
+        }
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">

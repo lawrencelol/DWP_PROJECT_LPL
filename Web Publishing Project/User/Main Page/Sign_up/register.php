@@ -148,6 +148,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
             justify-self: center;
         }
+
+        body {
+            background-image: url(register-bg.jpg);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            /* justify-content: center; */
+            background-size: cover;
+            background-position: center;
+        }
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="Sign.css">

@@ -8,16 +8,6 @@
     top: 0;
 }
 
-body {
-    background-image: url(register-bg.jpg);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    background-position: center;
-}
-
 .Sign-form{
     background: #FFDEAB;
     border: 3px solid #A9ADB01b;
