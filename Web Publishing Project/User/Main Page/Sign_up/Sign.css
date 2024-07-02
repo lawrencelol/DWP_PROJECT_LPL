@@ -9,10 +9,11 @@
 }
 
 body {
+    background-image: url(register-bg.jpg);
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background-color: #FFDEAB;
+    justify-content: center;
     background-size: cover;
     background-position: center;
 }
