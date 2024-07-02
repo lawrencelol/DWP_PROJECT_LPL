@@ -174,7 +174,7 @@ $connect->close();
             </div>
             <hr>
             <div class="description">
-                <h2 style="color: white; font-size: 25px; font-weight: 600;">Become one of the LPL bookworm! 🐛</h2>
+                <h2 style="color: white; font-size: 25px; font-weight: 600;">Welcome to LPL bookstore! 🐛</h2>
                 <p><br>Pick your book, easy to use</p>
                 <p><br><i class='bx bx-check-circle'></i>Look for A Book</p>
                 <p><i class='bx bx-check-circle'></i>Pick it up</p>

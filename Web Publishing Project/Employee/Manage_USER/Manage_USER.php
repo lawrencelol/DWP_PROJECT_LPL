@@ -32,12 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
             $tmp_name = $_FILES['profile_picture']['tmp_name'];
             $upload_dir = '../../user images/'; // Directory where you want to store uploads
             $file_name = basename($_FILES['profile_picture']['name']);
-            $profile_picture = $upload_dir . $file_name;
+            $profile_picture = $file_name; // Only save the filename
 
-            if (move_uploaded_file($tmp_name, $profile_picture)) {
-                // File uploaded successfully
-                // You may want to store $profile_picture in your database
-            } else {
+            if (!move_uploaded_file($tmp_name, $upload_dir . $file_name)) {
                 echo '<script>alert("Error uploading profile picture.");</script>';
             }
         }
@@ -65,8 +62,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
         $email = sanitize($connect, $_POST['user_Email']);
         $phone = sanitize($connect, $_POST['user_Phone']);
         $birthday = sanitize($connect, $_POST['user_Birthday']);
+        $profile_picture = ''; // Default value
 
-        // Handle file upload for profile picture (if updating)
+        // Check if profile picture is being updated
+        if (isset($_FILES['update_profile_picture']) && $_FILES['update_profile_picture']['error'] == UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES['update_profile_picture']['tmp_name'];
+            $upload_dir = '../../user images/'; // Directory where you want to store uploads
+            $file_name = basename($_FILES['update_profile_picture']['name']);
+            $profile_picture = $file_name; // Only save the filename
+
+            if (!move_uploaded_file($tmp_name, $upload_dir . $file_name)) {
+                echo '<script>alert("Error uploading profile picture.");</script>';
+            }
+        }
 
         // Update data in the database using prepared statement
         $stmt = mysqli_prepare($connect, "UPDATE user_register SET username = ?, userpass = ?, email = ?, phone = ?, birthday = ?, profile_picture = ? WHERE id = ?");
@@ -109,6 +117,14 @@ $result = mysqli_query($connect, $sql);
     <link rel="stylesheet" href="Manage_USER.css">
     <style>
         /* Modal styling */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: auto; 
+        }
+
         .modal {
             display: none; 
             position: fixed; 
@@ -239,7 +255,7 @@ $result = mysqli_query($connect, $sql);
                         echo "<td>" . $row['userpass'] . "</td>";
                         echo "<td>" . $row['phone'] . "</td>";
                         echo "<td>" . $row['birthday'] . "</td>";
-                        echo "<td><img src='" . $row['profile_picture'] . "' style='width: 60px; height: auto;' alt='Profile Picture'></td>"; // Display profile picture
+                        echo "<td><img src='../../user images/" . htmlspecialchars($row['profile_picture']) . "' style='width: 60px; height: auto;' alt='Profile Picture'></td>";
                         echo '<td><button onclick="deleteUser(\'' . $row['id'] . '\')">❌</button></td>';
                         echo '<td><button onclick="openUpdateUserModal(\'' . $row['id'] . '\', \'' . addslashes($row['username']) . '\', \'' . addslashes($row['email']) . '\', \'' . addslashes($row['userpass']) . '\', \'' . addslashes($row['phone']) . '\', \'' . addslashes($row['birthday']) . '\', \'' . addslashes($row['profile_picture']) . '\')">⚙️</button></td>';
                         echo "</tr>";

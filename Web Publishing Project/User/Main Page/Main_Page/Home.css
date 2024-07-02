@@ -78,6 +78,7 @@ header a:hover {
 
 header li {
     display: inline;
+    padding-left: 11px;
 }
 
 .dropdown {

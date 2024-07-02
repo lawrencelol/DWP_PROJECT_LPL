@@ -39,6 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Emp_Category</title>
+        <style>
+            body{
+                margin: 0;
+                display: flex;
+                background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
+                background-size: cover;
+                background-attachment: fixed;
+                height: 100vh;
+                width: 100%;
+                
+            }
+        </style>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Category.css"> 
     </head>
