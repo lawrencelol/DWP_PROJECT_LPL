@@ -50,6 +50,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
                 width: 100%;
                 
             }
+
+            /* Special effect for the add new category button */
+            .add{
+                height: 40px;
+                width: 150px;
+                position: relative;
+                font-weight: bold;
+                background-color: transparent;
+                cursor: pointer;
+                border: 1px solid #252525;
+                overflow: hidden;
+                border-radius: 30px;
+                color: #3f290d;
+                transition: all 0.2s ease-in-out;
+                margin: 30px auto;  /* Center the button */
+                display: block;  /* Ensure the button is a block element */
+                text-align: center;
+            }
+
+            .add:hover{
+                background-color: #3f290d;
+                color: #ED9017;
+            }
         </style>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Category.css"> 
@@ -110,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
             </table>
         </div>
     </section>
-    <button class="add">Add new category</button>
+    <button class="add" style="left: -540px;">Add new category</button>
     <div class="popup">
         <div class="close">&times;</div>
         <div class="form">
