@@ -24,7 +24,7 @@ include("../../../connection.php");
                 <li><a href="../../Cart/Cart.php">CART</a></li>
                 <li><a href="../../My Profile/User Profile/userprofile.php">MY<span style="padding-left:5px;">&#x200B;</span>PROFILE</a></li>
                 <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUT<span style="padding-left:5px;">&#x200B;</span>US</a></li>
-                <li><a href="../../Landing_Page/Landing.php">LOG OUT</a></li>
+                <li><a href="../../Landing_Page/Landing.php">LOG<span style="padding-left:5px;">&#x200B;</span>OUT</a></li>
             </ul>
         </header>
 
