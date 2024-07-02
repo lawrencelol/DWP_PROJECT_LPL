@@ -136,7 +136,7 @@ if (isset($_POST["done"])) {
                 <p><?php echo $row['email']; ?></p>
             </div>
             <button class="edit">Edit User Info</button>
-            <h2 class="information-1">Order Information</h2>
+            <h2 class="information-1">My Order History</h2>
             <table class="order">
                 <tr>
                     <th>Order ID</th>
