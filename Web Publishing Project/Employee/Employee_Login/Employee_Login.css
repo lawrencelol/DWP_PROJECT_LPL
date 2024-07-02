@@ -17,6 +17,12 @@ body {
     background-position: center;
 }
 
+img{
+    height: 80px;
+    z-index: 1;
+    margin-bottom: 60px;
+    transform: translateX(-3px);
+}
 .Login-form{
     background: rgba(0, 0, 0, 0.10);
     border: 3px solid rgba(255, 255, 255, 0);
