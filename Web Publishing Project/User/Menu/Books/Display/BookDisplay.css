@@ -39,22 +39,6 @@ h1{
   left: 150px;
 }
 
-header ul{
-  color:#cec1b2;
-  font-weight: bold;
-  position: absolute;
-  top:0;
-  line-height:85px;
-  justify-content: space-evenly;
-  word-spacing: 0px;
-  transform: translateX(300%); /* Adjusted this line to move left */
-  list-style: none;
-  padding: 0; /* Added this line */
-  left: -350px;
-  display: flex;
-}
-
-
 header a{
     color:#cec1b2;
     text-decoration: none;
@@ -62,12 +46,6 @@ header a{
 
 header a:hover{
     text-decoration: underline;
-}
-
-header li{
-  display: inline;
-  width: auto; /* Changed from 0px to auto */
-  margin: 0 10px; /* Added this line for spacing between items */
 }
 
 /* LPL Bookstore Slogan Decoration */
