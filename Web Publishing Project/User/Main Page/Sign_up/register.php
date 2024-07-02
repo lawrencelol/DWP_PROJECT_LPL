@@ -3,8 +3,8 @@
 require_once 'connection.php'; // Update with your database connection file
 
 // Define variables and initialize with empty values
-$username = $password = $email = "";
-$username_err = $password_err = $email_err = "";
+$username = $password = $email = $phone = $birthday = "";
+$username_err = $password_err = $email_err = $phone_err = $birthday_err = "";
 $profile_picture = ""; // Initialize profile picture variable
 
 // Processing form data when form is submitted
@@ -35,6 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
+    // Validate phone
+    if (empty(trim($_POST["phone"]))) {
+        $phone_err = "Please enter a phone number.";
+    } else {
+        $phone = trim($_POST["phone"]);
+    }
+
+    // Validate birthday
+    if (empty(trim($_POST["birthday"]))) {
+        $birthday_err = "Please enter your birthday.";
+    } else {
+        $birthday = trim($_POST["birthday"]);
+    }
+
     // Check if file was uploaded without errors
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === UPLOAD_ERR_OK) {
         // Validate uploaded file type
@@ -52,13 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check input errors before inserting into database
-    if (empty($username_err) && empty($password_err) && empty($email_err)) {
+    if (empty($username_err) && empty($password_err) && empty($email_err) && empty($phone_err) && empty($birthday_err)) {
         // Prepare an insert statement
-        $sql = "INSERT INTO user_register (username, userpass, email, profile_picture) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO user_register (username, userpass, email, phone, birthday, profile_picture) VALUES (?, ?, ?, ?, ?, ?)";
 
         if ($stmt = $connect->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("ssss", $username, $password, $email, $profile_picture);
+            $stmt->bind_param("ssssss", $username, $password, $email, $phone, $birthday, $profile_picture);
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
@@ -203,6 +217,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <i class='bx bxs-lock-alt' style="font-size: 25px; bottom: 35px"></i>
                     <input type="password" name="password" required>
                     <?php echo (!empty($password_err)) ? '<div>' . $password_err . '</div>' : ''; ?>
+                </div>
+
+                <div class="input-box">
+                    <label>Phone</label>
+                    <i class='bx bx-phone' style="font-size: 25px; bottom: 35px"></i>
+                    <input type="text" name="phone" maxlength="11" value="<?php echo htmlspecialchars($phone); ?>" required>
+                    <?php echo (!empty($phone_err)) ? '<div>' . $phone_err . '</div>' : ''; ?>
+                </div>
+
+                <div class="input-box">
+                    <label>Birthday</label>
+                    <i class='bx bx-calendar' style="font-size: 25px; bottom: 35px"></i>
+                    <input type="date" name="birthday" value="<?php echo htmlspecialchars($birthday); ?>" required>
+                    <?php echo (!empty($birthday_err)) ? '<div>' . $birthday_err . '</div>' : ''; ?>
                 </div>
 
                 <div class="input-box">
