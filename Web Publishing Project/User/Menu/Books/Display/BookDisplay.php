@@ -73,7 +73,7 @@ if(mysqli_connect_errno()){
             </div>
         </li>
         <li><a href="../../../Cart/Cart.php">CART</a></li>
-        <li><a href="../../../Landing_Page/Landing.php">Log Out</a></li>
+        <li><a href="../../../Landing_Page/Landing.php">LOG OUT</a></li>
     </ul>
 </header>
 
