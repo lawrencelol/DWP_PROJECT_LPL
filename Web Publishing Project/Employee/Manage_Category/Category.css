@@ -164,29 +164,6 @@ button[type="delCat"]:hover
     color: #ffffff; 
 }
 
-/* Special effect for the add new category button */
-.add{
-  height: 40px;
-  width: 150px;
-  position: relative;
-  font-weight: bold;
-  background-color: transparent;
-  cursor: pointer;
-  border: 1px solid #252525;
-  overflow: hidden;
-  border-radius: 30px;
-  color: #3f290d;
-  transition: all 0.2s ease-in-out;
-  margin: 30px auto;  /* Center the button */
-  display: block;  /* Ensure the button is a block element */
-  text-align: left;
-}
-
-.add:hover{
-  background-color: #3f290d;
-  color: #ED9017;
-}
-
 /* pop up FORM */
 .popup {
   position: absolute;
