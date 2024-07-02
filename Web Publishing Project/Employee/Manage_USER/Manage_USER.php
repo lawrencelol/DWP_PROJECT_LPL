@@ -132,7 +132,7 @@ $result = mysqli_query($connect, $sql);
     <style>
         /* Modal styling */
         .container {
-            width: 100%;
+            width: 80%;
             margin: 0 auto;
             padding: 20px;
             box-sizing: border-box;
