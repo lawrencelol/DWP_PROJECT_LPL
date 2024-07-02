@@ -191,7 +191,7 @@ header a:hover{
   display: inline-block;
   text-transform: uppercase;
   outline: none;
-  border-radius: 5px;
+  border-radius: 15px;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;

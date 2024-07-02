@@ -110,7 +110,7 @@ if(mysqli_connect_errno()){
                     echo '<div>';
                     echo '<img src=" '. $bookIMGPath . '" alt="' . $book["Book_Name"] . '">';
                     echo '<h3>' . $book["Book_Name"] . '</h3>';
-                    echo '<p>$' . $book["Price"] . '</p>';
+                    echo '<p>RM' . $book["Price"] . '</p>';
                     echo '<a class="view" href="../BookDetail/BookDetail.php?id=' . $book["BookID"] . '"><button class="button type1"><span class="cart-txt">View Details</span></button></a>';
                     echo '</div>';
                 }
