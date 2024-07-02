@@ -13,11 +13,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $new_password = $_POST["new_password"];
         $confirm_password = $_POST["confirm_password"];
 
-        // Validate and process password reset (example: update database with new password)
+        // Validate and process password reset
         if ($new_password === $confirm_password) {
-            // Hash the password before storing it in the database (use appropriate hashing method)
-            $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-            
+            // Directly update the password without hashing (this is not recommended in production)
+            $hashed_password = $new_password; // Do not hash, store as plain text (not recommended)
+
             // Retrieve the username from session
             if (isset($_SESSION['reset_username'])) {
                 $username = $_SESSION['reset_username'];
@@ -27,8 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bind_param("ss", $hashed_password, $username);
                 $stmt->execute();
                 
-                // Redirect or show success message
-                header("Location: login.php"); // Redirect to login page after successful reset
+                // Set success message
+                $_SESSION['password_reset_success'] = true;
+
+                // Redirect to login page after successful reset
+                header("Location: login.php"); 
                 exit();
             } else {
                 $error_message = "Session expired. Please try again.";
@@ -69,7 +72,7 @@ $connect->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Reset</title>
     <style>
-        /* Paste your styles from Login.php here */
+        /* Paste your styles from your provided CSS here */
         .right-side {
             position: relative;
             width: 250px;
@@ -124,7 +127,7 @@ $connect->close();
             box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
             justify-self: center;
         }
-        .Submit-btn {
+        .reset-btn {
             width: 100%;
             padding: 10px 0;
             background: #4c4f75;
@@ -136,7 +139,7 @@ $connect->close();
             cursor: pointer;
             transition: 0.3s;
         }
-        .Submit-btn:hover {
+        .reset-btn:hover {
             background: #232541;
         }
         .bottom-selection {
@@ -194,7 +197,7 @@ $connect->close();
         }
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css"> <!-- Ensure your additional styles are also linked here -->
 </head>
 <body>
     <div class="show-bar">
@@ -205,7 +208,7 @@ $connect->close();
             </div>
             <hr>
             <div class="description">
-                <h2 style="color: white; font-size: 25px; font-weight: 600;">Welcome to LPL bookstore! 🐛</h2>
+                <h2 style="color: white; font-size: 25px; font-weight: 600;">Welcome to LPL bookstore! 📚</h2>
                 <p><br>Pick your book, easy to use</p>
                 <p><br><i class='bx bx-check-circle'></i>Look for A Book</p>
                 <p><i class='bx bx-check-circle'></i>Pick it up</p>
@@ -219,21 +222,30 @@ $connect->close();
             if (isset($_GET["action"]) && $_GET["action"] === "reset") {
                 // Display password reset form
                 ?>
-                <form method="post" action="">
-                    <label>New Password:</label>
-                    <input type="password" name="new_password" required><br>
-                    <label>Confirm Password:</label>
-                    <input type="password" name="confirm_password" required><br>
-                    <input type="submit" name="reset_submit" value="Reset Password">
+                <form method="post" action="" class="Loginfrm">
+                    <div class="input-box">
+                        <label>New Password:</label>
+                        <input type="password" name="new_password" placeholder="Type here" required><br>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Confirm Password:</label>
+                        <input type="password" name="confirm_password" placeholder="Type here" required><br>
+                    </div>
+
+                    <input type="submit" name="reset_submit" class="reset-btn" value="Reset Password">
                 </form>
                 <?php
             } else {
                 // Display forgot password form
                 ?>
-                <form method="post" action="">
-                    <label>Enter your username:</label>
-                    <input type="text" name="username" required><br>
-                    <input type="submit" name="forgot_submit" value="Submit">
+                <form method="post" action="" class="Loginfrm">
+                    <div class="input-box">
+                        <label>Enter your username:</label>
+                        <input type="text" name="username" placeholder="type here" required><br>
+                    </div>
+                        <input type="submit" name="forgot_submit" class="reset-btn" value="Submit">
+                    
                 </form>
                 <?php
             }
@@ -244,5 +256,15 @@ $connect->close();
             ?>
         </div>
     </div>
+
+    <script>
+        // JavaScript for displaying success message if redirected with success indicator
+        <?php
+        if (isset($_SESSION['password_reset_success']) && $_SESSION['password_reset_success']) {
+            echo "alert('New password saved');";
+            unset($_SESSION['password_reset_success']); // Clear the success indicator
+        }
+        ?>
+    </script>
 </body>
 </html>
