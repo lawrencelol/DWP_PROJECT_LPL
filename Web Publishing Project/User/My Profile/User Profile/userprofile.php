@@ -63,7 +63,7 @@ if (isset($_POST["done"])) {
         $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
         if (in_array($fileExtension, $allowedfileExtensions)) {
             // Directory where the file is to be saved
-            $uploadFileDir = '../../../images/';
+            $uploadFileDir = '../../../user images/';
             $newFileName = $user_id . '.' . $fileExtension;
             $dest_path = $uploadFileDir . $newFileName;
 
