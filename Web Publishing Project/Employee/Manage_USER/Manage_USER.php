@@ -7,6 +7,12 @@ function sanitize($connect, $data) {
     return mysqli_real_escape_string($connect, $data);
 }
 
+// Function to generate user ID (you may replace this with your own logic)
+function generateUserID() {
+    // Example logic to generate a unique user ID
+    return uniqid('user_', true);
+}
+
 // Add user functionality
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
     $action = $_POST['action'];
@@ -18,8 +24,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
         $email = sanitize($connect, $_POST['user_Email']);
         $phone = sanitize($connect, $_POST['user_Phone']);
         $birthday = sanitize($connect, $_POST['user_Birthday']);
-        $profile_picture = sanitize($connect, $_POST['user_Profile_Picture']);
-        
+
+        // Handle file upload for profile picture
+        $profile_picture = ''; // Default value
+
+        if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
+            $tmp_name = $_FILES['profile_picture']['tmp_name'];
+            $upload_dir = '../../user images/'; // Directory where you want to store uploads
+            $file_name = basename($_FILES['profile_picture']['name']);
+            $profile_picture = $upload_dir . $file_name;
+
+            if (move_uploaded_file($tmp_name, $profile_picture)) {
+                // File uploaded successfully
+                // You may want to store $profile_picture in your database
+            } else {
+                echo '<script>alert("Error uploading profile picture.");</script>';
+            }
+        }
+
         // Generate user ID
         $id = generateUserID();
 
@@ -43,8 +65,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
         $email = sanitize($connect, $_POST['user_Email']);
         $phone = sanitize($connect, $_POST['user_Phone']);
         $birthday = sanitize($connect, $_POST['user_Birthday']);
-        $profile_picture = sanitize($connect, $_POST['user_Profile_Picture']);
-        
+
+        // Handle file upload for profile picture (if updating)
+
         // Update data in the database using prepared statement
         $stmt = mysqli_prepare($connect, "UPDATE user_register SET username = ?, userpass = ?, email = ?, phone = ?, birthday = ?, profile_picture = ? WHERE id = ?");
         mysqli_stmt_bind_param($stmt, 'sssssss', $username, $password, $email, $phone, $birthday, $profile_picture, $id);
@@ -148,7 +171,7 @@ $result = mysqli_query($connect, $sql);
         <div id="addUserModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <form class="form" id="addUserForm" method="post" action="Manage_USER.php">
+                <form class="form" id="addUserForm" method="post" action="Manage_USER.php" enctype="multipart/form-data">
                     <h2>Add New User</h2>
                     <input type="hidden" name="action" value="add_user">
                     <label for="user_Username">Username:</label>
@@ -161,8 +184,8 @@ $result = mysqli_query($connect, $sql);
                     <input type="text" id="user_Phone" name="user_Phone" required>
                     <label for="user_Birthday">Birthday:</label>
                     <input type="date" id="user_Birthday" name="user_Birthday" required>
-                    <label for="user_Profile_Picture">Profile Picture:</label>
-                    <input type="text" id="user_Profile_Picture" name="user_Profile_Picture" required>
+                    <label for="profile_picture">Profile Picture:</label>
+                    <input type="file" id="profile_picture" name="profile_picture">
                     <button type="submit" style="background: #4c4f75; border-radius: 10px; color: white; padding: 10px; font-weight: 800; font-size: 15px;">Add User</button>
                 </form>
             </div>
@@ -216,7 +239,7 @@ $result = mysqli_query($connect, $sql);
                         echo "<td>" . $row['userpass'] . "</td>";
                         echo "<td>" . $row['phone'] . "</td>";
                         echo "<td>" . $row['birthday'] . "</td>";
-                        echo "<td>" . $row['profile_picture'] . "</td>";
+                        echo "<td><img src='" . $row['profile_picture'] . "' style='width: 60px; height: auto;' alt='Profile Picture'></td>"; // Display profile picture
                         echo '<td><button onclick="deleteUser(\'' . $row['id'] . '\')">❌</button></td>';
                         echo '<td><button onclick="openUpdateUserModal(\'' . $row['id'] . '\', \'' . addslashes($row['username']) . '\', \'' . addslashes($row['email']) . '\', \'' . addslashes($row['userpass']) . '\', \'' . addslashes($row['phone']) . '\', \'' . addslashes($row['birthday']) . '\', \'' . addslashes($row['profile_picture']) . '\')">⚙️</button></td>';
                         echo "</tr>";
