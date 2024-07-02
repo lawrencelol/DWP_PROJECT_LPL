@@ -84,7 +84,7 @@ header li {
     background-color: #a9adb0;
     width: 70%;
     height: 1000px;
-    max-height: 80%;
+    max-height: 100%;
     transform: translateX(22%);
     border-radius: 10px;
     padding: 20px 0px;
@@ -161,6 +161,7 @@ header li {
 
 /* links for user to rate and contact */
 footer{
+    position: relative;
     display: flex;
     justify-content: space-around;
     background-color: #000000;

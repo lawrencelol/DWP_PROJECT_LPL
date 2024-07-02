@@ -22,8 +22,9 @@ include("../../../connection.php");
             <ul>
                 <li><a href="../../Menu/Books/Display/BookDisplay.php">BOOKSHELF</a></li>
                 <li><a href="../../Cart/Cart.php">CART</a></li>
-                <li><a href="../../My Profile/User Profile/userprofile.php">MYPROFILE</a></li>
-                <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUTUS</a></li>
+                <li><a href="../../My Profile/User Profile/userprofile.php">MY<span style="padding-left:5px;">&#x200B;</span>PROFILE</a></li>
+                <li><a href="../../My Profile/About Us/About_Us_Page.php">ABOUT<span style="padding-left:5px;">&#x200B;</span>US</a></li>
+                <li><a href="../../Landing_Page/Landing.php">Log<span style="padding-left:5px;">&#x200B;</span>Out</a></li>
             </ul>
         </header>
 

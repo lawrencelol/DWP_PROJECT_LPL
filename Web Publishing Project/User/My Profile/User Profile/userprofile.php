@@ -106,6 +106,45 @@ if (isset($_POST["done"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+    <style>
+        footer{
+            display: flex;
+            justify-content: space-around;
+            background-color: #000000;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            color: white;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            margin-bottom: 0%;
+        }
+
+        .profile{
+            display: flex;
+            justify-content: center;
+            align-self: center ;
+            background-color: #a9adb0;
+            width: 70%;
+            height: 2000px;
+            max-height: 100%;
+            transform: translateX(22%);
+            border-radius: 10px;
+            padding: 20px 0px;
+            box-shadow: 0px 0px 15px black;
+            
+        }
+
+        header li {
+            display: inline;
+            padding-left: 20px;
+        }
+
+        span{
+            padding-left: 5px;
+        }
+
+    </style>
     <link rel="stylesheet" href="userprofile.css">
 </head>
 <body>
@@ -114,7 +153,8 @@ if (isset($_POST["done"])) {
         <img src="logo.png">
         <p>User Profile</p>
         <ul>
-            <li><a href="../../Main Page/Main_Page/index.php">Back To Home</a></li>
+            <li><a href="../../Main Page/Main_Page/index.php">Back<span>&#x200B;</span>To<span>&#x200B;</span>Home</a></li>
+            <li><a href="../../Landing_Page/Landing.php">Log<span>&#x200B;</span>Out</a></li>
         </ul>
     </header>
 
@@ -171,7 +211,6 @@ if (isset($_POST["done"])) {
                     </tr>
                 <?php endif; ?>
             </table>
-            <a href="../../Landing_Page/Landing.php"><button class="log-out">Log Out</button></a>
         </div>
     </section>
 
