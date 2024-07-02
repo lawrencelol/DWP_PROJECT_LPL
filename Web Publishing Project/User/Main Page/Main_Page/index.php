@@ -125,9 +125,4 @@ include("../../../connection.php");
             </div>
         </div>
     </body>
-
-        <footer>
-        </footer>
-      
-    </body>
 </html>
