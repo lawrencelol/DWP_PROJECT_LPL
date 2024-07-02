@@ -83,7 +83,7 @@ if ($prevTotalSales != 0) {
     $salesChange = number_format($salesChange, 2); // Format to 2 decimal places
     $salesChange = ($salesChange >= 0 ? '+' : '-') . abs($salesChange) . '%';
 } else {
-    $salesChange = 'N/A'; // Handle case where previous total sales are zero
+    $salesChange = 'There are no sales'; // Handle case where previous total sales are zero
 }
 
 // Fetch total orders for current month
@@ -112,7 +112,7 @@ if ($prevTotalOrders != 0) {
     $ordersChange = number_format($ordersChange, 2); // Format to 2 decimal places
     $ordersChange = ($ordersChange >= 0 ? '+' : '-') . abs($ordersChange) . '%';
 } else {
-    $ordersChange = 'N/A'; // Handle case where previous total orders are zero
+    $ordersChange = 'There are no orders'; // Handle case where previous total orders are zero
 }
 
 // Fetch total rates for current month
@@ -141,7 +141,7 @@ if ($prevTotalRates != 0) {
     $ratesChange = number_format($ratesChange, 2); // Format to 2 decimal places
     $ratesChange = ($ratesChange >= 0 ? '+' : '-') . abs($ratesChange) . '%';
 } else {
-    $ratesChange = 'N/A'; // Handle case where previous total rates are zero
+    $ratesChange = 'No user rated'; // Handle case where previous total rates are zero
 }
 
 // Fetch total comments for current month
@@ -170,7 +170,7 @@ if ($prevTotalComments != 0) {
     $commentsChange = number_format($commentsChange, 2); // Format to 2 decimal places
     $commentsChange = ($commentsChange >= 0 ? '+' : '-') . abs($commentsChange) . '%';
 } else {
-    $commentsChange = 'N/A'; // Handle case where previous total comments are zero
+    $commentsChange = 'No comment'; // Handle case where previous total comments are zero
 }
 ?>
 
