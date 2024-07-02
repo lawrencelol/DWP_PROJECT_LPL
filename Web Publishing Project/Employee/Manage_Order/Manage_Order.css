@@ -76,7 +76,7 @@ tr.odd,.even
 
 .userInfo
 {
-    width: 280px;
+    width: 180px;
     text-align: left;
     padding: 15px;
 }
@@ -86,79 +86,6 @@ tr.odd,.even
     text-align: center;
     width: 100px;
 }
-
-.orderStatus
-{
-    text-align: center;
-    width: 150px;
-}
-
-label.completed
-{
-    background-color: #c8cfff;
-}
-
-label.processing
-{    
-    background-color: #00fa08;
-}
-
-th.printDel,td.printDel
-{
-    width: 60px;
-}
-
-button[type="print"]
-{
-    width: 40px;
-    height: 25px;
-    border-radius: 5px;
-    border: transparent;
-    margin-right: 20px;
-    transform: translateX(5px);
-}
-
-button[type="print"]:hover
-{
-    background-color: #eda076;
-}
-
-img[alt="print"]
-{
-    width: 20px;
-}
-
-button[type="del"]
-{
-    width: 20px;
-    padding: 0;
-    font-weight: 600;
-    color: red;
-    border: transparent;
-    background-color: #F6E7CA;
-    transform: translateY(-20px);
-}
-
-tr.even button[type="del"]
-{
-    background-color: white;
-}
-
-tr.even button[type="del"]:hover
-{
-    background-color: red; 
-    color: black;
-}
-
-
-button[type="del"]:hover
-{
-    border-radius: 7px;
-    background-color: #ff0000; 
-    color: #ffffff; 
-    border: 1px #3F290D solid;
-}
-
 .selection {
     width: 200px;
     background-color: #3f290d;
@@ -237,5 +164,5 @@ button[type="del"]:hover
 
 .print {
     margin-top: 25px;
-    font-size: 25px;
+    font-size: 20px;
 }

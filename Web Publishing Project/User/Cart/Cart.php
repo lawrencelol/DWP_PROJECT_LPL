@@ -210,12 +210,14 @@ mysqli_close($connect);
     <script>
         var cartItemCount = <?php echo $count; ?>;
         if (cartItemCount != 0) {
-        document.querySelector(".payment").addEventListener("click", function(){document.querySelector(".popup").classList.add("active");});
-
-        
-        document.querySelector(".popup .close").addEventListener("click", function() {
-            document.querySelector(".popup").classList.remove("active");
-        });
+            document.querySelector(".payment").addEventListener("click", function()
+            {
+                document.querySelector(".popup").classList.add("active");
+            });      
+            document.querySelector(".popup .close").addEventListener("click", function() 
+            {
+                document.querySelector(".popup").classList.remove("active");
+            });
         }
     </script>
 </html>
