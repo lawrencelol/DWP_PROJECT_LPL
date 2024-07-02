@@ -5,166 +5,136 @@ body
     font-family: 'Poppins', sans-serif;
     background-color: rgb(252, 235, 204);
 }
-
-.receipt
+.receipt 
 {
     background-color: white;
     padding: 15px;
     border-radius: 20px;
     box-shadow: 0 10 10px black;
-    width: 700px;
+    width: 1200px;
     margin: auto;
 }
-
-h1.header
+h1.header 
 {
     font-size: 60px;
     text-align: center;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    margin-bottom: 50px;
 }
-
-.orderInfo, .userInfo
+.orderInfo
 {
     font-size: 15px;
-    line-height: 1.25;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 5px 0;
+    margin-bottom: 10px;
 }
-
-.name
-{
-    font-weight: bold;
-}
-
-h1.orderSummary
-{
-    font-size: 20px;
-    text-align: left;
-    padding: 5px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 800;
-}
-
-table
+table 
 {
     margin: auto;
+    width: 100%;
+    border-collapse: collapse;
 }
-
 thead
 {
     background-color: #e6e2e2;
 }
 
-th
-{
-    font-weight: 600;
-}
-
-th.bName
-{
-    transform: translateX(10px);
-}
-
-td
-{
-    background-color: #f8f8f8;
-    border: solid;
-    border-radius: 5px;
-    border-color: #e6e2e2;
-}
-
-.no
-{
-    width: 50px;
-    text-align: center;
-}
-
-.bImg
+th, td 
 {
     padding: 10px;
-    width: 160px;
+    border: 1px solid #e6e2e2;
     text-align: center;
 }
-
-.bImg img
+.id
 {
-    width: 100px;
-    display: block;
-    margin: auto;
+    width: 50px;
 }
 
+.bImg img 
+{
+    width: 80px;
+}
 .bName
 {
-    width: 300px;
+    width: 230px;
+}
+td.bName
+{
     text-align: left;
 }
 
-.price
+.bType
 {
     width: 100px;
-    text-align:center;
-    margin-right: 20px;
+}
+.recName
+{
+    width: 130px;
+}
+.recEmail
+{
+    width: 180px;
+}
+.date
+{
+    width: 100px;
+}
+.bPrice
+{
+    width: 120px;
 }
 
-.book td
+.total
 {
-    padding: 10px;
-}
-
-.subTotal
-{
-    padding: 10px;
     text-align: right;
-    border: solid;
-    border-color: #b9b9b9;
-}
-
-.valueSub
-{
-    text-align: center;
     font-weight: bold;
-    border: solid;
+    border: 2px solid;
+    padding: 15px;
+    font-size: 15px;
     border-color: #b9b9b9;
 }
-footer
+.totalValue 
 {
     text-align: center;
-    margin-top: 20px;
+    border: 2px solid;
+    font-size: 15px;
+    border-color: #b9b9b9;
 }
-
-footer a
+button.backtoHome 
 {
-    font-style: italic;
-}
-
-button.backtoHome
-{
+    font-family: 'Poppins';
+    font-size: 12px;
     background-color: #e6e2e2;
     padding: 10px 20px;
     margin: 20px 0;
+    border-color: transparent;
     border-radius: 5px;
 }
-
-button.backtoHome:hover
+button.backtoHome:hover 
 {
     background-color: #bdb6b6;
     font-weight: bold;
 }
-
-.backtoHome a
+button.backtoHome a 
 {
     text-decoration: none;
 }
-
-button.print
+button.print 
 {
+    border-radius: 10px;
     margin-top: 30px;
-    margin-left: 650px;
 }
 
+div.print
+{
+    display: flex;
+    justify-content: flex-end;
+}
 footer
 {
-    margin-top: 50px;
+    text-align: center;
+    margin-top: 150px;
     font-size: 15px;
+}
+footer a
+{
+    font-style: italic;
 }
