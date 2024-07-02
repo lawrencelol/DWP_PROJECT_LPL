@@ -39,6 +39,28 @@ h1{
   left: 150px;
 }
 
+header ul {
+  color: #cec1b2;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  line-height: 85px;
+  justify-content: space-evenly;
+  word-spacing: 0px;
+  transform: translateX(450%);
+  list-style: none; /* Added this line */
+  padding: 0; /* Added this line */
+  margin: 0; /* Added this line */
+  display: flex; /* Added this line */
+}
+
+header li {
+  display: inline;
+  width: auto; /* Changed from 0px to auto */
+  margin: 0 10px; /* Added this line for spacing between items */
+}
+
+
 header a{
     color:#cec1b2;
     text-decoration: none;
@@ -54,6 +76,7 @@ header a:hover{
     align-items: center;
     border-radius: 20px;
 }
+
 
 /* Book Display Decoration */
 
