@@ -2,7 +2,7 @@
 include('../../connection.php');
 
 // Fetch order data from the database
-$query = "SELECT order_id, Book_Name, Price, username, email, order_date FROM orders";
+$query = "SELECT order_id, Book_Name, Price, username, receiver_name, receiver_email, order_date FROM orders";
 $result = mysqli_query($connect, $query);
 ?>
 
@@ -15,11 +15,6 @@ $result = mysqli_query($connect, $query);
     <link href="" rel="stylesheet">
     <link rel="stylesheet" href="Manage_Order.css"> 
 
-    <script>
-        function printRate() {
-            window.print();
-        }
-    </script>
 </head>
 
 <script>
@@ -58,9 +53,10 @@ $result = mysqli_query($connect, $query);
                 <tr class="header">
                     <th class="orderId">Order Id</th>
                     <th class="bName">Book Name</th>
-                    <th class="total">Total (RM)</th>
+                    <th class="total">Price (RM)</th>
                     <th class="userName">Username</th>
-                    <th class="userInfo">Email</th>
+                    <th class="userInfo">Receiver Name</th>
+                    <th class="userInfo">Receiver Email</th>
                     <th class="orderDate">Order Date</th>
                 </tr>
             </thead>
@@ -74,7 +70,8 @@ $result = mysqli_query($connect, $query);
                         echo "<td class='bName'>{$row['Book_Name']}</td>";
                         echo "<td class='total'>{$row['Price']}</td>";
                         echo "<td class='userName'>{$row['username']}</td>";
-                        echo "<td class='userInfo'>Email: {$row['email']}</td>";
+                        echo "<td class='userInfo'>{$row['receiver_name']}</td>";
+                        echo "<td class='userInfo'>{$row['receiver_email']}</td>";
                         echo "<td class='orderDate'>{$row['order_date']}</td>";
                         echo "</tr>";
 
@@ -88,7 +85,7 @@ $result = mysqli_query($connect, $query);
             </tbody>
         </table>
         </section>
-        <button class="print" onclick="printRate()">Print</button>
+        <button class="print" onclick="printOrder()">Print</button>
     </fieldset>
 </body>
 </html>
