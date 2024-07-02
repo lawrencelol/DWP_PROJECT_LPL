@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('../../../connection.php'); // Adjust the path to your actual connection.php location
+include('../../Main Page/Login/connection.php'); // Adjust the path to your actual connection.php location
 
 // Check if the connection to the database is successful
 if (!$connect) {
@@ -9,7 +9,7 @@ if (!$connect) {
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
+    header("Location: ../../Main Page/Login/Login.php");
     exit();
 }
 
