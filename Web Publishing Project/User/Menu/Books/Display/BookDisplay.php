@@ -23,28 +23,7 @@ if(mysqli_connect_errno()){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Display</title>
-    <style>
-        header ul{
-            color:#cec1b2;
-            font-weight: bold;
-            position: absolute;
-            top:0;
-            line-height:85px;
-            justify-content: space-evenly;
-            word-spacing: 0px;
-            transform: translateX(300%); /* Adjusted this line to move left */
-            list-style: none;
-            padding: 0; /* Added this line */
-            left: -350px;
-            display: flex;
-        }
-
-        header li{
-            display: inline;
-            width: auto; /* Changed from 0px to auto */
-            margin: 0 10px; /* Added this line for spacing between items */
-        }
-    </style>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel='stylesheet' href='BookDisplay.css'>
 
     <!--At here I adjust the scroll, ensuring that the user is guided to a position where they can see both the category name and description after click the tab.-->
