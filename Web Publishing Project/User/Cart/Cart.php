@@ -165,7 +165,7 @@ mysqli_close($connect);
             </table>
             <hr>
             <div class="subTotal">
-                <p><b>Subtotal:</b><span id="subtotal">RM <?php echo number_format($subTotal, 2); ?></span></p>
+                <p><b>Total:</b><span id="subtotal">RM <?php echo number_format($subTotal, 2); ?></span></p>
             </div>
             <hr>
         </div>
