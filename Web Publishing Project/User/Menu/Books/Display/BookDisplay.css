@@ -8,39 +8,55 @@ body{
   background-color: #ffdeab;
 }
 
-
 /* Header Decoration */
 header{
-    z-index:2;
-    color:#cec1b2;
-    background: fixed;
+    z-index: 2;
+    color: #cec1b2;
     background-color: #3b3e61;
     box-shadow: 0px 0px 12px 0px #000000;
     position: fixed;
     top: 0;
     left: 0;
     height: 100px;
-    width:100%;
+    width: 100%;
 }
 
-header img
-{
+header img{
     height: 100px;
     margin-left: 10px;
     margin-top: 5px;
 }
 
 h1{
-  position: absolute;
-  color: #cec1b2;
-  font-size: 30px;
-  font-weight: 500;
-  transform: translateY(-105px);
-  left: 150px;
+    position: absolute;
+    color: #cec1b2;
+    font-size: 30px;
+    font-weight: 500;
+    transform: translateY(-105px);
+    left: 150px;
+}
+
+header ul{
+    color: #cec1b2;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    line-height: 85px;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    list-style: none;
+    padding: 0;
+}
+
+header li{
+    display: inline;
+    margin: 0 10px;
 }
 
 header a{
-    color:#cec1b2;
+    color: #cec1b2;
     text-decoration: none;
 }
 
@@ -55,57 +71,53 @@ header a:hover{
     border-radius: 20px;
 }
 
-
 /* Book Display Decoration */
-
 .book{
-  text-align: center;
-  display: block;
-  flex-wrap: nowrap;
-  display: grid;
-  grid-template-rows: 1fr 50px;
-  margin-left: 25px;
+    text-align: center;
+    display: block;
+    flex-wrap: nowrap;
+    display: grid;
+    grid-template-rows: 1fr 50px;
+    margin-left: 25px;
 } 
 
-.picturebook ,.novel, .guidebook{
-  display: flex;
-  align-self: auto;
-  display: grid;
-  gap: 4em;
-  grid-template-columns: repeat(auto-fit, 220px);
-
+.picturebook, .novel, .guidebook{
+    display: flex;
+    align-self: auto;
+    display: grid;
+    gap: 4em;
+    grid-template-columns: repeat(auto-fit, 220px);
 }
 
 .book{
-  background-color: #a9adb0;
-  border-radius: 20px;
-  margin-right:25px;
-  padding-bottom: 5px;
-  padding-top: 20px;
+    background-color: #a9adb0;
+    border-radius: 20px;
+    margin-right: 25px;
+    padding-bottom: 5px;
+    padding-top: 20px;
 }
 
-.picturebook div,.novel div, .guidebook div{
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-radius: 20px;
-  background-color: white;
-  box-shadow: #4F493F 0px 3px 3px 2px;
-  margin-left: 20px;
-  width:260px;
-  transition: 0.5s ease-in-out;
+.picturebook div, .novel div, .guidebook div{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: #4F493F 0px 3px 3px 2px;
+    margin-left: 20px;
+    width: 260px;
+    transition: 0.5s ease-in-out;
 }
 
-.picturebook div:hover,.novel div:hover, .guidebook div:hover{
-  transform: translateY(-15px);
+.picturebook div:hover, .novel div:hover, .guidebook div:hover{
+    transform: translateY(-15px);
 }
-
 
 .book img{
     height: 300px;
 }
 
 .book h3{
-  color: #4c4f75;
+    color: #4c4f75;
 }
 
 /* Decoration of description for the book */
@@ -120,7 +132,7 @@ header a:hover{
 }
 
 .desc_p{
-  font-weight: 600;
+    font-weight: 600;
     margin-left: 300px;
     margin-right: 300px;
     color: #4c4f75;
@@ -168,68 +180,52 @@ header a:hover{
   display: block;
 }
 
-  /* Special effect for the button */
-  /* original setting for button */
-  button{
-    height: 40px;
-    width: 150px;
-    position: relative;
-    background-color: transparent;
-    cursor: pointer;
-    border: 1px solid #252525;
-    overflow: hidden;
-    border-radius: 30px;
-    color: #4c4f75;
-    transition: all 0.5s ease-in-out;
-  }
+/* Styling the button of each book */
+.button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: inline-block;
+  text-transform: uppercase;
+  outline: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #282936;
+  border: 2px solid #282936;
+}
 
-  .view{
-    cursor: pointer;
-    overflow: hidden;
-    color: #4c4f75;
-    transition: all 0.5s ease-in-out;
-    text-decoration: none;
-  }
+.button:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: #282936;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.3s ease;
+  z-index: -1;
+}
 
-  /* text original setting */
-  .cart-txt{
-    z-index: 1;
-    font-weight: 800;
-    position: relative;
-    background: fixed;
-  }
+.button:hover:after {
+  top: -25%;
+  transform: translateX(-50%) scaleY(1.25) scaleX(1);
+}
 
-  /* out animation */
-  .type1::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    transition: all 0.5s ease-in-out;
-    background-color: #4c4f75;
-    border-radius: 30px;
-    visibility: hidden;
-    height: 10px;
-    width: 10px;
-    z-index: 0;
-    transform: scale(0);
+.button .cart-txt {
+  position: relative;
+  color: #282936;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
 
-  }
-
-  /* The mouse touches it */
-  .view:hover, .button:hover{
-    color: #ffdeab;
-    text-decoration: none;
-    border: none;
-  }
-
-  .button:focus{
-    outline: none;
-  }
-
-  /* In animation */
-  .type1:hover::after{
-    visibility: visible;
-    transform: scale(100) translateX(2px);
-  }
-
+.button:hover .cart-txt {
+  color: #fff;
+}
