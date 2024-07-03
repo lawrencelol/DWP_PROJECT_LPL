@@ -24,7 +24,7 @@
         <div class="bar">
             <ul>
                 <li><a href="../Employee_Home_Page/Home_Page_EMP.php">DASHBOARD</a></li>
-                <li><a href="../Manage_Staff/Manage_Staff.php">STAFF</a></li>
+                <li><a href="../Manage_Staff/Manage_Staff.php">ADMIN</a></li>
                 <li><a href="../Manage_USER/Manage_USER.php">USER</a></li>
                 <li><a href="../Manage_Category/Category.php">CATEGORY</a></li>
                 <li><a href="../Stock/stock.php">STOCK</a></li>
