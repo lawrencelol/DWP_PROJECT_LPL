@@ -1,108 +1,97 @@
 <?php
-session_start();
-include('connection.php');
+    session_start();
+    include('connection.php');
 
-// Check if the connection to the database is successful
-if (!$connect) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+    $user_id = $_SESSION['user_id'];
+    $query = "SELECT * FROM cart WHERE user_id = '$user_id'";
+    $result = mysqli_query($connect, $query);
 
-// Check if the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// Retrieve cart items for the current user
-$user_id = $_SESSION['user_id'];
-$query = "SELECT * FROM cart WHERE user_id = '$user_id'";
-$result = mysqli_query($connect, $query);
-
-if (!$result) {
-    echo "Error: " . mysqli_error($connect);
-    exit();
-}
-
-$isCartEmpty = mysqli_num_rows($result) === 0;
-
-// Handle deletion of cart items
-if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
-    $cartID = $_GET['id'];
-    mysqli_begin_transaction($connect);
-    try {
-        // Delete from cart table
-        $deleteCartQuery = "DELETE FROM cart WHERE CartID = '$cartID'";
-        if (!mysqli_query($connect, $deleteCartQuery)) {
-            throw new Exception("Error deleting item: " . mysqli_error($connect));
-        }
-        mysqli_commit($connect);
-        // Redirect back to cart page after deletion
-        header("Location: cart.php");
-        exit();
-    } catch (Exception $exception) {
-        mysqli_rollback($connect);
-        echo $exception->getMessage();
+    if (!$result) 
+    {
+        echo "Error: " . mysqli_error($connect);
         exit();
     }
-}
 
-$subTotal = 0;
+    $isCartEmpty = mysqli_num_rows($result) === 0;
 
-// Process POST request after payment
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitize and validate input data
-    $receiver_name = mysqli_real_escape_string($connect, $_POST['receiver_name']);
-    $receiver_email = mysqli_real_escape_string($connect, $_POST['receiver_email']);
-    $card_holder_name = mysqli_real_escape_string($connect, $_POST['card_holder_name']);
-    $card_number = mysqli_real_escape_string($connect, $_POST['card_number']);
-    $expiry_year = mysqli_real_escape_string($connect, $_POST['expiry_year']);
-    $expiry_month = mysqli_real_escape_string($connect, $_POST['expiry_month']);
-    $cvv = mysqli_real_escape_string($connect, $_POST['cvv']);
-
-    // Retrieve username from user_register table
-    $userQuery = "SELECT username FROM user_register WHERE id = '$user_id'";
-    $userResult = mysqli_query($connect, $userQuery);
-    if (!$userResult) {
-        echo "Error fetching username: " . mysqli_error($connect);
-        exit();
-    }
-    $row = mysqli_fetch_assoc($userResult);
-    $username = $row['username'];
-
-    mysqli_begin_transaction($connect);
-    try {
-        // Insert into orders table for each cart item
-        $order_date = date('Y-m-d H:i:s'); // Current date and time
-        mysqli_data_seek($result, 0); // Reset the result pointer to the beginning
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $insert_query = "INSERT INTO orders (user_id, username, email, order_date, Book_Name, Price, receiver_name, receiver_email, Category)
-                             VALUES ('$user_id', '$username', '$receiver_email', '$order_date', '{$row['Book_Name']}', '{$row['Price']}', '$receiver_name', '$receiver_email', '{$row['Category']}')";
-            echo "<script>alert('Payment successful.');</script>";
-            if (!mysqli_query($connect, $insert_query)) {
-                throw new Exception("Error placing order: " . mysqli_error($connect));
+    if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
+        $cartID = $_GET['id'];
+        mysqli_begin_transaction($connect);
+        try 
+        {
+            $deleteCartQuery = "DELETE FROM cart WHERE CartID = '$cartID'";
+            if (!mysqli_query($connect, $deleteCartQuery)) 
+            {
+                throw new Exception("Error deleting item: " . mysqli_error($connect));
             }
+            mysqli_commit($connect);
+            header("Location: cart.php");
+            exit();
+
+        } 
+        catch (Exception $exception) 
+        {
+            mysqli_rollback($connect);
+            echo $exception->getMessage();
+            exit();
         }
-
-        // Delete all items from cart for the current user using user_id
-        $deleteCartQuery = "DELETE FROM cart WHERE user_id = '$user_id'";
-        if (!mysqli_query($connect, $deleteCartQuery)) {
-            throw new Exception("Error deleting cart items: " . mysqli_error($connect));
-        }
-
-        mysqli_commit($connect);
-
-        // Redirect to a success page after processing
-        header("Location: ../Total/Total.php");
-        exit();
-    } catch (Exception $exception) {
-        mysqli_rollback($connect);
-        echo $exception->getMessage();
-        exit();
     }
-}
 
-mysqli_close($connect);
+    $subTotal = 0;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") 
+    {
+        $receiver_name = mysqli_real_escape_string($connect, $_POST['receiver_name']);
+        $receiver_email = mysqli_real_escape_string($connect, $_POST['receiver_email']);
+
+
+        $userQuery = "SELECT username FROM user_register WHERE id = '$user_id'";
+        $userResult = mysqli_query($connect, $userQuery);
+        if (!$userResult)
+        {
+            echo "Error fetching username: " . mysqli_error($connect);
+            exit();
+        }
+
+        $row = mysqli_fetch_assoc($userResult);
+        $username = $row['username'];
+
+        mysqli_begin_transaction($connect);
+        try 
+        {
+            $order_date = date('Y-m-d H:i:s'); 
+            mysqli_data_seek($result, 0);
+
+            while ($row = mysqli_fetch_assoc($result)) 
+            {
+                $insert_query = "INSERT INTO orders (user_id, username, email, order_date, Book_Name, Price, receiver_name, receiver_email, Category) VALUES ('$user_id', '$username', '$receiver_email', '$order_date', '{$row['Book_Name']}', '{$row['Price']}', '$receiver_name', '$receiver_email', '{$row['Category']}')";
+                echo "<script>alert('Payment successful.');</script>";
+                if (!mysqli_query($connect, $insert_query)) 
+                {
+                    throw new Exception("Error placing order: " . mysqli_error($connect));
+                }
+            }
+
+            $deleteCartQuery = "DELETE FROM cart WHERE user_id = '$user_id'";
+            if (!mysqli_query($connect, $deleteCartQuery)) 
+            {
+                throw new Exception("Error deleting cart items: " . mysqli_error($connect));
+            }
+
+            mysqli_commit($connect);
+
+            header("Location: ../Total/Total.php");
+            exit();
+        }
+        catch (Exception $exception)
+        {
+            mysqli_rollback($connect);
+            echo $exception->getMessage();
+            exit();
+        }
+    }
+
+    mysqli_close($connect);
 ?>
 
 <!DOCTYPE html>
@@ -141,24 +130,25 @@ mysqli_close($connect);
                 </thead>
                 <?php
                 $subTotal = 0;
-                $count = 0;
+                $count = 1;
 
                 if ($isCartEmpty) {
                     echo "<tr>";
                     echo "<td colspan='5' style='text-align:center;'>Your shopping cart is empty.</td>";
                     echo "</tr>";
                 } else {
-                    mysqli_data_seek($result, 0); // Reset the result pointer to the beginning
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $count++;
+                    mysqli_data_seek($result, 0);
+                    while ($row = mysqli_fetch_assoc($result))
+                    {
                         $subTotal += $row['Price'];
                         echo "<tr>";
-                        echo "<td class='no'>{$count}</td>";
-                        echo "<td class='bImg'><img src='../../images/{$row['Book_Name']}.png' alt='book'></td>"; // Corrected image source
+                        echo "<td class='no'>{$count}.</td>";
+                        echo "<td class='bImg'><img src='../../images/{$row['Book_Name']}.png' alt='book'></td>";
                         echo "<td class='bName'>{$row['Book_Name']}</td>";
-                        echo "<td class='bPrice'>RM {$row['Price']}</td>"; // Corrected price display
+                        echo "<td class='bPrice'>RM {$row['Price']}</td>";
                         echo "<td class='delBook'><button class='delBook'><a class='delBook' href='cart.php?action=delete&id={$row['CartID']}'>X</a></button></td>";
                         echo "</tr>";
+                        $count++;
                     }
                 }
                 ?>
@@ -209,7 +199,8 @@ mysqli_close($connect);
 </body>
     <script>
         var cartItemCount = <?php echo $count; ?>;
-        if (cartItemCount != 0) {
+        if (cartItemCount != 0)
+        {
             document.querySelector(".payment").addEventListener("click", function()
             {
                 document.querySelector(".popup").classList.add("active");
