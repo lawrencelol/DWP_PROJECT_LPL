@@ -3,28 +3,26 @@ include('../../connection.php');
 
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
 $user_id = $_SESSION['user_id'];
 
 $query = "SELECT * FROM orders WHERE user_id = '$user_id' ORDER BY order_date DESC";
 $result = mysqli_query($connect, $query);
 
-if (!$result) {
+if (!$result)
+{
     echo "Error fetching order details: " . mysqli_error($connect);
     exit();
 }
 
 $orders = [];
-while ($row = mysqli_fetch_assoc($result)) {
+while ($row = mysqli_fetch_assoc($result))
+{
     $orders[] = $row;
 }
 
 $total = 0;
-foreach ($orders as $order) {
+foreach ($orders as $order)
+{
     $total += $order['Price'];
 }
 $total = number_format($total, 2);
