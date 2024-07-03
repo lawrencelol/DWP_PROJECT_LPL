@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     } else {
         echo "Error deleting admin: " . mysqli_error($connect);
     }
-    exit; // Ensure no further code is executed
+    exit;
 }
 
 // Fetch admins functionality
@@ -88,7 +88,6 @@ $result = mysqli_query($connect, $sql);
     <title>Manage Staff</title>
     <link rel="stylesheet" href="Manage_Staff.css">
     <style>
-        /* Modal styling */
         .modal {
             display: none; 
             position: fixed; 

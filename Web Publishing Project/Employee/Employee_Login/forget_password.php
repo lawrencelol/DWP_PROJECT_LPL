@@ -15,8 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Validate and process password reset
         if ($new_password === $confirm_password) {
-            // Directly update the password without hashing (this is not recommended in production)
-            $hashed_password = $new_password; // Do not hash, store as plain text (not recommended)
+            $hashed_password = $new_password; 
 
             // Retrieve the admin_id from session
             if (isset($_SESSION['reset_admin_id'])) {
@@ -51,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             // admin_id exists, proceed to reset password
-            $_SESSION['reset_admin_id'] = $admin_id; // Store admin_id in session for password reset process
-            header("Location: forget_password.php?action=reset"); // Redirect to password reset form
+            $_SESSION['reset_admin_id'] = $admin_id; 
+            header("Location: forget_password.php?action=reset"); 
             exit();
         } else {
             $error_message = "Admin ID not found. Please enter a valid Admin ID.";
@@ -72,7 +71,6 @@ $connect->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Reset</title>
     <style>
-        /* Paste your styles from your provided CSS here */
         .right-side {
             position: relative;
             width: 250px;
@@ -201,13 +199,12 @@ $connect->close();
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* justify-content: center; */
             background-size: cover;
             background-position: center;
         }
     </style>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="Employee_Login.css"> <!-- Ensure your additional styles are also linked here -->
+    <link rel="stylesheet" href="Employee_Login.css">
 </head>
 <body>
     <div class="show-bar">
@@ -270,7 +267,7 @@ $connect->close();
         <?php
         if (isset($_SESSION['password_reset_success']) && $_SESSION['password_reset_success']) {
             echo "alert('New password saved');";
-            unset($_SESSION['password_reset_success']); // Clear the success indicator
+            unset($_SESSION['password_reset_success']);
         }
         ?>
     </script>

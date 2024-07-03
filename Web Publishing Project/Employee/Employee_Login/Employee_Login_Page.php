@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $_SESSION['admin_id'] = $row['id']; // Store the user ID in the session
         header("Location: ../Employee_Home_Page/Home_Page_EMP.php"); // Redirect to user profile page
-        exit(); // Ensure no further code is executed after redirection
+        exit();
     } else {
         $error_message = "Invalid id or password.";
     }
