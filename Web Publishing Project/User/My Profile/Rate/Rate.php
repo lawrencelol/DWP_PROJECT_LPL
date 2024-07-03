@@ -132,7 +132,7 @@ if (isset($_POST['submit_btn'])) {
                         uID = response.id;
                         localStorage.setItem('uID', uID);
                         alert("Thanks for Rating!!!");
-                        location.reload(); // Reload the page after successful submission
+                        location.reload();
                     } else {
                         alert("Data Not Saved: " + response.message);
                     }
