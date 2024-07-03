@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="Rate_Review.css"> 
 
     <script>
+        // Function to print the rate table
         function printRate() {
             window.print();
         }
@@ -17,6 +18,7 @@
 </head>
 
 <body>
+    <!-- This is the tab bar -->
     <div class="selection">
         <div class="Logo">
             <img src="Logo.png" />
@@ -36,6 +38,7 @@
         </div>
     </div>
 
+    <!-- This is the rate record table -->
     <fieldset>
         <div class="header">
             <h1>User Rate Review</h1>

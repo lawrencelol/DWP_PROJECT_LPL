@@ -4,6 +4,17 @@
     font-family: 'Poppins';
 }
 
+body{
+  margin: 0;
+  display: flex;
+  background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100%;
+  
+}
+
 /* TAB BAR */
 .selection {
     width: 180px;
@@ -244,4 +255,26 @@ button[type="delCat"]:hover
   cursor: pointer;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.add{
+  height: 40px;
+  width: 150px;
+  position: relative;
+  font-weight: bold;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid #252525;
+  overflow: hidden;
+  border-radius: 30px;
+  color: #3f290d;
+  transition: all 0.2s ease-in-out;
+  margin: 30px auto;  /* Center the button */
+  display: block;  /* Ensure the button is a block element */
+  text-align: center;
+}
+
+.add:hover{
+  background-color: #3f290d;
+  color: #ED9017;
 }

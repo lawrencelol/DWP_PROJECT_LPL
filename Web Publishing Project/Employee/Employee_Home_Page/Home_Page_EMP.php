@@ -1,10 +1,10 @@
 <?php
 include('../../connection.php');
 
-// Initialize an array to hold sales data for each month
+//I use this array to save the total sales for each month
 $monthlySales = array_fill(1, 12, 0);
 
-// Get total sales for each month in the current year
+//Calculate the total sales for each month in the current year
 $currentYear = date('Y');
 $queryMonthlySales = "
     SELECT MONTH(order_date) as month, SUM(Price) as totalSales 
@@ -17,14 +17,14 @@ while ($row = mysqli_fetch_assoc($resultMonthlySales)) {
     $monthlySales[(int)$row['month']] = (float)$row['totalSales'];
 }
 
-// Prepare data for JavaScript
+//Prepare data for the bar chart  
 $months = json_encode(array_keys($monthlySales));
 $sales = json_encode(array_values($monthlySales));
 
-// Initialize an array to hold category sales
+//I use this array to save the total sales of each book category
 $categorySales = [];
 
-// Query to get total sales by category
+//Get total sales by book category
 $queryCategorySales = "
     SELECT Category, SUM(Price) AS totalSales
     FROM orders
@@ -35,11 +35,11 @@ while ($row = mysqli_fetch_assoc($resultCategorySales)) {
     $categorySales[$row['Category']] = (float)$row['totalSales'];
 }
 
-// Prepare data for JavaScript
+//Prepare data for the pie chart
 $categoryLabels = json_encode(array_keys($categorySales));
 $categoryData = json_encode(array_values($categorySales));
 
-// Initialize variables to avoid undefined variable warnings
+//Variables 
 $totalSales = 0;
 $salesChange = 0;
 $totalOrders = 0;
@@ -49,15 +49,15 @@ $ratesChange = 0;
 $totalComments = 0;
 $commentsChange = 0;
 
-// Get current month and year
+//Get current month and year
 $currentMonth = date('m');
 $currentYear = date('Y');
 
-// Get previous month and year
+//Get previous month and year
 $prevMonth = date('m', strtotime('-1 month'));
 $prevYear = date('Y', strtotime('-1 month'));
 
-// Fetch total sales for current month
+//Get total sales for current month
 $queryTotalSales = "
     SELECT SUM(Price) as totalSales 
     FROM orders
@@ -67,7 +67,7 @@ $resultTotalSales = mysqli_query($connect, $queryTotalSales);
 $rowTotalSales = mysqli_fetch_assoc($resultTotalSales);
 $totalSales = $rowTotalSales['totalSales'] ?? 0;
 
-// Fetch total sales for previous month
+//Get total sales for previous month
 $queryPrevTotalSales = "
     SELECT SUM(Price) as totalSales 
     FROM orders
@@ -77,16 +77,16 @@ $resultPrevTotalSales = mysqli_query($connect, $queryPrevTotalSales);
 $rowPrevTotalSales = mysqli_fetch_assoc($resultPrevTotalSales);
 $prevTotalSales = $rowPrevTotalSales['totalSales'] ?? 0;
 
-// Calculate sales change percentage
+//Calculate sales change percentage
 if ($prevTotalSales != 0) {
     $salesChange = (($totalSales - $prevTotalSales) / $prevTotalSales) * 100;
-    $salesChange = number_format($salesChange, 2); // Format to 2 decimal places
+    $salesChange = number_format($salesChange, 2); 
     $salesChange = ($salesChange >= 0 ? '+' : '-') . abs($salesChange) . '%';
 } else {
-    $salesChange = 'There are no sales'; // Handle case where previous total sales are zero
+    $salesChange = 'There are no sales'; 
 }
 
-// Fetch total orders for current month
+//Get total orders for current month
 $queryTotalOrders = "
     SELECT COUNT(order_id) as totalOrders 
     FROM orders
@@ -96,7 +96,7 @@ $resultTotalOrders = mysqli_query($connect, $queryTotalOrders);
 $rowTotalOrders = mysqli_fetch_assoc($resultTotalOrders);
 $totalOrders = $rowTotalOrders['totalOrders'] ?? 0;
 
-// Fetch total orders for previous month
+//Get total orders for previous month
 $queryPrevTotalOrders = "
     SELECT COUNT(order_id) as totalOrders 
     FROM orders
@@ -106,16 +106,16 @@ $resultPrevTotalOrders = mysqli_query($connect, $queryPrevTotalOrders);
 $rowPrevTotalOrders = mysqli_fetch_assoc($resultPrevTotalOrders);
 $prevTotalOrders = $rowPrevTotalOrders['totalOrders'] ?? 0;
 
-// Calculate orders change percentage
+//Calculate orders change percentage
 if ($prevTotalOrders != 0) {
     $ordersChange = (($totalOrders - $prevTotalOrders) / $prevTotalOrders) * 100;
-    $ordersChange = number_format($ordersChange, 2); // Format to 2 decimal places
+    $ordersChange = number_format($ordersChange, 2); 
     $ordersChange = ($ordersChange >= 0 ? '+' : '-') . abs($ordersChange) . '%';
 } else {
-    $ordersChange = 'There are no orders'; // Handle case where previous total orders are zero
+    $ordersChange = 'There are no orders'; 
 }
 
-// Fetch total rates for current month
+//Get total rates for current month
 $queryTotalRates = "
     SELECT COUNT(RateID) as totalRates 
     FROM ratingreview 
@@ -125,7 +125,7 @@ $resultTotalRates = mysqli_query($connect, $queryTotalRates);
 $rowTotalRates = mysqli_fetch_assoc($resultTotalRates);
 $totalRates = $rowTotalRates['totalRates'] ?? 0;
 
-// Fetch total rates for previous month
+//Get total rates for previous month
 $queryPrevTotalRates = "
     SELECT COUNT(RateID) as totalRates 
     FROM ratingreview 
@@ -135,16 +135,16 @@ $resultPrevTotalRates = mysqli_query($connect, $queryPrevTotalRates);
 $rowPrevTotalRates = mysqli_fetch_assoc($resultPrevTotalRates);
 $prevTotalRates = $rowPrevTotalRates['totalRates'] ?? 0;
 
-// Calculate rates change percentage
+//Calculate rates change percentage
 if ($prevTotalRates != 0) {
     $ratesChange = (($totalRates - $prevTotalRates) / $prevTotalRates) * 100;
-    $ratesChange = number_format($ratesChange, 2); // Format to 2 decimal places
+    $ratesChange = number_format($ratesChange, 2); 
     $ratesChange = ($ratesChange >= 0 ? '+' : '-') . abs($ratesChange) . '%';
 } else {
-    $ratesChange = 'No user rated'; // Handle case where previous total rates are zero
+    $ratesChange = 'No user rated'; 
 }
 
-// Fetch total comments for current month
+//Get total comments for current month
 $queryTotalComments = "
     SELECT COUNT(Comment) as totalComments 
     FROM ratingreview 
@@ -154,7 +154,7 @@ $resultTotalComments = mysqli_query($connect, $queryTotalComments);
 $rowTotalComments = mysqli_fetch_assoc($resultTotalComments);
 $totalComments = $rowTotalComments['totalComments'] ?? 0;
 
-// Fetch total comments for previous month
+//Get total comments for previous month
 $queryPrevTotalComments = "
     SELECT COUNT(Comment) as totalComments 
     FROM ratingreview 
@@ -164,13 +164,13 @@ $resultPrevTotalComments = mysqli_query($connect, $queryPrevTotalComments);
 $rowPrevTotalComments = mysqli_fetch_assoc($resultPrevTotalComments);
 $prevTotalComments = $rowPrevTotalComments['totalComments'] ?? 0;
 
-// Calculate comments change percentage
+//Calculate comments change percentage
 if ($prevTotalComments != 0) {
     $commentsChange = (($totalComments - $prevTotalComments) / $prevTotalComments) * 100;
-    $commentsChange = number_format($commentsChange, 2); // Format to 2 decimal places
+    $commentsChange = number_format($commentsChange, 2); 
     $commentsChange = ($commentsChange >= 0 ? '+' : '-') . abs($commentsChange) . '%';
 } else {
-    $commentsChange = 'No comment'; // Handle case where previous total comments are zero
+    $commentsChange = 'No comment'; 
 }
 ?>
 
@@ -180,6 +180,7 @@ if ($prevTotalComments != 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Dashboard</title>
+    <!-- This is the function to print the Dashboard -->
     <script>
         function printDash() {
             window.print();
@@ -189,6 +190,7 @@ if ($prevTotalComments != 0) {
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+    <!-- The admin tab bar -->
     <div class="selection">
                 <div class="Logo">
                     <img src="Logo.png" />
@@ -207,7 +209,7 @@ if ($prevTotalComments != 0) {
                     </ul>
                 </div>
             </div>
-
+    <!-- This is the Dashboard -->
     <div class="dashboard">
         <div class="header">
             <h1>Welcome to the Dashboard</h1>
@@ -244,6 +246,7 @@ if ($prevTotalComments != 0) {
             </div>
         </div>
 
+        <!-- This is the Bar Chart and Pie Chart -->
         <div class="chart-container">
             <div class="canvas-container">
                 <h3>MONTHLY SALES</h3>

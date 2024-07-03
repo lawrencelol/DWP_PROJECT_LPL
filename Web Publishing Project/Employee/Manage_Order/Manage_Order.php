@@ -1,7 +1,7 @@
 <?php 
 include('../../connection.php');
 
-// Fetch order data from the database
+//Get order data from the orders table
 $query = "SELECT order_id, Book_Name, Price, username, receiver_name, receiver_email, order_date FROM orders";
 $result = mysqli_query($connect, $query);
 ?>
@@ -18,12 +18,14 @@ $result = mysqli_query($connect, $query);
 </head>
 
 <script>
+    // function to print the order table
     function printOrder() {
         window.print();
     }
 </script>
 
 <body>
+    <!-- This is the tab bar -->
     <div class="selection">
         <div class="Logo">
             <img src="Logo.png" />
@@ -43,6 +45,7 @@ $result = mysqli_query($connect, $query);
         </div>
     </div>
 
+    <!-- This is the order table -->
     <fieldset>
         <div class="header">
             <h1>Order Review</h1>
@@ -75,7 +78,6 @@ $result = mysqli_query($connect, $query);
                         echo "<td class='orderDate'>{$row['order_date']}</td>";
                         echo "</tr>";
 
-                        // Alternate row class
                         $row_class = ($row_class == 'odd') ? 'even' : 'odd';
                     }
                 } else {

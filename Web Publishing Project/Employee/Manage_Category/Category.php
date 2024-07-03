@@ -1,11 +1,11 @@
 <?php 
 include('../../connection.php');
 
-// Fetch categories
+//Get all the categories
 $sql = "SELECT *, (SELECT COUNT(*) FROM booklist WHERE booklist.Category = book_category.CategoryName) AS Total_Book FROM book_category";
 $result = mysqli_query($connect, $sql);
 
-// Handle delete
+//Delete function
 if (isset($_GET['delete'])) {
     $categoryID = $_GET['delete'];
     $delete_sql = "DELETE FROM book_category WHERE CategoryID='$categoryID'";
@@ -16,7 +16,7 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Handle add new category
+//Add new category function
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
     $categoryID = $_POST['id'];
     $categoryName = $_POST['catname'];
@@ -39,45 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Emp_Category</title>
-        <style>
-            body{
-                margin: 0;
-                display: flex;
-                background-image:linear-gradient(25deg, #f6e7ca, #e0a456,#ed9017);
-                background-size: cover;
-                background-attachment: fixed;
-                height: 100vh;
-                width: 100%;
-                
-            }
-
-            /* Special effect for the add new category button */
-            .add{
-                height: 40px;
-                width: 150px;
-                position: relative;
-                font-weight: bold;
-                background-color: transparent;
-                cursor: pointer;
-                border: 1px solid #252525;
-                overflow: hidden;
-                border-radius: 30px;
-                color: #3f290d;
-                transition: all 0.2s ease-in-out;
-                margin: 30px auto;  /* Center the button */
-                display: block;  /* Ensure the button is a block element */
-                text-align: center;
-            }
-
-            .add:hover{
-                background-color: #3f290d;
-                color: #ED9017;
-            }
-        </style>
         <link href="" rel="stylesheet">
         <link rel="stylesheet" href="Category.css"> 
     </head>
     <body>
+        <!-- This is the tab bar -->
         <div class="selection">
             <div class="Logo">
                 <img src="Logo.png" />
@@ -101,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
     <div class="header">
         <h1>Book Category Management</h1>
     </div>
+    <!-- The table that display Book Category -->
     <section class="table">
         <div class="content">
             <table>
@@ -133,6 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_category'])) {
             </table>
         </div>
     </section>
+    <!-- This is the ass new category button and pop-up form -->
     <button class="add" style="left: -540px;">Add new category</button>
     <div class="popup">
         <div class="close">&times;</div>

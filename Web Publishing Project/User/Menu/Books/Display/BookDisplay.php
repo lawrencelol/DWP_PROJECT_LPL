@@ -6,7 +6,6 @@ $userName = "root";
 $password = "";
 $dbName = "dwp_project";
 
-//function to connect with mysql
 $connect = mysqli_connect($serverName, $userName, $password, $dbName);
 
 //check if the connection is successful

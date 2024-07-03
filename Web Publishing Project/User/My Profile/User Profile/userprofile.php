@@ -1,19 +1,19 @@
 <?php
 session_start();
-include('../../Main Page/Login/connection.php'); // Adjust the path to your actual connection.php location
+include('../../Main Page/Login/connection.php'); 
 
-// Check if the connection to the database is successful
+//Check if the connection to the database is successful
 if (!$connect) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-// Check if the user is logged in
+//Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
     header("Location: ../../Main Page/Login/Login.php");
     exit();
 }
 
-// Retrieve cart items for the current user
+//Retrieve cart items for user
 $user_id = $_SESSION['user_id'];
 $query = "SELECT * FROM cart WHERE user_id = '$user_id'";
 $result = mysqli_query($connect, $query);
@@ -23,26 +23,26 @@ if (!$result) {
     exit();
 }
 
-// Fetch current user information including phone number
+//Get current user information 
 $result = mysqli_query($connect, "SELECT * FROM user_register WHERE id = $user_id");
 
 if (mysqli_num_rows($result) > 0) {
     $row = mysqli_fetch_assoc($result);
 
-    // Fetch order information for the current user
+    //Get order information for the current user
     $order_query = "SELECT * FROM orders WHERE user_id = $user_id";
     $order_result = mysqli_query($connect, $order_query);
     $orders = mysqli_fetch_all($order_result, MYSQLI_ASSOC);
 
-    // Function to sanitize input data
+    //Sanitize input data
     function sanitize($data) {
         global $connect;
         return mysqli_real_escape_string($connect, htmlspecialchars(strip_tags(trim($data))));
     }
 
-    // Process form submission
+    //Submission
 if (isset($_POST["done"])) {
-    // Sanitize user inputs
+    //Sanitize user inputs
     $username = sanitize($_POST["username"]);
     $birthday = sanitize($_POST["birthday"]);
     $email = sanitize($_POST["email"]);
@@ -51,7 +51,7 @@ if (isset($_POST["done"])) {
     $phone = sanitize($_POST["phone"]);
     $profilePIC = $row['profile_picture']; // Default to the current profile picture
 
-    // Handle file upload
+    //File upload
     if (isset($_FILES['profilepicture']) && $_FILES['profilepicture']['error'] === UPLOAD_ERR_OK) {
         $fileTmpPath = $_FILES['profilepicture']['tmp_name'];
         $fileName = $_FILES['profilepicture']['name'];
@@ -62,7 +62,6 @@ if (isset($_POST["done"])) {
 
         $allowedfileExtensions = array('jpg', 'gif', 'png', 'jpeg');
         if (in_array($fileExtension, $allowedfileExtensions)) {
-            // Directory where the file is to be saved
             $uploadFileDir = '../../../user images/';
             $newFileName = $user_id . '.' . $fileExtension;
             $dest_path = $uploadFileDir . $newFileName;
@@ -75,12 +74,11 @@ if (isset($_POST["done"])) {
         }
     }
 
-    // Approve the profile update if the passwords match
+    //Approve the profile update if the passwords match
     if ($conpassword == $password) {
-        // Update user information in the table user_register
+        //Update user information in the table user_register
         $query = "UPDATE user_register SET username='$username', birthday='$birthday', email='$email', phone='$phone', profile_picture='$profilePIC'";
         
-        // Check if password fields are not empty to update the password
         if (!empty($password)) {
             $query .= ", userpass='$password'";
         }
@@ -109,7 +107,7 @@ if (isset($_POST["done"])) {
     <link rel="stylesheet" href="userprofile.css">
 </head>
 <body>
-    <!-- Header -->
+    <!-- This is the tab bar -->
     <header>
         <img src="logo.png">
         <p>User Profile</p>
@@ -137,6 +135,7 @@ if (isset($_POST["done"])) {
                 <p><?php echo $row['email']; ?></p>
             </div>
             <button class="edit">Edit User Info</button>
+            <!-- This is the user order history table -->
             <h2 class="information-1">My Order History</h2>
             <table class="order">
                 <tr>
@@ -175,7 +174,7 @@ if (isset($_POST["done"])) {
         </div>
     </section>
 
-    <!-- Edit profile popup -->
+    <!-- Edit profile pop-up form -->
     <div class="popup">
         <div class="close">&times;</div>
         <div class="form">
