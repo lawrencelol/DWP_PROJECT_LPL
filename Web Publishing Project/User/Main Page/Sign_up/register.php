@@ -1,11 +1,11 @@
 <?php
 // Include database connection
-require_once 'connection.php'; // Update with your database connection file
+require_once 'connection.php';
 
 // Define variables and initialize with empty values
 $username = $password = $email = $phone = $birthday = "";
 $username_err = $password_err = $email_err = $phone_err = $birthday_err = "";
-$profile_picture = ""; // Initialize profile picture variable
+$profile_picture = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $file_type = $_FILES['profile_picture']['type'];
         if ($file_type == 'image/jpeg' || $file_type == 'image/png' || $file_type == 'image/gif' || $file_type == 'image/jpg') {
             // Save uploaded file to directory
-            $uploads_dir = '../../../user images/'; // Directory where images will be uploaded
+            $uploads_dir = '../../../user images/';
             $tmp_name = $_FILES['profile_picture']['tmp_name'];
             $file_name = basename($_FILES['profile_picture']['name']);
             $profile_picture = $file_name;
@@ -83,12 +83,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Oops! Something went wrong. Please try again later.";
             }
 
-            // Close statement
             $stmt->close();
         }
     }
 
-    // Close connection
     unset($connect);
 }
 ?>
@@ -168,7 +166,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* justify-content: center; */
             background-size: cover;
             background-position: center;
         }

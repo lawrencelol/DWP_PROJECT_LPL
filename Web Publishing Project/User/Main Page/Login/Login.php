@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session at the beginning of the file
+session_start();
 
 include ('../../../connection.php');
 
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['id']; // Store the user ID in the session
         header("Location: ../Main_Page/index.php"); // Redirect to user profile page
-        exit(); // Ensure no further code is executed after redirection
+        exit(); 
     } else {
         $error_message = "Invalid username or password.";
     }
@@ -166,7 +166,6 @@ $connect->close();
             min-height: 100vh;
             display: flex;
             align-items: center;
-            /* justify-content: center; */
             background-size: cover;
             background-position: center;
         }
