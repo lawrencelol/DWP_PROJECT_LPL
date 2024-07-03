@@ -144,7 +144,7 @@ $result = mysqli_query($connect, $sql);
 
         
     <div class="container">
-        <h1>Staff Management</h1>
+        <h1>Admin Management</h1>
         <!-- Add Admin Button -->
         <button id="addAdminBtn" style="background: #4c4f75; border-radius: 10px; color: white; padding: 10px; font-weight: 800; font-size: 15px;">Add New Admin</button>
 
